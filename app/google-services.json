@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "743852539651",
+    "project_id": "faceplant-a1a62",
+    "storage_bucket": "faceplant-a1a62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743852539651:android:831505b28414c159dd3336",
+        "android_client_info": {
+          "package_name": "com.example.faceplant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743852539651-j5s9qq77jnfnvr0shg3vsq00nvghbdmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.faceplant",
+            "certificate_hash": "d054778e1c362cf3800dcaf3c56f91141137244f"
+          }
+        },
+        {
+          "client_id": "743852539651-2lpubkkusvrbmsejuaeo2eisb6o341v3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACfXnmh9Tk4ujVkjNS3Cv09AXAXIiMLJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743852539651-2lpubkkusvrbmsejuaeo2eisb6o341v3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
