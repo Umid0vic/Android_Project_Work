@@ -1,7 +1,8 @@
-package com.example.faceplant
+package com.example.faceplant.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.faceplant.R
 
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

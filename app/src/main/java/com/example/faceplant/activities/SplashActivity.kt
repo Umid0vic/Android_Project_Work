@@ -1,4 +1,4 @@
-package com.example.faceplant
+package com.example.faceplant.activities
 
 import android.content.Intent
 import android.os.Build
@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowInsets
 import android.view.WindowManager
+import com.example.faceplant.R
+import com.example.faceplant.activities.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
             )
         }
 
-
+        @Suppress("DEPRECATION")
         Handler().postDelayed(
             {
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
