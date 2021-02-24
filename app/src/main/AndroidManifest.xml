@@ -11,17 +11,19 @@
         android:theme="@style/Theme.Faceplant">
         <activity android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Faceplant.NoActionBar"
-            >
+            android:theme="@style/Theme.Faceplant.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SignInActivity" />
-        <activity android:name=".activities.MainActivity">
 
+        <activity android:name=".activities.SignInActivity" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Faceplant.NoActionBar">
+        </activity>
+        <activity android:name=".activities.MainActivity">
+            android:screenOrientation="portrait"
         </activity>
     </application>
 
