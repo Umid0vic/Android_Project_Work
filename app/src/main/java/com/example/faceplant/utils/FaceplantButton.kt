@@ -18,5 +18,6 @@ class FaceplantButton (context: Context, attrs: AttributeSet): AppCompatButton(c
         val typeface: Typeface =
             Typeface.createFromAsset(context.assets, "regular_font.ttf")
         setTypeface(typeface)
+
     }
 }

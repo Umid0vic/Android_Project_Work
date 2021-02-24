@@ -3,5 +3,10 @@
     <dimen name="splash_title_text_size">35sp</dimen>
     <dimen name="splash_content_text_size">20sp</dimen>
 
-    <dimen name="title_text_size"></dimen>
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="et_text_size">16sp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="btn_text_size">18sp</dimen>
+    <dimen name="btn_padding">8dp</dimen>
+
 </resources>
