@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_green"
-    tools:context=".activities.SignInActivity">
-
+    tools:context=".activities.SignUpActivity">
 
     <com.example.faceplant.utils.FaceplantTextViewBold
         android:id="@+id/app_name"
@@ -21,11 +21,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.example.faceplant.utils.FaceplantTextViewBold
-        android:id="@+id/sign_in_title"
+        android:id="@+id/sign_up_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/sign_in"
+        android:text="@string/sign_up"
         android:textSize="@dimen/title_text_size"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/sign_up_username"
@@ -42,10 +42,10 @@
         android:textColorHint="@color/et_hint_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_title" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_title" />
 
     <com.example.faceplant.utils.FaceplantEditText
-        android:id="@+id/sign_in_password"
+        android:id="@+id/sign_up_password"
         style="@style/FaceplantEditText"
         android:layout_marginTop="16dp"
         android:background="@drawable/faceplant_sign_in_et"
@@ -54,75 +54,48 @@
         app:layout_constraintEnd_toEndOf="@+id/sign_up_username"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_username" />
 
+    <com.example.faceplant.utils.FaceplantEditText
+        android:id="@+id/sign_up_repeat_password"
+        style="@style/FaceplantEditText"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/faceplant_sign_in_et"
+        android:hint="@string/hint_repeat_password"
+        android:textColorHint="@color/et_hint_color"
+        app:layout_constraintEnd_toEndOf="@+id/sign_up_password"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_password"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_password" />
 
     <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/sign_in_btn"
+        android:id="@+id/sign_up_btn"
         style="@style/FaceplantButton"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/faceplant_blue_button"
-        android:text="@string/sign_in"
+        android:text="@string/sign_up"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_password" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_password" />
 
     <com.example.faceplant.utils.FaceplantTextViewRegular
-        android:id="@+id/dont_have_account"
+        android:id="@+id/alreade_have_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/dont_have_account"
+        android:text="@string/already_have_account"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/sign_up_text"
+        app:layout_constraintEnd_toStartOf="@+id/sign_in_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
 
-    <TextView
-        android:id="@+id/sign_up_text"
+    <com.example.faceplant.utils.FaceplantTextViewRegular
+        android:id="@+id/sign_in_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/sign_up"
+        android:text="@string/sign_in"
         android:textColor="@color/blue"
-        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dont_have_account"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_btn" />
-
-
-    <com.example.faceplant.utils.FaceplantTextViewBold
-        android:id="@+id/faceplantTextViewBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/or"
-        android:textColor="@color/black"
-        android:textSize="@dimen/title_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dont_have_account" />
-
-    <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/continue_with_facebook"
-        style="@style/FaceplantButton"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/faceplant_blue_button"
-        android:text="@string/continue_with_facebook"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/sign_in_btn"
-        app:layout_constraintStart_toStartOf="@+id/sign_in_btn"
-        app:layout_constraintTop_toBottomOf="@+id/faceplantTextViewBold" />
-
-    <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/continue_with_google"
-        style="@style/FaceplantButton"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/faceplant_green_button"
-        android:text="@string/continue_with_google"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/continue_with_facebook"
-        app:layout_constraintStart_toStartOf="@+id/continue_with_facebook"
-        app:layout_constraintTop_toBottomOf="@+id/continue_with_facebook" />
-
+        app:layout_constraintStart_toEndOf="@+id/alreade_have_account"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

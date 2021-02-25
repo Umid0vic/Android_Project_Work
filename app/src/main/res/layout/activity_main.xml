@@ -5,40 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_green"
+    android:background="@drawable/start_page_image"
     tools:context=".activities.MainActivity">
 
-
-    <ImageView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/start_page_image"
-        tools:ignore="ContentDescription"
-        />
-
-    <com.example.faceplant.utils.FaceplantEditText
+    <com.example.faceplant.utils.FaceplantTextViewBold
         android:id="@+id/start_page_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textSize="@dimen/title_text_size"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="64dp"
-        android:text="@string/app_name"
-        android:textSize="@dimen/title_text_size"
         />
 
     <com.example.faceplant.utils.FaceplantButton
         android:id="@+id/start_page_sign_in"
-        style="@style/FaceplantButton"
         android:background="@drawable/faceplant_blue_button"
-        android:text="@string/btn_sign_in"
+        android:text="@string/sign_in"
         android:textAllCaps="false"
+        style="@style/FaceplantButton"
         app:layout_constraintBottom_toTopOf="@id/sign_in_later"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,11 +36,11 @@
 
     <com.example.faceplant.utils.FaceplantButton
         android:id="@+id/sign_in_later"
-        style="@style/FaceplantButton"
         android:layout_marginBottom="60dp"
         android:background="@drawable/faceplant_red_button"
-        android:text="@string/btn_sign_in_later"
+        android:text="@string/sign_in_later"
         android:textAllCaps="false"
+        style="@style/FaceplantButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
