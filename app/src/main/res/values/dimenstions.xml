@@ -6,7 +6,10 @@
     <dimen name="title_text_size">18sp</dimen>
     <dimen name="et_text_size">16sp</dimen>
     <dimen name="et_padding">16dp</dimen>
-    <dimen name="btn_text_size">18sp</dimen>
+    <dimen name="btn_text_size">22sp</dimen>
     <dimen name="btn_padding">8dp</dimen>
+    <dimen name="btn_width">250dp</dimen>
+    <dimen name="btn_height">45dp</dimen>
+    <dimen name="btn_radius">10sp</dimen>
 
 </resources>
