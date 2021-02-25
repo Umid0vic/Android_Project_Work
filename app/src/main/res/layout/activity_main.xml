@@ -9,6 +9,30 @@
     tools:context=".activities.MainActivity">
 
 
+    <ImageView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/start_page_image"
+        tools:ignore="ContentDescription"
+        />
+
+    <com.example.faceplant.utils.FaceplantEditText
+        android:id="@+id/start_page_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="64dp"
+        android:text="@string/app_name"
+        android:textSize="@dimen/title_text_size"
+        />
+
     <com.example.faceplant.utils.FaceplantButton
         android:id="@+id/start_page_sign_in"
         style="@style/FaceplantButton"
@@ -17,10 +41,9 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@id/sign_in_later"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.966" />
+        app:layout_constraintVertical_bias="0.973" />
 
     <com.example.faceplant.utils.FaceplantButton
         android:id="@+id/sign_in_later"
@@ -31,7 +54,6 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
