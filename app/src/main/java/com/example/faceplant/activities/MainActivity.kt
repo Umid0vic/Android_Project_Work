@@ -11,13 +11,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val loginBtn = findViewById<Button>(R.id.start_page_sign_in)
+        val loginBtn = findViewById<Button>(R.id.btn_start_page_sign_in)
 
         loginBtn.setOnClickListener{
+            //Launch the SignInActivity when the Sign in button clicked
             startActivity(
                 Intent(this, SignInActivity::class.java)
             )
         }
-
     }
 }

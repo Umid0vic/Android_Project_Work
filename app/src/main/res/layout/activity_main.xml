@@ -8,8 +8,8 @@
     android:background="@drawable/start_page_image"
     tools:context=".activities.MainActivity">
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
-        android:id="@+id/start_page_title"
+    <TextView
+        android:id="@+id/textview_start_page_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -22,8 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
-        android:id="@+id/start_page_text"
+    <TextView
+        android:id="@+id/textview_start_page_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -33,22 +33,22 @@
         android:textSize="@dimen/title_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_page_title" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_start_page_title" />
 
     <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/start_page_sign_in"
+        android:id="@+id/btn_start_page_sign_in"
         android:background="@drawable/faceplant_blue_button"
         android:text="@string/sign_in"
         android:textAllCaps="false"
         style="@style/FaceplantButton"
-        app:layout_constraintBottom_toTopOf="@id/sign_in_later"
+        app:layout_constraintBottom_toTopOf="@id/btn_start_page_sign_in_later"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.973" />
 
     <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/sign_in_later"
+        android:id="@+id/btn_start_page_sign_in_later"
         android:layout_marginBottom="60dp"
         android:background="@drawable/faceplant_red_button"
         android:text="@string/sign_in_later"

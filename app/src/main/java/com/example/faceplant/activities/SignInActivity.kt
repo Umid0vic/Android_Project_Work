@@ -14,16 +14,17 @@ class SignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
 
         val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
+        val signUpText = findViewById<TextView>(R.id.sign_up_text) as TextView
 
         signInButton.setOnClickListener{
+            //Launch the HomeActivity when the Sign in button clicked
             startActivity(
                 Intent(this, HomeActivity::class.java)
             )
         }
 
-        val signUpText = findViewById<TextView>(R.id.sign_up_text) as TextView
-
         signUpText.setOnClickListener{
+            //Launch the SignUpActivity when the sign up text clicked
             startActivity(
                 Intent(this, SignUpActivity::class.java)
             )

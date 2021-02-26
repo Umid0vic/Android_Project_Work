@@ -18,6 +18,7 @@ class SignUpActivity : AppCompatActivity() {
         val signUpButton = findViewById<Button>(R.id.sign_up_page_sign_un)
 
         signUpButton.setOnClickListener{
+            //Launch the HomeActivity when the Sign up button clicked
             startActivity(
                 Intent(this, HomeActivity::class.java)
             )
