@@ -9,7 +9,7 @@
     <dimen name="et_padding">16dp</dimen>
     <dimen name="btn_text_size">22sp</dimen>
     <dimen name="btn_padding">8dp</dimen>
-    <dimen name="btn_width">250dp</dimen>
+    <dimen name="btn_width">280dp</dimen>
     <dimen name="btn_height">45dp</dimen>
     <dimen name="btn_radius">8sp</dimen>
 

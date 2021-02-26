@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Faceplant">
-        <activity android:name=".activities.HomeActivity"></activity>
-        <activity android:name=".activities.SignUpActivity" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
@@ -18,11 +24,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.SignInActivity">
-            android:screenOrientation="portrait"
-        </activity>
+            </intent-filter></activity>
+
+        <activity
+            android:name=".activities.SignInActivity"
+            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait"></activity>
