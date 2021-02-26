@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,32 +7,32 @@
     android:background="@color/light_green"
     tools:context=".activities.SignUpActivity">
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
+    <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/app_name"
-        android:textSize="@dimen/title_text_size"
         android:textColor="@color/black"
+        android:textSize="@dimen/app_name_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
+    <TextView
         android:id="@+id/sign_up_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/sign_up"
-        android:textSize="@dimen/title_text_size"
         android:textColor="@color/black"
+        android:textSize="@dimen/title_text_size"
         app:layout_constraintBottom_toTopOf="@+id/sign_up_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_username"
         app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
-    <com.example.faceplant.utils.FaceplantEditText
+    <EditText
         android:id="@+id/sign_up_username"
         style="@style/FaceplantEditText"
         android:layout_marginTop="20dp"
@@ -44,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_title" />
 
-    <com.example.faceplant.utils.FaceplantEditText
+    <EditText
         android:id="@+id/sign_up_password"
         style="@style/FaceplantEditText"
         android:layout_marginTop="16dp"
@@ -54,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="@+id/sign_up_username"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_username" />
 
-    <com.example.faceplant.utils.FaceplantEditText
+    <EditText
         android:id="@+id/sign_up_repeat_password"
         style="@style/FaceplantEditText"
         android:layout_marginTop="16dp"
@@ -66,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sign_up_password" />
 
     <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/sign_up_btn"
+        android:id="@+id/sign_up_page_sign_un"
         style="@style/FaceplantButton"
         android:layout_marginTop="60dp"
         android:background="@drawable/faceplant_blue_button"
@@ -76,26 +75,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_password" />
 
-    <com.example.faceplant.utils.FaceplantTextViewRegular
+    <TextView
         android:id="@+id/alreade_have_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:text="@string/already_have_account"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/sign_in_text"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_page_sign_un" />
 
-    <com.example.faceplant.utils.FaceplantTextViewRegular
+    <TextView
         android:id="@+id/sign_in_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="@string/sign_in"
-        android:textColor="@color/blue"
+        android:textColor="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="@+id/alreade_have_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/alreade_have_account"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_page_sign_un" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,55 +8,61 @@
     tools:context=".activities.SignInActivity">
 
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
+    <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/app_name"
-        android:textSize="@dimen/title_text_size"
         android:textColor="@color/black"
+        android:textSize="@dimen/app_name_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
+    <TextView
         android:id="@+id/sign_in_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
         android:text="@string/sign_in"
-        android:textSize="@dimen/title_text_size"
         android:textColor="@color/black"
+        android:textSize="@dimen/title_text_size"
         app:layout_constraintBottom_toTopOf="@+id/sign_up_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_username"
         app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
-    <com.example.faceplant.utils.FaceplantEditText
+    <EditText
         android:id="@+id/sign_up_username"
         style="@style/FaceplantEditText"
         android:layout_marginTop="20dp"
         android:background="@drawable/faceplant_sign_in_et"
+        android:drawableStart="@drawable/ic_person"
+        android:drawableLeft="@drawable/ic_person"
         android:hint="@string/hint_username"
+        android:inputType="textPersonName"
         android:textColorHint="@color/et_hint_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in_title" />
 
-    <com.example.faceplant.utils.FaceplantEditText
+    <EditText
         android:id="@+id/sign_in_password"
         style="@style/FaceplantEditText"
         android:layout_marginTop="16dp"
         android:background="@drawable/faceplant_sign_in_et"
+        android:drawableStart="@drawable/ic_key"
+        android:drawableLeft="@drawable/ic_key"
         android:hint="@string/hint_password"
+        android:inputType="textPassword"
         android:textColorHint="@color/et_hint_color"
         app:layout_constraintEnd_toEndOf="@+id/sign_up_username"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_username" />
 
-
     <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/sign_in_btn"
+        android:id="@+id/sign_in_page_sign_in"
         style="@style/FaceplantButton"
         android:layout_marginTop="20dp"
         android:background="@drawable/faceplant_blue_button"
@@ -66,31 +72,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in_password" />
 
-    <com.example.faceplant.utils.FaceplantTextViewRegular
+    <TextView
         android:id="@+id/dont_have_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:text="@string/dont_have_account"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/sign_up_text"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_page_sign_in" />
 
     <TextView
         android:id="@+id/sign_up_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:focusable="true"
         android:text="@string/sign_up"
         android:textColor="@color/blue"
-        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dont_have_account"
-        app:layout_constraintTop_toBottomOf="@+id/sign_in_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_page_sign_in" />
 
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
+    <TextView
         android:id="@+id/faceplantTextViewBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,8 +119,8 @@
         android:background="@drawable/faceplant_blue_button"
         android:text="@string/continue_with_facebook"
         android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="@+id/sign_in_btn"
-        app:layout_constraintStart_toStartOf="@+id/sign_in_btn"
+        app:layout_constraintEnd_toEndOf="@+id/sign_in_page_sign_in"
+        app:layout_constraintStart_toStartOf="@+id/sign_in_page_sign_in"
         app:layout_constraintTop_toBottomOf="@+id/faceplantTextViewBold" />
 
     <com.example.faceplant.utils.FaceplantButton

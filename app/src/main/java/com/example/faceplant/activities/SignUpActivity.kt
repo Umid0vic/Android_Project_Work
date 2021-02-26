@@ -14,5 +14,13 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+        val signUpButton = findViewById<Button>(R.id.sign_up_page_sign_un)
+
+        signUpButton.setOnClickListener{
+            startActivity(
+                Intent(this, HomeActivity::class.java)
+            )
+        }
     }
 }

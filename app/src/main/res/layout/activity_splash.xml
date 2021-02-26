@@ -8,22 +8,20 @@
     android:background="@color/white"
     tools:context=".activities.SplashActivity">
 
-    <com.example.faceplant.utils.FaceplantTextViewBold
+    <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textColor="@color/green"
-        android:textSize="@dimen/splash_title_text_size"
+        android:textSize="@dimen/app_name_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints" />
 
-    </com.example.faceplant.utils.FaceplantTextViewBold>
-
-    <com.example.faceplant.utils.FaceplantTextViewRegular
+    <TextView
         android:id="@+id/context"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,8 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_name"
-        tools:ignore="MissingConstraints">
-        ></com.example.faceplant.utils.FaceplantTextViewRegular>
+        tools:ignore="MissingConstraints"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
