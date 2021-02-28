@@ -39,41 +39,41 @@
                 android:text="@string/sign_up"
                 android:textColor="@color/black"
                 android:textSize="@dimen/title_text_size"
-                app:layout_constraintBottom_toTopOf="@+id/sign_up_username"
-                app:layout_constraintStart_toStartOf="@+id/sign_up_username"
+                app:layout_constraintBottom_toTopOf="@+id/edittext_sign_up_email"
+                app:layout_constraintStart_toStartOf="@+id/edittext_sign_up_email"
                 app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
             <EditText
-                android:id="@+id/sign_up_username"
+                android:id="@+id/edittext_sign_up_email"
                 style="@style/FaceplantEditText"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/faceplant_sign_in_et"
-                android:hint="@string/hint_username"
+                android:hint="@string/email"
                 android:textColorHint="@color/et_hint_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_up_title" />
 
             <EditText
-                android:id="@+id/sign_up_password"
+                android:id="@+id/edittext_sign_up_password"
                 style="@style/FaceplantEditText"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/faceplant_sign_in_et"
                 android:hint="@string/hint_password"
                 android:textColorHint="@color/et_hint_color"
-                app:layout_constraintEnd_toEndOf="@+id/sign_up_username"
-                app:layout_constraintTop_toBottomOf="@+id/sign_up_username" />
+                app:layout_constraintEnd_toEndOf="@+id/edittext_sign_up_email"
+                app:layout_constraintTop_toBottomOf="@+id/edittext_sign_up_email" />
 
             <EditText
-                android:id="@+id/sign_up_repeat_password"
+                android:id="@+id/edittext_repeat_password"
                 style="@style/FaceplantEditText"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/faceplant_sign_in_et"
                 android:hint="@string/hint_repeat_password"
                 android:textColorHint="@color/et_hint_color"
-                app:layout_constraintEnd_toEndOf="@+id/sign_up_password"
-                app:layout_constraintStart_toStartOf="@+id/sign_up_password"
-                app:layout_constraintTop_toBottomOf="@+id/sign_up_password" />
+                app:layout_constraintEnd_toEndOf="@+id/edittext_sign_up_password"
+                app:layout_constraintStart_toStartOf="@+id/edittext_sign_up_password"
+                app:layout_constraintTop_toBottomOf="@+id/edittext_sign_up_password" />
 
             <com.example.faceplant.utils.FaceplantButton
                 android:id="@+id/sign_up_page_sign_up"
@@ -84,7 +84,7 @@
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sign_up_repeat_password" />
+                app:layout_constraintTop_toBottomOf="@+id/edittext_repeat_password" />
 
             <TextView
                 android:id="@+id/alreade_have_account"

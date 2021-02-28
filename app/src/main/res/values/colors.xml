@@ -16,4 +16,7 @@
     <color name="et_hint_color">#7A8980</color>
     <color name="et_text_color">#FF000000</color>
 
+    <color name="snack_bar_error_color">#B5523E</color>
+    <color name="snack_bar_succuss_color">#6A79AB</color>
+
 </resources>
