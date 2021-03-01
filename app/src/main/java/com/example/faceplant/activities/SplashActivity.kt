@@ -9,11 +9,21 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.faceplant.R
 import com.example.faceplant.activities.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        //Init Firebase Auth
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+
 
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -26,10 +36,15 @@ class SplashActivity : AppCompatActivity() {
         }
 
         @Suppress("DEPRECATION")
+        //After the delay start the HomeActivity if user is signed in else start the MainActivity
         Handler().postDelayed(
             {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+                if (user != null) {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                } else {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
             }, 1500
         )
     }

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +30,53 @@ class SignUpActivity : AppCompatActivity() {
         val editTextPassword: EditText = findViewById(R.id.edittext_sign_up_password)
         val editTextConfirmPassword: EditText = findViewById(R.id.edittext_repeat_password)
 
-        buttonSignUp.setOnClickListener {
-            //Validate the entries
-            when {
+        //Function to create user with email and password
+        fun createUser(){
+
+            val email: String = editTextEmail.text.toString().trim { it <= ' ' }
+            val password: String = editTextPassword.text.toString().trim { it <= ' ' }
+
+            // Create an instance and create a user with email and password.
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(
+                    OnCompleteListener<AuthResult> { task ->
+                        // If the registration is successfully done
+                        if (task.isSuccessful) {
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
+
+                            Toast.makeText(
+                                this,
+                                R.string.message_registered_successfully,
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            val intent =
+                                Intent(this, HomeActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            intent.putExtra("user_id", firebaseUser.uid)
+                            intent.putExtra("email_id", email)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            // If the registering is not successful then show error message.
+                            Toast.makeText(
+                                this,
+                                task.exception!!.message.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    })
+        }
+
+        //Function to validate the entries
+        fun validateSignUpDetails(): Boolean{
+            return when {
                 TextUtils.isEmpty(editTextEmail.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this, R.string.message_enter_email, Toast.LENGTH_SHORT
                     ).show()
+                    false
                 }
 
                 !editTextEmail.text.toString().trim { it <= ' ' }
@@ -41,66 +84,42 @@ class SignUpActivity : AppCompatActivity() {
                     Toast.makeText(
                         this, R.string.message_enter_email, Toast.LENGTH_SHORT
                     ).show()
+                    false
                 }
 
                 TextUtils.isEmpty(editTextPassword.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this, R.string.message_enter_password, Toast.LENGTH_SHORT
                     ).show()
+                    false
                 }
 
                 TextUtils.isEmpty(editTextConfirmPassword.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this, R.string.message_confirm_password, Toast.LENGTH_SHORT
                     ).show()
+                    false
                 }
 
                 editTextPassword.text.toString() != editTextConfirmPassword.text.toString() -> {
                     Toast.makeText(
                         this, R.string.message_password_mismatched, Toast.LENGTH_SHORT
                     ).show()
+                    false
                 }
 
                 else -> {
-
-                    val email: String = editTextEmail.text.toString().trim { it <= ' ' }
-                    val password: String = editTextPassword.text.toString().trim { it <= ' ' }
-
-                    // Create an instance and create a register a user with email and password.
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(
-                            OnCompleteListener<AuthResult> { task ->
-
-                                // If the registration is successfully done
-                                if (task.isSuccessful) {
-                                    val firebaseUser: FirebaseUser = task.result!!.user!!
-
-                                    Toast.makeText(
-                                        this,
-                                        R.string.message_registered_successfully,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-
-                                    val intent =
-                                        Intent(this, HomeActivity::class.java)
-                                    intent.flags =
-                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("user_id", firebaseUser.uid)
-                                    intent.putExtra("email_id", email)
-                                    startActivity(intent)
-                                    finish()
-                                } else {
-                                    // If the registering is not successful then show error message.
-                                    Toast.makeText(
-                                        this,
-                                        task.exception!!.message.toString(),
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            })
+                   Log.w("SignUpActivity", "User successfully signed up")
+                    true
                 }
             }
+        }
 
+        //Create user account on clicking the SignUp button
+        buttonSignUp.setOnClickListener {
+            if(validateSignUpDetails()){
+                createUser()
+            }
         }
 
         editTextSignIn.setOnClickListener {
@@ -109,10 +128,5 @@ class SignUpActivity : AppCompatActivity() {
                 Intent(this, SignInActivity::class.java)
             )
         }
-        /*
-        //Function to validate the entries
-        private fun validateSignUpDetails() {
-        }
-         */
     }
 }
