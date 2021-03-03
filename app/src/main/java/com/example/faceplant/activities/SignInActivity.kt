@@ -14,7 +14,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -40,30 +39,28 @@ class SignInActivity : AppCompatActivity() {
 
         val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
         val continueWithGoogle = findViewById<Button>(R.id.continue_with_google)
-        val signUpText = findViewById<TextView>(R.id.sign_up_text) as TextView
-        val editTextEmail: EditText = findViewById(R.id.edittext_sign_in_email)
-        val editTextPassword: EditText = findViewById(R.id.edittext_sign_in_password)
+        val signUpText = findViewById<TextView>(R.id.sign_up_text)
+        val editTextEmail = findViewById<EditText>(R.id.edittext_sign_in_email)
+        val editTextPassword = findViewById<EditText>(R.id.edittext_sign_in_password)
+        val textViewForgotPassword = findViewById<TextView>(R.id.forgot_password_textView)
 
         //Prompt the user to sign in with Google account
         continueWithGoogle.setOnClickListener(){
             signInWithGoogle()
         }
 
+
         signInButton.setOnClickListener{
             when {
                 TextUtils.isEmpty(editTextEmail.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this,
-                        R.string.message_enter_email,
-                        Toast.LENGTH_SHORT
+                        this, R.string.message_enter_email, Toast.LENGTH_SHORT
                     ).show()
                 }
 
                 TextUtils.isEmpty(editTextPassword.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
-                        this,
-                        R.string.message_enter_password,
-                        Toast.LENGTH_SHORT
+                        this, R.string.message_enter_password, Toast.LENGTH_SHORT
                     ).show()
                 }
                 else -> {
@@ -87,14 +84,19 @@ class SignInActivity : AppCompatActivity() {
                             } else {
                                 // If the login is not successful then show error message.
                                 Toast.makeText(
-                                    this,
-                                    task.exception!!.message.toString(),
-                                    Toast.LENGTH_SHORT
+                                    this, task.exception!!.message.toString(), Toast.LENGTH_SHORT
                                 ).show()
                             }
                         }
                 }
             }
+        }
+
+        textViewForgotPassword.setOnClickListener(){
+            //Launch the ForgotPasswordActivity when forgotpassword? clicked
+            startActivity(
+                Intent(this, ForgotPasswordActivity::class.java)
+            )
         }
 
         signUpText.setOnClickListener{
@@ -151,7 +153,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     companion object{
-        private const val RC_SIGN_IN = 100 //you  give any number
+        private const val RC_SIGN_IN = 100 //you can give any number
         const val SIGN_IN_ACTIVITY = "SIGN_IN_ACTIVITY"
 
     }

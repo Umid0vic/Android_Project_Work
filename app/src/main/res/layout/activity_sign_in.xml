@@ -48,7 +48,7 @@
                 android:id="@+id/edittext_sign_in_email"
                 style="@style/FaceplantEditText"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/faceplant_sign_in_et"
+                android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/ic_person"
                 android:drawableLeft="@drawable/ic_person"
                 android:hint="@string/email"
@@ -62,7 +62,7 @@
                 android:id="@+id/edittext_sign_in_password"
                 style="@style/FaceplantEditText"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/faceplant_sign_in_et"
+                android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/ic_key"
                 android:drawableLeft="@drawable/ic_key"
                 android:hint="@string/hint_password"
@@ -72,7 +72,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/edittext_sign_in_email" />
 
             <TextView
-                android:id="@+id/forgot_password_text"
+                android:id="@+id/forgot_password_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -93,7 +93,7 @@
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/forgot_password_text" />
+                app:layout_constraintTop_toBottomOf="@+id/forgot_password_textView" />
 
             <TextView
                 android:id="@+id/dont_have_account"
