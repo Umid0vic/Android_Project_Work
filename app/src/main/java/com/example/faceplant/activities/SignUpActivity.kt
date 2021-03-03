@@ -11,6 +11,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.faceplant.R
+import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +27,7 @@ class SignUpActivity : AppCompatActivity() {
 
         val buttonSignUp = findViewById<Button>(R.id.sign_up_page_sign_up)
         val editTextSignIn = findViewById<TextView>(R.id.sign_in_text)
-        var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         val editTextEmail = findViewById<EditText>(R.id.edittext_sign_up_email)
         val editTextPassword = findViewById<EditText>(R.id.edittext_sign_up_password)
         val editTextConfirmPassword = findViewById<EditText>(R.id.edittext_repeat_password)
@@ -91,6 +93,12 @@ class SignUpActivity : AppCompatActivity() {
                             // If the registration is successfully done
                             if (task.isSuccessful) {
                                 val firebaseUser: FirebaseUser = task.result!!.user!!
+                                //create User object
+                                val user = User(
+                                    firebaseUser.uid,
+                                    email
+                                )
+                                FirestoreClass().saveUserInfo(user)
 
                                 Toast.makeText(
                                     this,

@@ -10,11 +10,14 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.faceplant.R
+import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 class SignInActivity : AppCompatActivity() {
@@ -140,6 +143,14 @@ class SignInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, go to HomeActivity
                     Log.d(SIGN_IN_ACTIVITY, "signInWithCredential:success")
+                    val firebaseUser: FirebaseUser = task.result!!.user!!
+                    //create User object
+                    val user = User(
+                        firebaseUser.uid,
+                        firebaseUser.email
+                    )
+                    //create user document with user info in the Cloud Firestore
+                    FirestoreClass().saveUserInfo(user)
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
                 } else {
