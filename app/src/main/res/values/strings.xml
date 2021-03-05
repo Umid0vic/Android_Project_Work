@@ -35,6 +35,8 @@
     <string name="message_registered_successfully">You are registered successfully</string>
     <string name="email_id">email id</string>
     <string name="user_id">user id</string>
+    <string name="plantcare_title">Plant care</string>
+    <string name="plantcare_search_hint">Search</string>
 
 
 </resources>
