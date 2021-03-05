@@ -29,7 +29,6 @@
         android:text="@string/plantcare_title"
         android:textColor="@color/black"
         android:textSize="@dimen/app_name_text_size"
-        app:layout_constraintBottom_toTopOf="@id/PlantCare_listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
