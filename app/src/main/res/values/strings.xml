@@ -41,5 +41,7 @@
     <string name="user_id">user id</string>
     <string name="message_check_your_email">"An email has been sent to your email address. Follow the instructions to reset your password "</string>
 
+    <string name="plantcare_title">Plant care</string>
+    <string name="plantcare_search_hint">Search</string>
 
 </resources>

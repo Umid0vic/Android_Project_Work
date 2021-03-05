@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Faceplant">
         <activity android:name=".activities.ForgotPasswordActivity"></activity>
         <activity
+            android:name=".activities.PlantCareActivity"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
