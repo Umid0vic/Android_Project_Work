@@ -36,40 +36,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
+                android:layout_marginStart="10dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/sign_in"
                 android:textColor="@color/black"
                 android:textSize="@dimen/title_text_size"
-                app:layout_constraintBottom_toTopOf="@+id/edittext_sign_in_email"
-                app:layout_constraintStart_toStartOf="@+id/edittext_sign_in_email"
+                app:layout_constraintBottom_toTopOf="@+id/text_input_layout_email"
+                app:layout_constraintStart_toStartOf="@+id/text_input_layout_email"
                 app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
-            <EditText
-                android:id="@+id/edittext_sign_in_email"
-                style="@style/FaceplantEditText"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/ic_person"
-                android:drawableLeft="@drawable/ic_person"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:padding="@dimen/editText_padding"
                 android:hint="@string/email"
-                android:inputType="textPersonName"
                 android:textColorHint="@color/et_hint_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sign_in_title" />
+                app:layout_constraintTop_toBottomOf="@+id/sign_in_title">
 
-            <EditText
-                android:id="@+id/edittext_sign_in_password"
-                style="@style/FaceplantEditText"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/ic_key"
-                android:drawableLeft="@drawable/ic_key"
+                <EditText
+                    android:id="@+id/sign_in_editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/et_text_color"
+                    android:background="@drawable/edittext_background" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:padding="@dimen/editText_padding"
                 android:hint="@string/hint_password"
-                android:inputType="textPassword"
                 android:textColorHint="@color/et_hint_color"
-                app:layout_constraintEnd_toEndOf="@+id/edittext_sign_in_email"
-                app:layout_constraintTop_toBottomOf="@+id/edittext_sign_in_email" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_email">
+
+                <EditText
+                    android:id="@+id/sign_in_editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/et_text_color"
+                    android:background="@drawable/edittext_background" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/forgot_password_textView"
@@ -81,8 +101,8 @@
                 android:fontFamily="@font/open_sans_bold"
                 android:text="@string/forgot_password"
                 android:textColor="@color/blue"
-                app:layout_constraintEnd_toEndOf="@+id/edittext_sign_in_password"
-                app:layout_constraintTop_toBottomOf="@+id/edittext_sign_in_password" />
+                app:layout_constraintEnd_toEndOf="@+id/text_input_layout_password"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_password" />
 
             <com.example.faceplant.utils.FaceplantButton
                 android:id="@+id/sign_in_page_sign_in"

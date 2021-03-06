@@ -26,12 +26,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(
                 Intent(this, SignInActivity::class.java)
             )
+            finish()
         }
 
         buttonSignInLater.setOnClickListener{
             startActivity(
                 Intent(this, HomeActivity::class.java)
             )
+            finish()
         }
     }
 }

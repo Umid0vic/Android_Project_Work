@@ -40,7 +40,8 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed(
             {
                 if (user != null) {
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, UserProfileActivity::class.java))
+                    finish()
                 } else {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
