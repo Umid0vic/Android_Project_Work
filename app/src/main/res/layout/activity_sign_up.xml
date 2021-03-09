@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,7 +23,7 @@
                 android:id="@+id/app_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
@@ -35,56 +36,118 @@
                 android:id="@+id/sign_up_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/sign_up"
                 android:textColor="@color/black"
                 android:textSize="@dimen/title_text_size"
-                app:layout_constraintBottom_toTopOf="@+id/edittext_sign_up_email"
-                app:layout_constraintStart_toStartOf="@+id/edittext_sign_up_email"
+                app:layout_constraintBottom_toTopOf="@+id/text_input_layout_username"
+                app:layout_constraintStart_toStartOf="@+id/text_input_layout_username"
                 app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
-            <EditText
-                android:id="@+id/edittext_sign_up_email"
-                style="@style/FaceplantEditText"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittext_background"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_username"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:padding="@dimen/editText_padding"
+                android:hint="@string/hint_username"
+                android:textColorHint="@color/et_hint_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_title">
+
+                <EditText
+                    android:id="@+id/sign_up_editTextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/et_text_color"
+                    android:background="@drawable/edittext_background" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:padding="@dimen/editText_padding"
                 android:hint="@string/email"
                 android:textColorHint="@color/et_hint_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sign_up_title" />
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_username">
 
-            <EditText
-                android:id="@+id/edittext_sign_up_password"
-                style="@style/FaceplantEditText"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/edittext_background"
+                <EditText
+                    android:id="@+id/sign_in_editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/et_text_color"
+                    android:background="@drawable/edittext_background" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:padding="@dimen/editText_padding"
                 android:hint="@string/hint_password"
                 android:textColorHint="@color/et_hint_color"
-                app:layout_constraintEnd_toEndOf="@+id/edittext_sign_up_email"
-                app:layout_constraintTop_toBottomOf="@+id/edittext_sign_up_email" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_email">
 
-            <EditText
-                android:id="@+id/edittext_repeat_password"
-                style="@style/FaceplantEditText"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/edittext_background"
+                <EditText
+                    android:id="@+id/sign_in_editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/et_text_color"
+                    android:background="@drawable/edittext_background" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_confirm_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:padding="@dimen/editText_padding"
                 android:hint="@string/hint_repeat_password"
                 android:textColorHint="@color/et_hint_color"
-                app:layout_constraintEnd_toEndOf="@+id/edittext_sign_up_password"
-                app:layout_constraintStart_toStartOf="@+id/edittext_sign_up_password"
-                app:layout_constraintTop_toBottomOf="@+id/edittext_sign_up_password" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_password">
+
+                <EditText
+                    android:id="@+id/sign_up_editTextRepeatPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/et_text_color"
+                    android:background="@drawable/edittext_background" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.example.faceplant.utils.FaceplantButton
                 android:id="@+id/sign_up_page_sign_up"
                 style="@style/FaceplantButton"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/faceplant_blue_button"
                 android:text="@string/sign_up"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edittext_repeat_password" />
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_confirm_password" />
 
             <TextView
                 android:id="@+id/alreade_have_account"
