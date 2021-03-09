@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.faceplant.R
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
        // auth = Firebase.auth
-        val buttonSignIn = findViewById<Button>(R.id.btn_start_page_sign_in)
-        val buttonSignInLater = findViewById<Button>(R.id.btn_start_page_sign_in_later)
+        val signInButton = findViewById<Button>(R.id.btn_start_page_sign_in)
+        val signInLaterButton = findViewById<Button>(R.id.btn_start_page_sign_in_later)
 
-        buttonSignIn.setOnClickListener{
+        signInButton.setOnClickListener{
             //Launch the SignInActivity when the Sign in button clicked
             startActivity(
                 Intent(this, SignInActivity::class.java)
@@ -29,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        buttonSignInLater.setOnClickListener{
+        signInLaterButton.setOnClickListener{
             startActivity(
                 Intent(this, HomeActivity::class.java)
             )

@@ -25,9 +25,9 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var editTextEmail: EditText
-    private lateinit var editTextPassword: EditText
-    private lateinit var textViewForgotPassword: TextView
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var forgotPasswordTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +36,9 @@ class SignInActivity : AppCompatActivity() {
         val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
         val continueWithGoogle = findViewById<Button>(R.id.continue_with_google)
         val signUpText = findViewById<TextView>(R.id.sign_up_text)
-        editTextEmail = findViewById(R.id.sign_in_editTextEmail)
-        editTextPassword = findViewById(R.id.sign_in_editTextPassword)
-        textViewForgotPassword = findViewById(R.id.forgot_password_textView)
+        emailEditText = findViewById(R.id.sign_in_editTextEmail)
+        passwordEditText = findViewById(R.id.sign_in_editTextPassword)
+        forgotPasswordTextView = findViewById(R.id.forgot_password_textView)
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -60,7 +60,7 @@ class SignInActivity : AppCompatActivity() {
             signInUser()
         }
 
-        textViewForgotPassword.setOnClickListener(){
+        forgotPasswordTextView.setOnClickListener(){
             //Launch the ForgotPasswordActivity when forgotpassword? clicked
             startActivity(
                 Intent(this, ForgotPasswordActivity::class.java)
@@ -77,21 +77,21 @@ class SignInActivity : AppCompatActivity() {
     //Function to validate user inputs and sign in the user
     private fun signInUser(){
         when {
-            TextUtils.isEmpty(editTextEmail.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(emailEditText.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this, R.string.message_enter_email, Toast.LENGTH_SHORT
                 ).show()
             }
 
-            TextUtils.isEmpty(editTextPassword.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(passwordEditText.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this, R.string.message_enter_password, Toast.LENGTH_SHORT
                 ).show()
             }
             else -> {
 
-                val email: String = editTextEmail.text.toString().trim { it <= ' ' }
-                val password: String = editTextPassword.text.toString().trim { it <= ' ' }
+                val email: String = emailEditText.text.toString().trim { it <= ' ' }
+                val password: String = passwordEditText.text.toString().trim { it <= ' ' }
 
                 // SignIn using FirebaseAuth
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -130,7 +130,7 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    fun userSignedInSuccess(user: User){
+    fun userSignInSuccess(user: User){
         val intent = Intent(this, UserProfileActivity::class.java)
         intent.putExtra(Constants.USER_DETAILS, user)
         startActivity(intent)
@@ -173,17 +173,20 @@ class SignInActivity : AppCompatActivity() {
                     //create User object
                     val user = User(
                         firebaseUser.uid,
-                        firebaseUser.email
+                        firebaseUser.email,
+                        firebaseUser.displayName
                     )
                     //create user document with user info in the Cloud Firestore
-                    FirestoreClass().saveUserInfo(user)
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    FirestoreClass().registerUser(user)
+                    val intent = Intent(this, UserProfileActivity::class.java)
+                    intent.putExtra(Constants.USER_DETAILS, user)
+                    startActivity(intent)
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(SIGN_IN_ACTIVITY, "signInWithCredential:failure", task.exception)
                     Toast.makeText(
-                        this, R.string.message_registered_successfully, Toast.LENGTH_SHORT
+                        this, R.string.message_registation_failed, Toast.LENGTH_SHORT
                     ).show()
                 }
             }
