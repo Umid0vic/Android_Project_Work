@@ -17,7 +17,10 @@
     <dimen name="et_padding">16dp</dimen>
     <dimen name="btn_text_size">22sp</dimen>
     <dimen name="btn_padding">8dp</dimen>
+    <dimen name="editText_padding">8dp</dimen>
+    <dimen name="editText_margin">30dp</dimen>
     <dimen name="btn_width">280dp</dimen>
     <dimen name="btn_height">45dp</dimen>
     <dimen name="btn_radius">8sp</dimen>
-</resources>
+    
+    <dimen name="user_image_size">120dp</dimen></resources>

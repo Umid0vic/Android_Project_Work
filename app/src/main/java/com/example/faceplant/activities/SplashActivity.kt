@@ -5,10 +5,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.faceplant.R
 import com.example.faceplant.activities.MainActivity
+import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.models.User
+import com.example.faceplant.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
@@ -22,8 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
         //Init Firebase Auth
         auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser
-
+        val currentUser = auth.currentUser
 
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -36,16 +39,25 @@ class SplashActivity : AppCompatActivity() {
         }
 
         @Suppress("DEPRECATION")
-        //After the delay start the HomeActivity if user is signed in else start the MainActivity
+        //If user is signed in start the HomeActivity else start the MainActivity
         Handler().postDelayed(
             {
-                if (user != null) {
-                    startActivity(Intent(this, HomeActivity::class.java))
+                if (currentUser != null) {
+                    startActivity(Intent(this, UserProfileActivity::class.java))
+                    finish()
+                    Log.i("SplashActivity", "Starting userProfileActivity")
                 } else {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }
             }, 1500
         )
+    }
+
+    fun userSignInSuccess(user: User){
+        val intent = Intent(this, UserProfileActivity::class.java)
+        intent.putExtra(Constants.USER_DETAILS, user)
+        startActivity(intent)
+        finish()
     }
 }

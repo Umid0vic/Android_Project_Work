@@ -10,21 +10,36 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.faceplant.R
+import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.models.User
+import com.example.faceplant.utils.Constants
+import com.example.faceplant.utils.SharedPrefsClass
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var forgotPasswordTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
+        val continueWithGoogle = findViewById<Button>(R.id.continue_with_google)
+        val signUpText = findViewById<TextView>(R.id.sign_up_text)
+        emailEditText = findViewById(R.id.sign_in_editTextEmail)
+        passwordEditText = findViewById(R.id.sign_in_editTextPassword)
+        forgotPasswordTextView = findViewById(R.id.forgot_password_textView)
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -37,62 +52,16 @@ class SignInActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
-        val continueWithGoogle = findViewById<Button>(R.id.continue_with_google)
-        val signUpText = findViewById<TextView>(R.id.sign_up_text)
-        val editTextEmail = findViewById<EditText>(R.id.edittext_sign_in_email)
-        val editTextPassword = findViewById<EditText>(R.id.edittext_sign_in_password)
-        val textViewForgotPassword = findViewById<TextView>(R.id.forgot_password_textView)
-
         //Prompt the user to sign in with Google account
         continueWithGoogle.setOnClickListener(){
             signInWithGoogle()
         }
 
-
         signInButton.setOnClickListener{
-            when {
-                TextUtils.isEmpty(editTextEmail.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this, R.string.message_enter_email, Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(editTextPassword.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this, R.string.message_enter_password, Toast.LENGTH_SHORT
-                    ).show()
-                }
-                else -> {
-
-                    val email: String = editTextEmail.text.toString().trim { it <= ' ' }
-                    val password: String = editTextPassword.text.toString().trim { it <= ' ' }
-
-                    // SignIn using FirebaseAuth
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
-
-                            if (task.isSuccessful) {
-                                val intent =
-                                    Intent(this, HomeActivity::class.java)
-                         //       intent.flags =
-                         //           Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
-                                intent.putExtra("email_id", email)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                // If the login is not successful then show error message.
-                                Toast.makeText(
-                                    this, task.exception!!.message.toString(), Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                }
-            }
+            signInUser()
         }
 
-        textViewForgotPassword.setOnClickListener(){
+        forgotPasswordTextView.setOnClickListener(){
             //Launch the ForgotPasswordActivity when forgotpassword? clicked
             startActivity(
                 Intent(this, ForgotPasswordActivity::class.java)
@@ -106,7 +75,75 @@ class SignInActivity : AppCompatActivity() {
             )
         }
     }
+    //Function to validate user inputs and sign in the user
+    private fun signInUser(){
+        when {
+            TextUtils.isEmpty(emailEditText.text.toString().trim { it <= ' ' }) -> {
+                Toast.makeText(
+                    this, R.string.message_enter_email, Toast.LENGTH_SHORT
+                ).show()
+            }
 
+            TextUtils.isEmpty(passwordEditText.text.toString().trim { it <= ' ' }) -> {
+                Toast.makeText(
+                    this, R.string.message_enter_password, Toast.LENGTH_SHORT
+                ).show()
+            }
+            else -> {
+
+                val email: String = emailEditText.text.toString().trim { it <= ' ' }
+                val password: String = passwordEditText.text.toString().trim { it <= ' ' }
+
+                // SignIn using FirebaseAuth
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+
+                        if (task.isSuccessful) {
+                            /*
+                            val user = FirestoreClass().getUserInfo(this)
+                            val intent = Intent(this, UserProfileActivity::class.java)
+                            intent.putExtra(Constants.USER_DETAILS, user)
+                            startActivity(intent)
+                            finish()
+                            */
+
+                                  val firebaseUser: FirebaseUser = task.result!!.user!!
+                                  val user = User(
+                                      firebaseUser.uid,
+                                      email
+                                  )
+                                  val Intent = Intent(this, UserProfileActivity::class.java)
+                                  Intent.putExtra(Constants.USER_DETAILS, user)
+                                  finish()
+
+                            /*
+                                             val intent =
+                                                 Intent(this, HomeActivity::class.java)
+                                             intent.flags =
+                                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                             intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
+                                             intent.putExtra("email_id", email)
+                                             startActivity(intent)
+                                             finish()
+
+                                   */
+                        } else {
+                            // If the login is not successful then show error message.
+                            Toast.makeText(
+                                this, task.exception!!.message.toString(), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            }
+        }
+    }
+
+    fun userSignInSuccess(user: User){
+        val intent = Intent(this, UserProfileActivity::class.java)
+        intent.putExtra(Constants.USER_DETAILS, user)
+        startActivity(intent)
+        finish()
+    }
     //The code is from Firebase guides
     private fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
@@ -140,13 +177,37 @@ class SignInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, go to HomeActivity
                     Log.d(SIGN_IN_ACTIVITY, "signInWithCredential:success")
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    val firebaseUser: FirebaseUser = task.result!!.user!!
+                    //create User object
+                    val username = firebaseUser.displayName
+                    val email = firebaseUser.email
+                    val user = User(
+                        firebaseUser.uid,
+                        email,
+                        username)
+                    //create user document with user info in the Cloud Firestore
+                    FirestoreClass().registerUser(user)
+
+                    // Storing username and email in SharedPreferences
+                    SharedPrefsClass().setSharedPreference(
+                        this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, username
+                    )
+
+                    SharedPrefsClass().setSharedPreference(
+                        this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, email
+                    )
+
+                    Toast.makeText(this,"Data Stored",Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, UserProfileActivity::class.java)
+                    intent.putExtra(Constants.USER_DETAILS, user)
+                    startActivity(intent)
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(SIGN_IN_ACTIVITY, "signInWithCredential:failure", task.exception)
                     Toast.makeText(
-                        this, R.string.message_registered_successfully, Toast.LENGTH_SHORT
+                        this, R.string.message_registation_failed, Toast.LENGTH_SHORT
                     ).show()
                 }
             }
