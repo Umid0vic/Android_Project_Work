@@ -73,30 +73,6 @@ class FirestoreClass : AppCompatActivity()  {
         }
         return user
     }
-/*
-               val sharedPreferences = activity.getSharedPreferences(
-                   Constants.FACEPLANT_PREFERENCES,
-                   Context.MODE_PRIVATE
-               )
-
-               val editor: SharedPreferences.Editor = sharedPreferences.edit()
-               // Saving username inside the sharedPreferences key: UsernamePrefKey
-               editor.putString(Constants.USERNAME_PREF_KEY, user?.username)
-               editor.apply()
-
-               when(activity){
-                   is SignInActivity -> {
-                       if (user != null) {
-                           activity.userSignInSuccess(user)
-                       }
-                   }
-                   is SplashActivity -> {
-                       if (user != null) {
-                           activity.userAlreadySignedIn(user)
-                       }
-                   }
-               }
-               */
 
     //Function to update user info
     fun updateUserInfo(userHashmap: HashMap<String, Any>){
