@@ -72,7 +72,6 @@ class SignUpActivity : AppCompatActivity() {
                                 username
                             )
                             FirestoreClass().registerUser(user)
-
                             Toast.makeText(
                                 this,
                                 R.string.message_registered_successfully,

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_my_plants"
+        android:title="My plants"
+        android:icon="@drawable/ic_my_plants"/>
+
+    <item
+        android:id="@+id/navigation_my_seeds"
+        android:title="My seeds"
+        android:icon="@drawable/ic_my_seeds"/>
+
+    <item
+        android:id="@+id/navigation_plant_care"
+        android:title="Plant care"
+        android:icon="@drawable/ic_plant_care"/>
+
+    <item
+        android:id="@+id/navigation_user_proflie"
+        android:title="Profile"
+        android:icon="@drawable/ic_person"/>
+
+</menu>

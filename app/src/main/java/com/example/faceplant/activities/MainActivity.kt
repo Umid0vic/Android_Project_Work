@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         signInLaterButton.setOnClickListener{
             startActivity(
-                Intent(this, HomeActivity::class.java)
+                Intent(this, PlantCareActivity::class.java)
             )
             finish()
         }

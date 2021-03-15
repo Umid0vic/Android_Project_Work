@@ -156,26 +156,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/dont_have_account" />
 
             <com.example.faceplant.utils.FaceplantButton
-                android:id="@+id/continue_with_facebook"
+                android:id="@+id/continue_with_google"
                 style="@style/FaceplantButton"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/faceplant_blue_button"
-                android:text="@string/continue_with_facebook"
+                android:background="@drawable/faceplant_green_button"
+                android:text="@string/continue_with_google"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="@+id/sign_in_page_sign_in"
                 app:layout_constraintStart_toStartOf="@+id/sign_in_page_sign_in"
                 app:layout_constraintTop_toBottomOf="@+id/faceplantTextViewBold" />
-
-            <com.example.faceplant.utils.FaceplantButton
-                android:id="@+id/continue_with_google"
-                style="@style/FaceplantButton"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/faceplant_green_button"
-                android:text="@string/continue_with_google"
-                android:textAllCaps="false"
-                app:layout_constraintEnd_toEndOf="@+id/continue_with_facebook"
-                app:layout_constraintStart_toStartOf="@+id/continue_with_facebook"
-                app:layout_constraintTop_toBottomOf="@+id/continue_with_facebook" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

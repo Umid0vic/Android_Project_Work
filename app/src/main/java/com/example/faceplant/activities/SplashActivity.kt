@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
         //Init Firebase Auth
         auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser
+        val currentUser = auth.currentUser
 
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -42,8 +42,10 @@ class SplashActivity : AppCompatActivity() {
         //If user is signed in start the HomeActivity else start the MainActivity
         Handler().postDelayed(
             {
-                if (user != null) {
-                    FirestoreClass().getUserInfo(this)
+                if (currentUser != null) {
+                    startActivity(Intent(this, UserProfileActivity::class.java))
+                    finish()
+                    Log.i("SplashActivity", "Starting userProfileActivity")
                 } else {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
@@ -52,10 +54,9 @@ class SplashActivity : AppCompatActivity() {
         )
     }
 
-    fun userAlreadySignedIn(user: User){
+    fun userSignInSuccess(user: User){
         val intent = Intent(this, UserProfileActivity::class.java)
         intent.putExtra(Constants.USER_DETAILS, user)
-        Log.i("SplashActivity", "Starting userProfileActivity")
         startActivity(intent)
         finish()
     }

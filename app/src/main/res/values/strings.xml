@@ -50,10 +50,13 @@
     <string name="profile">Profile</string>
     <string name="location">Location</string>
     <string name="bio">Bio</string>
+    <string name="textView_username">Username:</string>
+    <string name="textView_email">Email:</string>
     <string name="edit_profile">Edit profile</string>
     <string name="message_access_to_storage_denied">Access to storage denied</string>
     <string name="message_image_not_selected">Image selection failed!</string>
     <string name="message_registation_failed">Registration failed!</string>
     <string name="file_uploaded_successfully">File upploaded successfully!</string>
+    <string name="message_image_selection_failed">Image selection failed!</string>
 
 </resources>

@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val textView = findViewById<TextView>(R.id.hello_username)
-        val sharedPreferences = getSharedPreferences(Constants.FACEPLANT_PREFERENCES, MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences(Constants.USER_PREFS, MODE_PRIVATE)
         val username = sharedPreferences.getString(Constants.USERNAME_PREF_KEY, " ")
 
         textView.text = "hello $username"

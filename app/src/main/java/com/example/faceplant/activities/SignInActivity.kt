@@ -13,6 +13,7 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
+import com.example.faceplant.utils.SharedPrefsClass
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -98,9 +99,15 @@ class SignInActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
 
                         if (task.isSuccessful) {
-                            FirestoreClass().getUserInfo(this)
+                            /*
+                            val user = FirestoreClass().getUserInfo(this)
+                            val intent = Intent(this, UserProfileActivity::class.java)
+                            intent.putExtra(Constants.USER_DETAILS, user)
+                            startActivity(intent)
+                            finish()
+                            */
 
-                            /*      val firebaseUser: FirebaseUser = task.result!!.user!!
+                                  val firebaseUser: FirebaseUser = task.result!!.user!!
                                   val user = User(
                                       firebaseUser.uid,
                                       email
@@ -109,6 +116,7 @@ class SignInActivity : AppCompatActivity() {
                                   Intent.putExtra(Constants.USER_DETAILS, user)
                                   finish()
 
+                            /*
                                              val intent =
                                                  Intent(this, HomeActivity::class.java)
                                              intent.flags =
@@ -171,13 +179,26 @@ class SignInActivity : AppCompatActivity() {
                     Log.d(SIGN_IN_ACTIVITY, "signInWithCredential:success")
                     val firebaseUser: FirebaseUser = task.result!!.user!!
                     //create User object
+                    val username = firebaseUser.displayName
+                    val email = firebaseUser.email
                     val user = User(
                         firebaseUser.uid,
-                        firebaseUser.email,
-                        firebaseUser.displayName
-                    )
+                        email,
+                        username)
                     //create user document with user info in the Cloud Firestore
                     FirestoreClass().registerUser(user)
+
+                    // Storing username and email in SharedPreferences
+                    SharedPrefsClass().setSharedPreference(
+                        this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, username
+                    )
+
+                    SharedPrefsClass().setSharedPreference(
+                        this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, email
+                    )
+
+                    Toast.makeText(this,"Data Stored",Toast.LENGTH_SHORT).show()
+
                     val intent = Intent(this, UserProfileActivity::class.java)
                     intent.putExtra(Constants.USER_DETAILS, user)
                     startActivity(intent)
