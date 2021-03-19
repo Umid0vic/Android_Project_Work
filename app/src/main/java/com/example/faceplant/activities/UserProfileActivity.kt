@@ -11,8 +11,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
 import com.example.faceplant.R
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants

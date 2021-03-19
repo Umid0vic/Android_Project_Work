@@ -1,10 +1,12 @@
-package com.example.faceplant.activities
+package com.example.faceplant.activities.MySeeds
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.faceplant.R
-import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.activities.MyPlantsActivity
+import com.example.faceplant.activities.PlantCareActivity
+import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView

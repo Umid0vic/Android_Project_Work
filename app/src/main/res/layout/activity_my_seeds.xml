@@ -5,18 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_green"
-    tools:context=".activities.MySeedsActivity">
+    android:orientation="vertical"
+    tools:context=".activities.MySeeds.MySeedsActivity">
+
+ <androidx.recyclerview.widget.RecyclerView
+     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     app:layout_constraintTop_toTopOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+     >
+
+
+     <TextView
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:id="@+id/text_view_mySeeds"
+         app:itemBackground="@color/light_green"
+         app:itemTextColor="@color/black" />
+
+ </androidx.recyclerview.widget.RecyclerView>
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemBackground="@color/green"
-        app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

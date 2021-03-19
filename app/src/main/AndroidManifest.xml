@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Faceplant">
         <activity android:name=".activities.PlantCareActivity"></activity>
-        <activity android:name=".activities.MySeedsActivity" />
+        <activity android:name=".activities.MySeeds.MySeedsActivity" />
         <activity android:name=".activities.MyPlantsActivity" />
         <activity
             android:name=".activities.UserProfileActivity"
