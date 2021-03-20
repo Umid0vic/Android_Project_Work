@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_icon"
+        android:title="@string/search"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add_icon"
+        android:title="@string/add"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/cancel"
+        android:icon="@drawable/ic_cancel"
+        android:title="@string/cancel"
+        android:visible="false"
+        app:showAsAction="always"
+        android:layout_alignParentLeft="true"/>
+
+</menu>

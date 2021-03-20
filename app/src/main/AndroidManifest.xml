@@ -13,28 +13,25 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Faceplant"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Faceplant">
-
-
         <activity
-            android:name=".activities.plantCare.PlantCareProfileActivity"
+            android:name=".activities.myPlants.ViewPlantActivity"
             android:screenOrientation="portrait"/>
-
         <activity
-            android:name=".activities.plantCare.PlantCareActivity"
+            android:name=".activities.myPlants.AddPlantActivity"
             android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".activities.PlantCareActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MySeedsActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.MyPlantsActivity"
-            android:screenOrientation="portrait"/>
-
+            android:name=".activities.myPlants.MyPlantsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.UserProfileActivity"
             android:screenOrientation="portrait" />

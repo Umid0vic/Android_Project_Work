@@ -21,6 +21,8 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_user_profile.*
 
 class SignInActivity : AppCompatActivity() {
 
@@ -29,6 +31,8 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var forgotPasswordTextView: TextView
+    private val db = FirebaseFirestore.getInstance()
+    private var userImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +41,8 @@ class SignInActivity : AppCompatActivity() {
         val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
         val continueWithGoogle = findViewById<Button>(R.id.continue_with_google)
         val signUpText = findViewById<TextView>(R.id.sign_up_text)
-        emailEditText = findViewById(R.id.sign_in_editTextEmail)
-        passwordEditText = findViewById(R.id.sign_in_editTextPassword)
+        emailEditText = findViewById(R.id.view_plant_dateEditText)
+        passwordEditText = findViewById(R.id.add_plant_plantHealthEditText)
         forgotPasswordTextView = findViewById(R.id.forgot_password_textView)
 
         // Configure Google Sign In
@@ -99,34 +103,28 @@ class SignInActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
 
                         if (task.isSuccessful) {
-                            /*
-                            val user = FirestoreClass().getUserInfo(this)
-                            val intent = Intent(this, UserProfileActivity::class.java)
-                            intent.putExtra(Constants.USER_DETAILS, user)
-                            startActivity(intent)
-                            finish()
-                            */
 
-                                  val firebaseUser: FirebaseUser = task.result!!.user!!
-                                  val user = User(
-                                      firebaseUser.uid,
-                                      email
-                                  )
-                                  val Intent = Intent(this, UserProfileActivity::class.java)
-                                  Intent.putExtra(Constants.USER_DETAILS, user)
+                            val userId = task.result!!.user.uid
+                            if (userId != null) {
+                                db.collection(Constants.USERS).document(userId).get()
+                                    .addOnSuccessListener { document ->
+                                        // Converting document snapshot to User data model object
+                                        val user = document.toObject(User::class.java)!!
+                                        // Storing username, email and user image in SharedPreferences
+                                        SharedPrefsClass().setSharedPreference(
+                                            this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, user.username
+                                        )
+                                        SharedPrefsClass().setSharedPreference(
+                                            this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, user.email
+                                        )
+                                        SharedPrefsClass().setSharedPreference(
+                                            this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, user.image
+                                        )
+                                        Toast.makeText(this,"User Data Stored",Toast.LENGTH_SHORT).show()
+                                    }
+                            }
+                                  startActivity(Intent(this, UserProfileActivity::class.java))
                                   finish()
-
-                            /*
-                                             val intent =
-                                                 Intent(this, HomeActivity::class.java)
-                                             intent.flags =
-                                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                             intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
-                                             intent.putExtra("email_id", email)
-                                             startActivity(intent)
-                                             finish()
-
-                                   */
                         } else {
                             // If the login is not successful then show error message.
                             Toast.makeText(
@@ -186,7 +184,7 @@ class SignInActivity : AppCompatActivity() {
                         email,
                         username)
                     //create user document with user info in the Cloud Firestore
-                    FirestoreClass().registerUser(user)
+                    FirestoreClass().registerUserDetails(this, user)
 
                     // Storing username and email in SharedPreferences
                     SharedPrefsClass().setSharedPreference(
