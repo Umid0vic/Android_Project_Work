@@ -30,12 +30,12 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        val signUpButton = findViewById<Button>(R.id.sign_up_page_sign_up)
+        val signUpButton = findViewById<Button>(R.id.add_plant_saveButton)
         val singInTextView = findViewById<TextView>(R.id.sign_in_text)
-        usernameEditText = findViewById(R.id.sign_up_editTextUsername)
-        emailEditText = findViewById(R.id.sign_in_editTextEmail)
-        passwordEditText = findViewById(R.id.sign_in_editTextPassword)
-        confirmPasswordEditText = findViewById(R.id.sign_up_editTextRepeatPassword)
+        usernameEditText = findViewById(R.id.view_plant_typeEditText)
+        emailEditText = findViewById(R.id.view_plant_dateEditText)
+        passwordEditText = findViewById(R.id.add_plant_plantHealthEditText)
+        confirmPasswordEditText = findViewById(R.id.add_plant_moreAboutEditText)
 
 
         //Create user account on clicking the SignUp button
@@ -60,37 +60,36 @@ class SignUpActivity : AppCompatActivity() {
 
             // Create an instance and create a user with email and password.
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(
-                    OnCompleteListener<AuthResult> { task ->
-                        // If the registration is successfully done
-                        if (task.isSuccessful) {
-                            val firebaseUser: FirebaseUser = task.result!!.user!!
-                            //create User object
-                            val user = User(
+                .addOnCompleteListener { task ->
+                    // If the registration is successfully done
+                    if (task.isSuccessful) {
+                        val firebaseUser: FirebaseUser = task.result!!.user!!
+                        //create User object
+                        val user = User(
                                 firebaseUser.uid,
                                 email,
                                 username
-                            )
-                            FirestoreClass().registerUser(user)
-                            Toast.makeText(
+                        )
+                        FirestoreClass().registerUserDetails(this, user)
+                        Toast.makeText(
                                 this,
                                 R.string.message_registered_successfully,
                                 Toast.LENGTH_SHORT
-                            ).show()
+                        ).show()
 
-                            val intent = Intent(this, UserProfileActivity::class.java)
-                            intent.putExtra(Constants.USER_DETAILS, user)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            // If the registering is not successful then show error message.
-                            Toast.makeText(
+                        val intent = Intent(this, UserProfileActivity::class.java)
+                        intent.putExtra(Constants.USER_DETAILS, user)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        // If the registering is not successful then show error message.
+                        Toast.makeText(
                                 this,
                                 task.exception!!.message.toString(),
                                 Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    })
+                        ).show()
+                    }
+                }
         }
     }
 

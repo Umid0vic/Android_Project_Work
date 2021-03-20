@@ -11,10 +11,10 @@
                 android:id="@+id/profile_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/profile"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/title_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,13 +30,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/user_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/green"
                     android:contentDescription="image_description"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/user_deafault_image"
+                    app:srcCompat="@drawable/user_default_image"
                     tools:ignore="VectorDrawableCompat" />
 
             </FrameLayout>

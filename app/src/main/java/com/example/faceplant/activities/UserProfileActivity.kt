@@ -11,8 +11,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
 import com.example.faceplant.R
+import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
@@ -48,20 +48,26 @@ class UserProfileActivity : AppCompatActivity() {
         val usernameTextView = findViewById<TextView>(R.id.profile_usernameTextView)
         val emailTextView = findViewById<TextView>(R.id.profile_emailTextView)
         val signOutButton = findViewById<Button>(R.id.profile_sign_out_button)
-        val userImage = findViewById<ImageView>(R.id.profile_image)
+        val userImage = findViewById<ImageView>(R.id.user_image)
 
         Log.i("UserProfileActivity", "Checking if user is signed in")
         if(currentUser != null) {
             // Check if user details are stored in SharedPref
             if(SharedPrefsClass().getSharedPreference(
                     this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, null) != null){
-                        Log.i("SignInActivity", "getting userdetails from sharedPrefs")
+                Log.i("SignInActivity", "getting userdetails from sharedPrefs")
+
                 usernameTextView.text = SharedPrefsClass().getSharedPreference(
-                    this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, ""
-                )
+                    this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, "")
 
                 emailTextView.text = SharedPrefsClass().getSharedPreference(
                     this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, "")
+
+                userImageURL = SharedPrefsClass().getSharedPreference(
+                    this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, "").toString()
+
+                FirestoreClass().glideImageLoader(this, userImageURL, userImage)
+
             }else{
 
                 val userId = FirestoreClass().getUserId()
@@ -73,7 +79,7 @@ class UserProfileActivity : AppCompatActivity() {
                             usernameTextView.text = user.username
                             emailTextView.text = user.email
                             userImageURL = user.image
-                            FirestoreClass().glideImageLoader(this, userImageURL, profile_image)
+                            FirestoreClass().glideImageLoader(this, userImageURL, userImage)
                         }
                 }
             }
@@ -151,6 +157,7 @@ class UserProfileActivity : AppCompatActivity() {
     fun setUserDetails(user: User){
 
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
@@ -185,8 +192,11 @@ class UserProfileActivity : AppCompatActivity() {
             userImageUri = data!!.data
             try {
            //     profile_image.setImageURI(userImageUri)
-                FirestoreClass().glideImageLoader(this, userImageUri!!, profile_image)
-                FirestoreClass().uploadImage(this, userImageUri)
+                FirestoreClass().glideImageLoader(this, userImageUri!!, user_image)
+                FirestoreClass().uploadImage(this, userImageUri, Constants.USERS)
+                SharedPrefsClass().setSharedPreference(
+                        this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, userImageUri.toString()
+                )
             } catch (e: IOException) {
                 e.printStackTrace()
                 Toast.makeText(this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT
@@ -195,6 +205,7 @@ class UserProfileActivity : AppCompatActivity() {
         }
     }
 
+    // Function to open storage for choosing image
     private fun chooseImage(){
         val intent = Intent(
             Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
