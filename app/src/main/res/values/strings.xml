@@ -59,4 +59,23 @@
     <string name="file_uploaded_successfully">File upploaded successfully!</string>
     <string name="message_image_selection_failed">Image selection failed!</string>
 
+    <!--PlantCare strings-->
+    <string name="plantcare_title">Plant Care</string>
+    <string name="plantcare_hint_search">Search</string>
+    <string name="plantcare_description">
+        If you want to learn more about care for a specific plant,
+        you have come to the right place,
+        just click one of th eicons below to read more a plants special requirements
+        such as light, water and nutrition.
+    </string>
+    <string name="plantcare_icontext_light">Light</string>
+    <string name="plantcare_icontext_water">Water</string>
+    <string name="plantcare_icontext_nutritions">Nutrition</string>
+    <string name="plantcare_icontext_genreal_info">General Info</string>
+
+    <!--topBar strings-->
+    <string name="topbar_title">topbartitle?</string>
+    <string name="topbar_description">topbardescription?</string>
+
+
 </resources>

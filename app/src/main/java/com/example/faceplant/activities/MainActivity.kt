@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.faceplant.R
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 
 class MainActivity : AppCompatActivity() {
 
