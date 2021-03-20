@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.faceplant.R
-import com.example.faceplant.activities.MyPlantsActivity
 import com.example.faceplant.activities.MySeedsActivity
 import com.example.faceplant.activities.UserProfileActivity
+import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
