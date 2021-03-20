@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import com.example.faceplant.R
 import com.example.faceplant.activities.MySeedsActivity
-import com.example.faceplant.activities.PlantCareActivity
 import com.example.faceplant.activities.SignInActivity
 import com.example.faceplant.activities.UserProfileActivity
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Plant
 import com.example.faceplant.models.User
