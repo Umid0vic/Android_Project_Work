@@ -22,5 +22,7 @@
     <dimen name="btn_width">280dp</dimen>
     <dimen name="btn_height">45dp</dimen>
     <dimen name="btn_radius">8sp</dimen>
-    
-    <dimen name="user_image_size">120dp</dimen></resources>
+
+    <dimen name="user_image_size">120dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+</resources>

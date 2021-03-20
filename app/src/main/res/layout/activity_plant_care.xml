@@ -5,8 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_green"
-    tools:context=".activities.PlantCareActivity">
+    tools:context=".activities.plantCare.PlantCareActivity">
 
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/plantcare_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/plantcare_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/plantcare_title"
+            app:menu="@menu/plantcare_topbar"
+            app:titleTextColor="@color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:background="@color/green"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <!--Recyclerview that represents a gridlayout
+    each cell gets filled with a plant item -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/plantcare_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/plantcare_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="vertical"
+
+        >
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <!--represents the navigation toolbar at the bottom of the screen -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
