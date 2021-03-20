@@ -58,6 +58,21 @@
     <string name="message_registation_failed">Registration failed!</string>
     <string name="file_uploaded_successfully">File upploaded successfully!</string>
     <string name="message_image_selection_failed">Image selection failed!</string>
+    <string name="my_plants">My plants</string>
+    <string name="search">Search</string>
+    <string name="add">Add</string>
+    <string name="plant_type">Type</string>
+    <string name="date_of_purchase">Date of purchase</string>
+    <string name="plant_health">Plant health</string>
+    <string name="more_about_plant">Tell more about your plant</string>
+    <string name="save">Save</string>
+    <string name="new_plant">New plant</string>
+    <string name="cancel">Cancel</string>
+    <string name="my_plant">My plant</string>
+    <string name="update">Update</string>
+    <string name="romove">Remove</string>
+    <string name="message_enter_plant_type">Please enter a plant type.</string>
+
 
     <!--PlantCare strings-->
     <string name="plantcare_title">Plant Care</string>

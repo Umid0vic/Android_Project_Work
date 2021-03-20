@@ -22,7 +22,11 @@
     <dimen name="btn_width">280dp</dimen>
     <dimen name="btn_height">45dp</dimen>
     <dimen name="btn_radius">8sp</dimen>
-
+    
     <dimen name="user_image_size">120dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="plant_image_height">160dp</dimen>
+    <dimen name="plant_image_width">130dp</dimen>
+    <dimen name="toolbar_title_text_size">25dp</dimen>
+    <dimen name="toolbar_title_paddingStart">-65dp</dimen>
+
 </resources>

@@ -1,14 +1,21 @@
-package com.example.faceplant.activities
+package com.example.faceplant.activities.myPlants
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.faceplant.R
-import com.example.faceplant.activities.plantCare.PlantCareActivity
+import com.example.faceplant.activities.MySeedsActivity
+import com.example.faceplant.activities.PlantCareActivity
+import com.example.faceplant.activities.SignInActivity
+import com.example.faceplant.activities.UserProfileActivity
+import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.models.Plant
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_my_plants.*
 
 class MyPlantsActivity : AppCompatActivity() {
 
@@ -17,6 +24,25 @@ class MyPlantsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_plants)
+
+        topAppBar.setNavigationOnClickListener {
+            // Handle navigation icon press
+        }
+
+        topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                    // Handle search icon press
+                    true
+                }
+                R.id.add -> {
+                    // Handle add icon press
+                    startActivity(Intent(this, AddPlantActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
 
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
 
@@ -51,6 +77,18 @@ class MyPlantsActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener false
                 }
             }
+        }
+
+        getPlantsFromFirestore()
+    }
+
+    fun getPlantsFromFirestore(){
+        FirestoreClass().getPlantList(this)
+    }
+
+    fun plantListDownloaded(plantList: ArrayList<Plant>){
+        for( i in plantList){
+            Log.i("plant name", i.plantType)
         }
     }
 

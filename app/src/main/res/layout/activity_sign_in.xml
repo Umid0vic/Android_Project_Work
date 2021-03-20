@@ -42,12 +42,12 @@
                 android:text="@string/sign_in"
                 android:textColor="@color/black"
                 android:textSize="@dimen/title_text_size"
-                app:layout_constraintBottom_toTopOf="@+id/text_input_layout_email"
-                app:layout_constraintStart_toStartOf="@+id/text_input_layout_email"
+                app:layout_constraintBottom_toTopOf="@+id/text_input_layout_plantDate"
+                app:layout_constraintStart_toStartOf="@+id/text_input_layout_plantDate"
                 app:layout_constraintTop_toBottomOf="@+id/app_name" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_email"
+                android:id="@+id/text_input_layout_plantDate"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,16 +61,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/sign_in_title">
 
                 <EditText
-                    android:id="@+id/sign_in_editTextEmail"
+                    android:id="@+id/view_plant_dateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
+                    android:singleLine="true"
                     android:background="@drawable/edittext_background" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_password"
+                android:id="@+id/text_input_layout_plantHealth"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,13 +82,14 @@
                 android:textColorHint="@color/et_hint_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_email">
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_plantDate">
 
                 <EditText
-                    android:id="@+id/sign_in_editTextPassword"
+                    android:id="@+id/add_plant_plantHealthEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
+                    android:singleLine="true"
                     android:background="@drawable/edittext_background" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -102,8 +104,8 @@
                 android:fontFamily="@font/open_sans_bold"
                 android:text="@string/forgot_password"
                 android:textColor="@color/blue"
-                app:layout_constraintEnd_toEndOf="@+id/text_input_layout_password"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_password" />
+                app:layout_constraintEnd_toEndOf="@+id/text_input_layout_plantHealth"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_plantHealth" />
 
             <com.example.faceplant.utils.FaceplantButton
                 android:id="@+id/sign_in_page_sign_in"
