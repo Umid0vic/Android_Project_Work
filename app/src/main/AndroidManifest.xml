@@ -24,7 +24,7 @@
             android:name=".activities.myPlants.AddPlantActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activities.PlantCareActivity"
+            android:name=".activities.plantCare.PlantCareActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MySeedsActivity"
