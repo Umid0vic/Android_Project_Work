@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_green"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".activities.myPlants.ViewPlantActivity">
 
 
@@ -65,12 +67,22 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/plant_image"
+                    android:id="@+id/view_plant_plantImage"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:background="@drawable/edittext_background"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_plant_image"/>
+
+                <ImageView
+                    android:id="@+id/update_image_icon"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_cancel" />
 
             </FrameLayout>
 
@@ -90,7 +102,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/image_frame_layout">
 
                 <EditText
-                    android:id="@+id/view_plant_typeEditText"
+                    android:id="@+id/view_plant_plantTypeEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
@@ -114,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_input_layout_plantType">
 
                 <EditText
-                    android:id="@+id/view_plant_dateEditText"
+                    android:id="@+id/view_plant_plantDateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
@@ -162,7 +174,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_input_layout_plantHealth">
 
                 <EditText
-                    android:id="@+id/view_plant_moreAboutEditText"
+                    android:id="@+id/view_plant_moreAboutPlantEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
@@ -194,6 +206,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/view_plant_updateButton"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_moreAboutPlant" />
+
+            <com.example.faceplant.utils.FaceplantButton
+                android:id="@+id/view_plant_saveUpdatesButton"
+                style="@style/FaceplantButton"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/faceplant_blue_button"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_input_layout_moreAboutPlant" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

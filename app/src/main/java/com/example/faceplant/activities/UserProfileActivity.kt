@@ -33,11 +33,8 @@ class UserProfileActivity : AppCompatActivity() {
     private var userImageUri: Uri? = null
     private var userImageURL: String = ""
     private val storage = Firebase.storage
-    private val storageRef = storage.reference
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
-    // var imagesRef: StorageReference? = storageRef.child("images")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -155,10 +152,6 @@ class UserProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun setUserDetails(user: User){
-
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
@@ -192,7 +185,6 @@ class UserProfileActivity : AppCompatActivity() {
         if(resultCode == Activity.RESULT_OK){
             userImageUri = data!!.data
             try {
-           //     profile_image.setImageURI(userImageUri)
                 FirestoreClass().glideUserImageLoader(this, userImageUri!!, user_image)
                 FirestoreClass().uploadImage(this, userImageUri, Constants.USERS)
                 SharedPrefsClass().setSharedPreference(

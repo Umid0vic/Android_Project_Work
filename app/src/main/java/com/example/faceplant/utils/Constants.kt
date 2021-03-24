@@ -1,7 +1,15 @@
 package com.example.faceplant.utils
 
 object Constants {
+
     const val PLANTS: String = "plants"
+    const val PLANT_DETAILS: String = "plantDetails"
+    const val PLANT_TYPE: String = "plantType"
+    const val PLANT_IMAGE: String = "plantImage"
+    const val PLANT_DATE: String = "dateOfPurchase"
+    const val PLANT_HEALTH: String = "plantHealth"
+    const val MORE_ABOUT_PLANT: String = "moreAboutPlant"
+
     const val USERS: String = "users"
     const val USER_ID: String = "userId"
     const val USERNAME: String = "username"
