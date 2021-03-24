@@ -13,8 +13,6 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -32,8 +30,8 @@ class SignUpActivity : AppCompatActivity() {
 
         val signUpButton = findViewById<Button>(R.id.add_plant_saveButton)
         val singInTextView = findViewById<TextView>(R.id.sign_in_text)
-        usernameEditText = findViewById(R.id.view_plant_typeEditText)
-        emailEditText = findViewById(R.id.view_plant_dateEditText)
+        usernameEditText = findViewById(R.id.view_plant_plantTypeEditText)
+        emailEditText = findViewById(R.id.view_plant_plantDateEditText)
         passwordEditText = findViewById(R.id.add_plant_plantHealthEditText)
         confirmPasswordEditText = findViewById(R.id.add_plant_moreAboutEditText)
 

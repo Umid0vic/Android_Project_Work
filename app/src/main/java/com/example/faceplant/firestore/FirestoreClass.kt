@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.faceplant.R
 import com.example.faceplant.activities.*
 import com.example.faceplant.activities.myPlants.AddPlantActivity
@@ -69,17 +71,19 @@ class FirestoreClass : AppCompatActivity()  {
                 }
     }
 
+    // Function to get plant list from database
     fun getPlantList(activity: Activity){
         db.collection(Constants.PLANTS)
                 .whereEqualTo(Constants.USER_ID, getUserId())
                 .get()
                 .addOnSuccessListener {document ->
-                    Log.i("plant list", document.documents.toString())
                     val plantList: ArrayList<Plant> = ArrayList()
-                    // Get plants documents from Firebase and add them to plantList
+                    // Get plant documents from Firebase and add them to plantList
                     for (i in document.documents){
                         val plant = i.toObject(Plant::class.java)
                         plant!!.plantId = i.id
+                        Log.i("PlantId", i.id)
+                        Log.i("Modelid", plant.plantId)
                         plantList.add(plant)
                     }
                     when(activity){
@@ -100,17 +104,6 @@ class FirestoreClass : AppCompatActivity()  {
                     .addOnSuccessListener { document ->
                     // Converting document snapshot to User data model object
                     user = document.toObject(User::class.java)!!
-                    /*
-                   val intent = Intent(activity.applicationContext, SignInActivity::class.java)
-                   intent.putExtra(Constants.USERS, user)
-                   startActivity(intent)
-
-                   when (context) {
-                       is SignInActivity -> {
-                           if (user != null) {
-                               context.userSignInSuccess(user)
-                           }
-                   */
                 }
                 .addOnFailureListener { exception ->
                     Log.d("TAG", "get failed with ", exception)
@@ -144,7 +137,7 @@ class FirestoreClass : AppCompatActivity()  {
         return null
     }
 
-    fun glideImageLoader(context: Context, image: Any, imageView: ImageView){
+    fun glideUserImageLoader(context: Context, image: Any, imageView: ImageView){
         try{
             Glide
                 .with(context)
@@ -156,6 +149,20 @@ class FirestoreClass : AppCompatActivity()  {
             e.printStackTrace()
         }
     }
+
+    fun glidePlantImageLoader(context: Context, image: Any, imageView: ImageView){
+        try{
+            Glide
+                    .with(context)
+                    .load(image)
+                    //       .circleCrop()
+                    .placeholder(R.drawable.ic_plant_image)
+                    .into(imageView)
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+    }
+
 
     // Function to upload image to Firestore
     fun uploadImage(activity: Activity, uri: Uri?, imageType: String) {
@@ -189,6 +196,17 @@ class FirestoreClass : AppCompatActivity()  {
              }
     }
 
+    fun updatePlantDetails(plantDetails: Plant){
+        db.collection(Constants.USERS).document(plantDetails.plantId)
+                .update(mapOf(
+                        Constants.PLANT_IMAGE to plantDetails.plantImage,
+                        Constants.PLANT_TYPE to plantDetails.plantType,
+                        Constants.PLANT_DATE to plantDetails.dateOfPurchase,
+                        Constants.PLANT_HEALTH to plantDetails.plantHealth,
+                        Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
+                ))
+    }
+
     fun updateUserImage(uri: String){
         getUserId()?.let {
             db.collection(Constants.USERS).document(it)
@@ -196,5 +214,13 @@ class FirestoreClass : AppCompatActivity()  {
                     Constants.USER_IMAGE to uri
                 ))
         }
+    }
+
+    // Function to remove an item from FireStore
+    fun removeItem(plantId: String){
+        db.collection(Constants.PLANTS).document(plantId)
+                .delete()
+                .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
+                .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
     }
 }

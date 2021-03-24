@@ -6,10 +6,10 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class Plant (
         val userId: String = "",
-        val plantType: String = "",
-        val dateOfPurchase: String = "",
-        val plantHealth: String = "",
-        val moreAboutPlant: String = "",
-        val plantImage: String = "",
+        var plantType: String = "",
+        var dateOfPurchase: String = "",
+        var plantHealth: String = "",
+        var moreAboutPlant: String = "",
+        var plantImage: String = "",
         var plantId: String = ""
 ): Parcelable

@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/sign_up_title">
 
                 <EditText
-                    android:id="@+id/view_plant_typeEditText"
+                    android:id="@+id/view_plant_plantTypeEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
@@ -84,7 +84,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_input_layout_plantType">
 
                 <EditText
-                    android:id="@+id/view_plant_dateEditText"
+                    android:id="@+id/view_plant_plantDateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
