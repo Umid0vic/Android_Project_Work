@@ -32,8 +32,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <!--Recyclerview that represents a gridlayout
-    each cell gets filled with a plant item -->
+    <!--Recyclerview-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/plantcare_recyclerview"
@@ -43,13 +42,9 @@
         app:layout_constraintTop_toBottomOf="@id/plantcare_toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scrollbars="vertical"
-
-        >
-
-
-
+        android:scrollbars="vertical">
     </androidx.recyclerview.widget.RecyclerView>
+
 
     <!--represents the navigation toolbar at the bottom of the screen -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

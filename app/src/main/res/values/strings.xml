@@ -78,15 +78,16 @@
     <string name="plantcare_title">Plant Care</string>
     <string name="plantcare_hint_search">Search</string>
     <string name="plantcare_description">
-        If you want to learn more about care for a specific plant,
-        you have come to the right place,
-        just click one of th eicons below to read more a plants special requirements
-        such as light, water and nutrition.
-    </string>
+       Click one of the icons below to read more about how to take proper care of this plant</string>
     <string name="plantcare_icontext_light">Light</string>
     <string name="plantcare_icontext_water">Water</string>
     <string name="plantcare_icontext_nutritions">Nutrition</string>
     <string name="plantcare_icontext_genreal_info">General Info</string>
+    <string name="Plantcare_lightActivity_title">Required light</string>
+    <string name="Plantcare_waterActivity_title">How to water</string>
+    <string name="Plantcare_nutritionActivity_title">Nutrition</string>
+    <string name="Plantcare_GenralinfoActivity_title">About</string>
+    <string name="plantcare_item_title">PlantTitle</string>
 
     <!--topBar strings-->
     <string name="topbar_title">topbartitle?</string>

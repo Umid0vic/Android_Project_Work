@@ -138,7 +138,7 @@ class AddPlantActivity : AppCompatActivity() {
             selectedImageUri = data!!.data
             try {
                 // Try to load the selected image
-                FirestoreClass().glideImageLoader(this, selectedImageUri!!, plant_image)
+                FirestoreClass().glideUserImageLoader(this, selectedImageUri!!, plant_image)
             } catch (e: IOException) {
                 e.printStackTrace()
                 Toast.makeText(this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT

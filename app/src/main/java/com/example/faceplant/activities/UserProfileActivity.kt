@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.faceplant.R
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
@@ -66,7 +67,7 @@ class UserProfileActivity : AppCompatActivity() {
                 userImageURL = SharedPrefsClass().getSharedPreference(
                     this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, "").toString()
 
-                FirestoreClass().glideImageLoader(this, userImageURL, userImage)
+                FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
 
             }else{
 
@@ -79,7 +80,7 @@ class UserProfileActivity : AppCompatActivity() {
                             usernameTextView.text = user.username
                             emailTextView.text = user.email
                             userImageURL = user.image
-                            FirestoreClass().glideImageLoader(this, userImageURL, userImage)
+                            FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
                         }
                 }
             }
@@ -192,7 +193,7 @@ class UserProfileActivity : AppCompatActivity() {
             userImageUri = data!!.data
             try {
            //     profile_image.setImageURI(userImageUri)
-                FirestoreClass().glideImageLoader(this, userImageUri!!, user_image)
+                FirestoreClass().glideUserImageLoader(this, userImageUri!!, user_image)
                 FirestoreClass().uploadImage(this, userImageUri, Constants.USERS)
                 SharedPrefsClass().setSharedPreference(
                         this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, userImageUri.toString()

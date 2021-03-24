@@ -18,4 +18,7 @@ object Constants {
     const val PROFILE_IMAGE_PREF_KEY: String = "profileImagePrefKey"
     const val READ_STORAGE_PERMISSION_CODE: Int = 5
     const val PICK_IMAGE_REQUEST_CODE: Int = 6
+    const val PLANT_CARE: String = "PlantCare"
+    const val PLANT_CARE_DETAILS: String = "PlantCareDetails"
+
 }

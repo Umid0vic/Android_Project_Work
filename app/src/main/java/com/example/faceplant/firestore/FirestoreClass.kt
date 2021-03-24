@@ -13,7 +13,9 @@ import com.example.faceplant.R
 import com.example.faceplant.activities.*
 import com.example.faceplant.activities.myPlants.AddPlantActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.models.Plant
+import com.example.faceplant.models.PlantCareModel
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -144,7 +146,7 @@ class FirestoreClass : AppCompatActivity()  {
         return null
     }
 
-    fun glideImageLoader(context: Context, image: Any, imageView: ImageView){
+    fun glideUserImageLoader(context: Context, image: Any, imageView: ImageView){
         try{
             Glide
                 .with(context)
@@ -156,6 +158,20 @@ class FirestoreClass : AppCompatActivity()  {
             e.printStackTrace()
         }
     }
+
+    fun glidePlantImageLoader(context: Context, image: Any, imageView: ImageView){
+        try{
+            Glide
+                .with(context)
+                .load(image)
+                //       .circleCrop()
+                .placeholder(R.drawable.ic_plant_image)
+                .into(imageView)
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+    }
+
 
     // Function to upload image to Firestore
     fun uploadImage(activity: Activity, uri: Uri?, imageType: String) {
@@ -197,4 +213,32 @@ class FirestoreClass : AppCompatActivity()  {
                 ))
         }
     }
+
+    // function to get plant care documents
+    fun getPlantCareDocuments(activity: Activity){
+
+        db.collection(Constants.PLANT_CARE)
+            .get()
+            .addOnSuccessListener { documents ->
+                val plantCareList: ArrayList<PlantCareModel> = ArrayList()
+                for (i in documents) {
+                    val plantCareItem = i.toObject(PlantCareModel::class.java)
+                    plantCareItem!!.plantCareId = i.id
+                    plantCareList.add(plantCareItem)
+
+                    when(activity){
+                        is PlantCareActivity -> {
+                            activity.getDownloadedPlantCareList(plantCareList)
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+            }
+
+    }
+
+
+
+
 }
