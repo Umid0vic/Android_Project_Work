@@ -118,4 +118,7 @@ class MyPlantsActivity : AppCompatActivity() {
         startActivity(Intent(this, SignInActivity::class.java))
         finish()
     }
+
+
+
 }

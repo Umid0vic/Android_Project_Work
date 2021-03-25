@@ -1,9 +1,9 @@
 package com.example.faceplant.activities.plantCare
 
-// the adapter will hold all the data and views
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +12,13 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.PlantCareModel
 import com.example.faceplant.utils.Constants
+import kotlinx.android.synthetic.main.plant_item.view.*
 import kotlinx.android.synthetic.main.plantcare_item.view.*
 
-
-//ska jag skicka in arraylist<string>?
-
+// the adapter will hold all the data and views
 class PlantCareAdapter(
-    private val context: Context,
-    private val plantCareList: ArrayList<PlantCareModel>) :
+    val context: Context,
+    val plantCareList: ArrayList<PlantCareModel>) :
     RecyclerView.Adapter<PlantCareAdapter.ViewHolder>() {
 
 
@@ -27,7 +26,7 @@ class PlantCareAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(context).inflate(
-                R.layout.plantcare_item,
+                R.layout.plant_item,
                 parent,
                 false
             )
@@ -39,10 +38,12 @@ class PlantCareAdapter(
 
         val model = plantCareList[position]
 
-        FirestoreClass().glidePlantImageLoader(context, model.plantCareImage, holder.itemView.MyPlants_Plantimage)
-        holder.itemView.MyPlants_Planttitle.text = model.plantCareTitle
+        FirestoreClass().glidePlantImageLoader(context, model.plantCareImage, holder.itemView.plant_item_image)
+        holder.itemView.plant_type_textView.text = model.plantCareTitle
 
+        //handle user click on one item in the recyclerview
         holder.itemView.setOnClickListener {
+            Log.i("PlantcareActivity","PlantImageClicked")
             val intent = Intent(context, PlantCareProfileActivity::class.java)
             intent.putExtra(Constants.PLANT_CARE_DETAILS, model)
             context.startActivity(intent)

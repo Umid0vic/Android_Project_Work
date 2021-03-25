@@ -71,6 +71,7 @@ class FirestoreClass : AppCompatActivity()  {
                 }
     }
 
+    // function to get plantlist from database
     fun getPlantList(activity: Activity){
         db.collection(Constants.PLANTS)
                 .whereEqualTo(Constants.USER_ID, getUserId())
@@ -102,17 +103,7 @@ class FirestoreClass : AppCompatActivity()  {
                     .addOnSuccessListener { document ->
                     // Converting document snapshot to User data model object
                     user = document.toObject(User::class.java)!!
-                    /*
-                   val intent = Intent(activity.applicationContext, SignInActivity::class.java)
-                   intent.putExtra(Constants.USERS, user)
-                   startActivity(intent)
 
-                   when (context) {
-                       is SignInActivity -> {
-                           if (user != null) {
-                               context.userSignInSuccess(user)
-                           }
-                   */
                 }
                 .addOnFailureListener { exception ->
                     Log.d("TAG", "get failed with ", exception)
@@ -205,6 +196,18 @@ class FirestoreClass : AppCompatActivity()  {
              }
     }
 
+    fun updatePlantDetails(plantDetails: Plant){
+        db.collection(Constants.USERS).document(plantDetails.plantId)
+            .update(mapOf(
+                Constants.PLANT_IMAGE to plantDetails.plantImage,
+                Constants.PLANT_TYPE to plantDetails.plantType,
+                Constants.PLANT_DATE to plantDetails.dateOfPurchase,
+                Constants.PLANT_HEALTH to plantDetails.plantHealth,
+                Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
+            ))
+    }
+
+
     fun updateUserImage(uri: String){
         getUserId()?.let {
             db.collection(Constants.USERS).document(it)
@@ -235,10 +238,15 @@ class FirestoreClass : AppCompatActivity()  {
             }
             .addOnFailureListener { exception ->
             }
-
     }
 
-
-
+    // Function to remove an item from FireStore
+    fun removeItem(plantId: String){
+        db.collection(Constants.PLANTS).document(plantId)
+            .delete()
+            .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
+    }
 
 }
+

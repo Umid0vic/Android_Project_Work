@@ -32,6 +32,16 @@
         app:layout_constraintTop_toBottomOf="@id/plantcare_lightactivity_title"
         >
 
+        <TextView
+            android:id="@+id/lightActivity_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/plantcare_icontext_light"
+            android:textSize="20dp"
+            >
+
+        </TextView>
+
     </ScrollView>
 
 

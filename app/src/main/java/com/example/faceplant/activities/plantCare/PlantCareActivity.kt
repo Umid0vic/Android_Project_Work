@@ -2,11 +2,14 @@ package com.example.faceplant.activities.plantCare
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.SearchView
+import androidx.core.view.MenuItemCompat
+import androidx.core.view.MenuItemCompat.getActionView
+import androidx.core.view.MenuItemCompat.setOnActionExpandListener
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.faceplant.R
-import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.activities.MySeedsActivity
 import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
@@ -16,14 +19,21 @@ import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_plant_care.*
+import java.util.*
 import kotlin.collections.ArrayList
+
+
 class PlantCareActivity : AppCompatActivity() {
+
+    lateinit var listPlantCare: PlantCareModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_care)
 
+        //decaling variables and assigning them id
 
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
 
@@ -60,9 +70,15 @@ class PlantCareActivity : AppCompatActivity() {
             }
         }
 
-        //calling function just to test if everything works
+        //fetch the list from firestore
         FirestoreClass().getPlantCareDocuments(this)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        FirestoreClass().getPlantCareDocuments(this)
     }
 
 

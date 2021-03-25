@@ -9,7 +9,7 @@
     <!--This is the layout for one cell in the gridlayout-->
 
     <ImageView
-        android:id="@+id/MyPlants_Plantimage"
+        android:id="@+id/PlantCare_Plantimage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,14 +19,14 @@
         tools:srcCompat="@drawable/defaultplant" />
 
     <TextView
-        android:id="@+id/MyPlants_Planttitle"
+        android:id="@+id/Plantcare_Planttitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:text="@string/plantcare_item_title"
-        app:layout_constraintTop_toBottomOf="@id/MyPlants_Plantimage"
-        app:layout_constraintStart_toStartOf="@id/MyPlants_Plantimage"
-        app:layout_constraintEnd_toEndOf="@id/MyPlants_Plantimage">
+        app:layout_constraintTop_toBottomOf="@id/PlantCare_Plantimage"
+        app:layout_constraintStart_toStartOf="@id/PlantCare_Plantimage"
+        app:layout_constraintEnd_toEndOf="@id/PlantCare_Plantimage">
     </TextView>
 
 

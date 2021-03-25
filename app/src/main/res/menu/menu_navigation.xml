@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_my_plants"
-        android:title="My plants"
+        android:title="@string/navigation_menu_MyPlants"
         android:icon="@drawable/ic_my_plants"/>
 
     <item
         android:id="@+id/navigation_my_seeds"
-        android:title="My seeds"
+        android:title="@string/navigation_menu_MySeeds"
         android:icon="@drawable/ic_my_seeds"/>
 
     <item
         android:id="@+id/navigation_plant_care"
-        android:title="Plant care"
+        android:title="@string/navigation_menu_PlantCare"
         android:icon="@drawable/ic_plant_care"/>
 
     <item
         android:id="@+id/navigation_user_proflie"
-        android:title="Profile"
+        android:title="@string/navigation_menu_Profile"
         android:icon="@drawable/ic_person"/>
 
 </menu>

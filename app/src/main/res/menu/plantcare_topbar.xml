@@ -2,18 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/PlantCare_info"
+        android:id="@+id/plantCare_topbar_infoIcon"
         android:icon="@drawable/ic_infosymbol"
         android:title="@string/topbar_title"
         android:contentDescription="@string/topbar_description"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/PlantCare_search"
+        android:id="@+id/plantCare_topbar_searchIcon"
         android:icon="@drawable/ic_search_icon"
         android:title="@string/plantcare_hint_search"
         android:contentDescription="@string/topbar_description"
-        app:showAsAction="always" />
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
 
 </menu>
