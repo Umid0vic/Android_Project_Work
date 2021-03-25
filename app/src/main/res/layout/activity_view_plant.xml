@@ -74,16 +74,6 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_plant_image"/>
 
-                <ImageView
-                    android:id="@+id/update_image_icon"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|bottom"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_cancel" />
-
             </FrameLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -206,20 +196,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/view_plant_updateButton"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_moreAboutPlant" />
-
-            <com.example.faceplant.utils.FaceplantButton
-                android:id="@+id/view_plant_saveUpdatesButton"
-                style="@style/FaceplantButton"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="60dp"
-                android:background="@drawable/faceplant_blue_button"
-                android:text="@string/save"
-                android:textAllCaps="false"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_input_layout_moreAboutPlant" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

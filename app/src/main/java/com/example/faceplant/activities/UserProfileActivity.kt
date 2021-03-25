@@ -49,7 +49,7 @@ class UserProfileActivity : AppCompatActivity() {
         val signOutButton = findViewById<Button>(R.id.profile_sign_out_button)
         val userImage = findViewById<ImageView>(R.id.user_image)
 
-        Log.i("UserProfileActivity", "Checking if user is signed in")
+        // Check if user is signed in
         if(currentUser != null) {
             // Check if user details are stored in SharedPref
             if(SharedPrefsClass().getSharedPreference(

@@ -10,6 +10,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.faceplant.R
 import com.example.faceplant.activities.MainActivity
+import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
@@ -43,7 +44,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed(
             {
                 if (currentUser != null) {
-                    startActivity(Intent(this, UserProfileActivity::class.java))
+                    startActivity(Intent(this, MyPlantsActivity::class.java))
                     finish()
                     Log.i("SplashActivity", "Starting userProfileActivity")
                 } else {

@@ -2,7 +2,6 @@ package com.example.faceplant.firestore
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
@@ -31,8 +30,6 @@ class FirestoreClass : AppCompatActivity()  {
 
     private val db = FirebaseFirestore.getInstance()
     private var storageRef = Firebase.storage.reference
-    private val auth = FirebaseAuth.getInstance()
-
 
     //Function to save user info in Firestore
     fun registerUserDetails(context: Context, userInfo: User){
@@ -87,8 +84,6 @@ class FirestoreClass : AppCompatActivity()  {
                 )
             }
     }
-
-
 
     // Function to get plant list from database
     fun getPlantList(activity: Activity){
@@ -226,23 +221,25 @@ class FirestoreClass : AppCompatActivity()  {
                              }
                          }
                      }
-                    //if the upload is successful
-                    Log.i("SignUpActivity", R.string.file_uploaded_successfully.toString())
              }
-             .addOnFailureListener {
-
+             .addOnFailureListener {exception ->
+                 Log.e(
+                     activity.javaClass.simpleName,
+                     exception.message,
+                     exception
+                 )
              }
     }
 
     fun updatePlantDetails(plantDetails: Plant){
-        db.collection(Constants.USERS).document(plantDetails.plantId)
-                .update(mapOf(
-                        Constants.PLANT_IMAGE to plantDetails.plantImage,
-                        Constants.PLANT_TYPE to plantDetails.plantType,
-                        Constants.PLANT_DATE to plantDetails.dateOfPurchase,
-                        Constants.PLANT_HEALTH to plantDetails.plantHealth,
-                        Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
-                ))
+        db.collection(Constants.PLANTS).document(plantDetails.plantId)
+            .update(mapOf(
+            //    Constants.PLANT_IMAGE to plantDetails.plantImage,
+                Constants.PLANT_TYPE to plantDetails.plantType,
+                Constants.PLANT_DATE to plantDetails.dateOfPurchase,
+                Constants.PLANT_HEALTH to plantDetails.plantHealth,
+                Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
+            ))
     }
 
     fun updateUserImage(uri: String){
@@ -253,6 +250,37 @@ class FirestoreClass : AppCompatActivity()  {
                 ))
         }
     }
+
+    fun updatePlantImage(plantId: String, uri: String){
+        db.collection(Constants.PLANTS).document(plantId)
+                .update(mapOf(
+                        Constants.PLANT_IMAGE to uri
+                ))
+    }
+/*
+    // function to get plant care documents
+    fun getPlantCareDocuments(activity: Activity){
+
+        db.collection(Constants.PLANT_CARE)
+                .get()
+                .addOnSuccessListener { documents ->
+                    val plantCareList: ArrayList<PlantCareModel> = ArrayList()
+                    for (i in documents) {
+                        val plantCareItem = i.toObject(PlantCareModel::class.java)
+                        plantCareItem!!.plantCareId = i.id
+                        plantCareList.add(plantCareItem)
+
+                        when(activity){
+                            is PlantCareActivity -> {
+                                activity.getDownloadedPlantCareList(plantCareList)
+                            }
+                        }
+                    }
+                }
+                .addOnFailureListener { exception ->
+                }
+    }
+ */
 
     // Function to remove an item from FireStore
     fun removeItem(plantId: String){

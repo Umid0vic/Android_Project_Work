@@ -1,10 +1,11 @@
 package com.example.faceplant.activities.myPlants
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface.*
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
@@ -12,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.faceplant.R
@@ -20,6 +22,7 @@ import com.example.faceplant.models.Plant
 import com.example.faceplant.utils.Constants
 import kotlinx.android.synthetic.main.activity_add_plant.*
 import java.io.IOException
+
 
 class AddPlantActivity : AppCompatActivity() {
 
@@ -45,18 +48,19 @@ class AddPlantActivity : AppCompatActivity() {
 
         setupActionBar()
 
+
         addImageIcon.setOnClickListener{
             // Check if permission for storage is granted
             if (ContextCompat.checkSelfPermission(
-                            this, android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    )== PackageManager.PERMISSION_GRANTED){
+                    this, android.Manifest.permission.READ_EXTERNAL_STORAGE
+                )== PackageManager.PERMISSION_GRANTED){
                 // Open gallery if permission is granted
                 chooseImage()
             }else{
                 ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                        Constants.READ_STORAGE_PERMISSION_CODE
+                    this,
+                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                    Constants.READ_STORAGE_PERMISSION_CODE
                 )
             }
         }
@@ -68,6 +72,33 @@ class AddPlantActivity : AppCompatActivity() {
             }
         }
     }
+
+    /*
+    private fun showAlertDialogToChooseImage(){
+        val items = arrayOf<CharSequence>("Take Photo", "Choose from Library", "Cancel")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Add Photo")
+        builder.setItems(items) { dialog, item ->
+            if (items[item] == "Take Photo") {
+                Constants.PROFILE_PIC_COUNT = 1
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(intent, Constants.REQUEST_CAMERA)
+            } else if (items[item] == "Choose from Library") {
+                Constants.PROFILE_PIC_COUNT = 2
+                val intent = Intent(
+                    Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                )
+                startActivityForResult(intent, Constants.SELECT_FILE)
+            } else if (items[item] == "Cancel") {
+                Constants.PROFILE_PIC_COUNT = 0
+                dialog.dismiss()
+            }
+        }
+        builder.show()
+    }
+
+     */
 
     // Function to setup actionbar
     private fun setupActionBar(){
@@ -86,12 +117,14 @@ class AddPlantActivity : AppCompatActivity() {
     private fun validatePlantDetails(): Boolean{
         return when {
             selectedImageUri == null -> {
-                Toast.makeText(this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
+                Toast.makeText(
+                    this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
                 ).show()
                 false
             }
             TextUtils.isEmpty(add_plant_plantTypeEditText.text.toString().trim { it <= ' ' }) -> {
-                Toast.makeText(this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
+                Toast.makeText(
+                    this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
                 ).show()
                 false
             }
@@ -103,7 +136,7 @@ class AddPlantActivity : AppCompatActivity() {
 
 
     override fun onRequestPermissionsResult(
-            requestCode: Int, permissions: Array<String>, grantResults: IntArray
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
         when (requestCode) {
             Constants.READ_STORAGE_PERMISSION_CODE -> {
@@ -114,7 +147,7 @@ class AddPlantActivity : AppCompatActivity() {
                 } else {
 
                     Toast.makeText(
-                            this, R.string.message_access_to_storage_denied, Toast.LENGTH_SHORT
+                        this, R.string.message_access_to_storage_denied, Toast.LENGTH_SHORT
                     ).show()
                 }
                 return
@@ -126,19 +159,30 @@ class AddPlantActivity : AppCompatActivity() {
         }
     }
 
+
     // Handling the image chooser activity result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK){
             // Change the add_image icon to edit_icon
-            add_image_icon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_edit_icon))
+            add_image_icon.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_edit_icon
+                )
+            )
             selectedImageUri = data!!.data
             try {
                 // Try to load the selected image
-                FirestoreClass().glidePlantImageLoader(this, selectedImageUri!!, add_plant_plantImage)
+                FirestoreClass().glidePlantImageLoader(
+                    this,
+                    selectedImageUri!!,
+                    add_plant_plantImage
+                )
             } catch (e: IOException) {
                 e.printStackTrace()
-                Toast.makeText(this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT
+                Toast.makeText(
+                    this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -147,7 +191,7 @@ class AddPlantActivity : AppCompatActivity() {
     // Function to open storage for choosing image
     private fun chooseImage(){
         val intent = Intent(
-                Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         )
         startActivityForResult(intent, Constants.PICK_IMAGE_REQUEST_CODE)
     }
@@ -156,7 +200,6 @@ class AddPlantActivity : AppCompatActivity() {
         plantImageURL = imageUrl
         uploadPlantDetails()
     }
-
 
     // Function to save and upload plant details to Firestore
     private fun uploadPlantDetails(){

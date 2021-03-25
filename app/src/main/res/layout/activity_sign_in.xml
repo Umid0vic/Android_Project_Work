@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/sign_in_title">
 
                 <EditText
-                    android:id="@+id/view_plant_plantDateEditText"
+                    android:id="@+id/sign_in_emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_input_layout_plantDate">
 
                 <EditText
-                    android:id="@+id/add_plant_plantHealthEditText"
+                    android:id="@+id/sign_in_passwordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/et_text_color"
