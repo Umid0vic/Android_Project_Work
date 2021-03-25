@@ -33,8 +33,6 @@ class PlantCareActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_care)
 
-        //decaling variables and assigning them id
-
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         bottomNavigationView.selectedItemId = R.id.navigation_plant_care
