@@ -17,17 +17,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Faceplant">
+        <activity android:name=".activities.MySeeds.AddSeedActivity"></activity>
+        <activity android:name=".activities.MySeeds.ViewSeedActivity" />
         <activity
             android:name=".activities.myPlants.ViewPlantActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.myPlants.AddPlantActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.plantCare.PlantCareActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.MySeedsActivity"
+            android:name=".activities.MySeeds.MySeedsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.myPlants.MyPlantsActivity"

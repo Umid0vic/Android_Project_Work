@@ -2,6 +2,8 @@ package com.example.faceplant.utils
 
 object Constants {
 
+    const val SEEDS: String = "seeds"
+    const val SEED_DETAILS: String = "seedsDetails"
     const val PLANTS: String = "plants"
     const val PLANT_DETAILS: String = "plantDetails"
     const val PLANT_TYPE: String = "plantType"

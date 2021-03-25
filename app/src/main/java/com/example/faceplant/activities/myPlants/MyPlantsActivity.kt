@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.faceplant.R
-import com.example.faceplant.activities.MySeedsActivity
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.activities.SignInActivity
 import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.activities.plantCare.PlantCareActivity

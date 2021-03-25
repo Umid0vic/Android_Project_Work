@@ -9,13 +9,13 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.faceplant.R
 import com.example.faceplant.activities.*
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.activities.myPlants.AddPlantActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.models.Plant
+import com.example.faceplant.models.Seed
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -54,7 +54,6 @@ class FirestoreClass : AppCompatActivity()  {
 
     //Function to save plant info in Firestore
     fun registerPlantDetails(context: Context, plantInfo: Plant){
-        //Sets the data with userInfo under the collection named "users". Document id is users id.
         db.collection(Constants.PLANTS)
                 .document()
                 .set(plantInfo, SetOptions.merge())
@@ -71,6 +70,26 @@ class FirestoreClass : AppCompatActivity()  {
                 }
     }
 
+    //Function to save seed info in Firestore
+    fun registerSeedDetails(context: Context, seedInfo: Seed){
+        //Sets the data with seedInfo under the collection named "seeds".
+        db.collection(Constants.SEEDS)
+            .document()
+            .set(seedInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                Toast.makeText(
+                    context, "Details are uploaded successfully", Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnFailureListener { e ->
+                Log.e(
+                    context.javaClass.simpleName, "Error while uploading the product details.", e
+                )
+            }
+    }
+
+
+
     // Function to get plant list from database
     fun getPlantList(activity: Activity){
         db.collection(Constants.PLANTS)
@@ -82,8 +101,6 @@ class FirestoreClass : AppCompatActivity()  {
                     for (i in document.documents){
                         val plant = i.toObject(Plant::class.java)
                         plant!!.plantId = i.id
-                        Log.i("PlantId", i.id)
-                        Log.i("Modelid", plant.plantId)
                         plantList.add(plant)
                     }
                     when(activity){
@@ -92,6 +109,27 @@ class FirestoreClass : AppCompatActivity()  {
                         }
                     }
                 }
+    }
+
+    // Function to get plant list from database
+    fun getSeedList(activity: Activity){
+        db.collection(Constants.SEEDS)
+            .whereEqualTo(Constants.USER_ID, getUserId())
+            .get()
+            .addOnSuccessListener {document ->
+                val seedList: ArrayList<Seed> = ArrayList()
+                // Get plant documents from Firebase and add them to plantList
+                for (i in document.documents){
+                    val seed = i.toObject(Seed::class.java)
+                    seed!!.seedId = i.id
+                    seedList.add(seed)
+                }
+                when(activity){
+                    is MySeedsActivity -> {
+                        activity.seedListDownloaded(seedList)
+                    }
+                }
+            }
     }
 
     fun getUserInfo(activity: Context): User?{

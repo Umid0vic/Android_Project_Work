@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.faceplant.R
-import com.example.faceplant.activities.MySeedsActivity
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.models.User
