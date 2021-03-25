@@ -2,15 +2,12 @@ package com.example.faceplant.firestore
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.faceplant.R
 import com.example.faceplant.activities.*
 import com.example.faceplant.activities.myPlants.AddPlantActivity
@@ -31,8 +28,6 @@ class FirestoreClass : AppCompatActivity()  {
 
     private val db = FirebaseFirestore.getInstance()
     private var storageRef = Firebase.storage.reference
-    private val auth = FirebaseAuth.getInstance()
-
 
     //Function to save user info in Firestore
     fun registerUserDetails(context: Context, userInfo: User){
@@ -82,8 +77,6 @@ class FirestoreClass : AppCompatActivity()  {
                     for (i in document.documents){
                         val plant = i.toObject(Plant::class.java)
                         plant!!.plantId = i.id
-                        Log.i("PlantId", i.id)
-                        Log.i("Modelid", plant.plantId)
                         plantList.add(plant)
                     }
                     when(activity){
@@ -92,26 +85,6 @@ class FirestoreClass : AppCompatActivity()  {
                         }
                     }
                 }
-    }
-
-    fun getUserInfo(activity: Context): User?{
-        var user = User()
-        val userId = getUserId()
-        if (userId != null){
-            db.collection(Constants.PLANTS)
-                    .document(userId)
-                    .get()
-                    .addOnSuccessListener { document ->
-                    // Converting document snapshot to User data model object
-                    user = document.toObject(User::class.java)!!
-                }
-                .addOnFailureListener { exception ->
-                    Log.d("TAG", "get failed with ", exception)
-                }
-        }else{
-            startActivity(Intent(activity.applicationContext, MainActivity::class.java))
-        }
-        return user
     }
 
     //Function to update user info
@@ -188,23 +161,25 @@ class FirestoreClass : AppCompatActivity()  {
                              }
                          }
                      }
-                    //if the upload is successful
-                    Log.i("SignUpActivity", R.string.file_uploaded_successfully.toString())
              }
-             .addOnFailureListener {
-
+             .addOnFailureListener {exception ->
+                 Log.e(
+                     activity.javaClass.simpleName,
+                     exception.message,
+                     exception
+                 )
              }
     }
 
     fun updatePlantDetails(plantDetails: Plant){
-        db.collection(Constants.USERS).document(plantDetails.plantId)
-                .update(mapOf(
-                        Constants.PLANT_IMAGE to plantDetails.plantImage,
-                        Constants.PLANT_TYPE to plantDetails.plantType,
-                        Constants.PLANT_DATE to plantDetails.dateOfPurchase,
-                        Constants.PLANT_HEALTH to plantDetails.plantHealth,
-                        Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
-                ))
+        db.collection(Constants.PLANTS).document(plantDetails.plantId)
+            .update(mapOf(
+            //    Constants.PLANT_IMAGE to plantDetails.plantImage,
+                Constants.PLANT_TYPE to plantDetails.plantType,
+                Constants.PLANT_DATE to plantDetails.dateOfPurchase,
+                Constants.PLANT_HEALTH to plantDetails.plantHealth,
+                Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
+            ))
     }
 
     fun updateUserImage(uri: String){
@@ -215,6 +190,37 @@ class FirestoreClass : AppCompatActivity()  {
                 ))
         }
     }
+
+    fun updatePlantImage(plantId: String, uri: String){
+        db.collection(Constants.PLANTS).document(plantId)
+                .update(mapOf(
+                        Constants.PLANT_IMAGE to uri
+                ))
+    }
+/*
+    // function to get plant care documents
+    fun getPlantCareDocuments(activity: Activity){
+
+        db.collection(Constants.PLANT_CARE)
+                .get()
+                .addOnSuccessListener { documents ->
+                    val plantCareList: ArrayList<PlantCareModel> = ArrayList()
+                    for (i in documents) {
+                        val plantCareItem = i.toObject(PlantCareModel::class.java)
+                        plantCareItem!!.plantCareId = i.id
+                        plantCareList.add(plantCareItem)
+
+                        when(activity){
+                            is PlantCareActivity -> {
+                                activity.getDownloadedPlantCareList(plantCareList)
+                            }
+                        }
+                    }
+                }
+                .addOnFailureListener { exception ->
+                }
+    }
+ */
 
     // Function to remove an item from FireStore
     fun removeItem(plantId: String){

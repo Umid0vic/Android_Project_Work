@@ -15,7 +15,8 @@
     <string name="forgot_password_title">Forgot password</string>
     <string name="reset_password">Reset your password</string>
     <string name="submit">Submit</string>
-    <string name="enter_email_to_reset_password">Enter your Email address and we\'ll send you a link to reset your password </string>
+    <string name="enter_email_to_reset_password">Enter your Email address
+        and we\'ll send you a link to reset your password </string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
     <string name="already_have_account">Already have an account?</string>
@@ -45,7 +46,8 @@
     <string name="message_registered_successfully">You are registered successfully</string>
     <string name="email_id">email id</string>
     <string name="user_id">user id</string>
-    <string name="message_check_your_email">"An email has been sent to your email address. Follow the instructions to reset your password "</string>
+    <string name="message_check_your_email">"An email has been sent to your email address.
+        Follow the instructions to reset your password "</string>
 
     <string name="profile">Profile</string>
     <string name="location">Location</string>
@@ -99,6 +101,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="message_you_can_edit_now">You can edit plant details now!</string>
+    <string name="update_plant">Update plant</string>
+    <string name="select_image_dialog_title">Select an image</string>
 
 
 </resources>

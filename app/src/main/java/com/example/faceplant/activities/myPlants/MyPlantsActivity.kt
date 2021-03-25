@@ -17,16 +17,23 @@ import com.example.faceplant.models.Plant
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_my_plants.*
 
 class MyPlantsActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
 
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_plants)
+        //Init Firebase Auth
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+
 
         topAppBar.setNavigationOnClickListener {
             // Handle navigation icon press
@@ -81,6 +88,12 @@ class MyPlantsActivity : AppCompatActivity() {
                 }
             }
         }
+
+        getPlantsFromFirestore()
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         getPlantsFromFirestore()
     }

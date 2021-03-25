@@ -41,8 +41,8 @@ class SignInActivity : AppCompatActivity() {
         val signInButton = findViewById<Button>(R.id.sign_in_page_sign_in)
         val continueWithGoogle = findViewById<Button>(R.id.continue_with_google)
         val signUpText = findViewById<TextView>(R.id.sign_up_text)
-        emailEditText = findViewById(R.id.view_plant_plantDateEditText)
-        passwordEditText = findViewById(R.id.add_plant_plantHealthEditText)
+        emailEditText = findViewById(R.id.sign_in_emailEditText)
+        passwordEditText = findViewById(R.id.sign_in_passwordEditText)
         forgotPasswordTextView = findViewById(R.id.forgot_password_textView)
 
         // Configure Google Sign In

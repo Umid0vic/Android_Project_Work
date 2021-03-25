@@ -28,12 +28,12 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        val signUpButton = findViewById<Button>(R.id.add_plant_saveButton)
+        val signUpButton = findViewById<Button>(R.id.sign_up_signUpButton)
         val singInTextView = findViewById<TextView>(R.id.sign_in_text)
-        usernameEditText = findViewById(R.id.view_plant_plantTypeEditText)
-        emailEditText = findViewById(R.id.view_plant_plantDateEditText)
-        passwordEditText = findViewById(R.id.add_plant_plantHealthEditText)
-        confirmPasswordEditText = findViewById(R.id.add_plant_moreAboutEditText)
+        usernameEditText = findViewById(R.id.sign_up_usernameEditText)
+        emailEditText = findViewById(R.id.sign_up_emailEditText)
+        passwordEditText = findViewById(R.id.sign_up_passwordEditText)
+        confirmPasswordEditText = findViewById(R.id.sign_up_confirmPasswordEditText)
 
 
         //Create user account on clicking the SignUp button

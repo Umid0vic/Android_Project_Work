@@ -26,4 +26,7 @@ object Constants {
     const val PROFILE_IMAGE_PREF_KEY: String = "profileImagePrefKey"
     const val READ_STORAGE_PERMISSION_CODE: Int = 5
     const val PICK_IMAGE_REQUEST_CODE: Int = 6
+    const val REQUEST_CAMERA = 1
+    const val SELECT_FILE = 2
+    var PROFILE_PIC_COUNT = 1
 }
