@@ -1,14 +1,17 @@
 package com.example.faceplant.activities.myPlants
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.faceplant.R
 import com.example.faceplant.activities.MySeedsActivity
-import com.example.faceplant.activities.PlantCareActivity
 import com.example.faceplant.activities.SignInActivity
 import com.example.faceplant.activities.UserProfileActivity
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Plant
 import com.example.faceplant.models.User
@@ -51,25 +54,25 @@ class MyPlantsActivity : AppCompatActivity() {
             when(item.itemId){
                 R.id.navigation_my_plants -> {
                     startActivity(Intent(applicationContext, MyPlantsActivity::class.java))
-                    overridePendingTransition(0,0)
+                    overridePendingTransition(0, 0)
                     finish()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_my_seeds -> {
                     startActivity(Intent(applicationContext, MySeedsActivity::class.java))
-                    overridePendingTransition(0,0)
+                    overridePendingTransition(0, 0)
                     finish()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_plant_care -> {
                     startActivity(Intent(applicationContext, PlantCareActivity::class.java))
-                    overridePendingTransition(0,0)
+                    overridePendingTransition(0, 0)
                     finish()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.navigation_user_proflie -> {
                     startActivity(Intent(applicationContext, UserProfileActivity::class.java))
-                    overridePendingTransition(0,0)
+                    overridePendingTransition(0, 0)
                     finish()
                     return@setOnNavigationItemSelectedListener true
                 }
@@ -87,8 +90,20 @@ class MyPlantsActivity : AppCompatActivity() {
     }
 
     fun plantListDownloaded(plantList: ArrayList<Plant>){
-        for( i in plantList){
-            Log.i("plant name", i.plantType)
+        if(plantList.size > 0){
+
+            findViewById<TextView>(R.id.no_plants_added_textView).visibility = View.GONE
+            myPlants_recyclerView.visibility = View.VISIBLE
+            // Prepare the recyclerView with GridLayout
+            myPlants_recyclerView.layoutManager = GridLayoutManager(this, 2)
+            myPlants_recyclerView.setHasFixedSize(true)
+            // Create an instance of MyPlantListAdapter
+            val myPlantsAdapter = MyPlantsAdapter(this, plantList)
+            // Adapter instance is set to the recyclerview to inflate the items.
+            myPlants_recyclerView.adapter = myPlantsAdapter
+        }else{
+            myPlants_recyclerView.visibility = View.GONE
+            findViewById<TextView>(R.id.no_plants_added_textView).visibility = View.VISIBLE
         }
     }
 

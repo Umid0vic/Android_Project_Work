@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_green"
+    android:orientation="vertical"
+    android:padding="@dimen/item_list_padding">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/plant_item_background"
+        android:padding="@dimen/item_image_padding"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/item_list_margin"
+        android:layout_marginLeft="@dimen/item_list_margin"
+        android:layout_marginEnd="@dimen/item_list_margin"
+        android:layout_marginRight="@dimen/item_list_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ImageView
+            android:id="@+id/plant_item_image"
+            android:layout_width="@dimen/plant_image_width"
+            android:layout_height="@dimen/plant_image_height"
+            android:contentDescription="@string/content_description"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/plant_type_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/plant_item_text_color"
+        android:textSize="@dimen/rv_plant_name_textSize"
+        app:layout_constraintStart_toStartOf="@id/linear_layout_item_image"
+        app:layout_constraintEnd_toEndOf="@id/linear_layout_item_image"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_item_image"
+        tools:text="Plant"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

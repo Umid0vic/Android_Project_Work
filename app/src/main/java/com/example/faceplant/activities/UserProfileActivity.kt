@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.faceplant.R
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
@@ -32,11 +33,8 @@ class UserProfileActivity : AppCompatActivity() {
     private var userImageUri: Uri? = null
     private var userImageURL: String = ""
     private val storage = Firebase.storage
-    private val storageRef = storage.reference
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
-    // var imagesRef: StorageReference? = storageRef.child("images")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +64,7 @@ class UserProfileActivity : AppCompatActivity() {
                 userImageURL = SharedPrefsClass().getSharedPreference(
                     this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, "").toString()
 
-                FirestoreClass().glideImageLoader(this, userImageURL, userImage)
+                FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
 
             }else{
 
@@ -79,7 +77,7 @@ class UserProfileActivity : AppCompatActivity() {
                             usernameTextView.text = user.username
                             emailTextView.text = user.email
                             userImageURL = user.image
-                            FirestoreClass().glideImageLoader(this, userImageURL, userImage)
+                            FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
                         }
                 }
             }
@@ -154,10 +152,6 @@ class UserProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun setUserDetails(user: User){
-
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
@@ -191,8 +185,7 @@ class UserProfileActivity : AppCompatActivity() {
         if(resultCode == Activity.RESULT_OK){
             userImageUri = data!!.data
             try {
-           //     profile_image.setImageURI(userImageUri)
-                FirestoreClass().glideImageLoader(this, userImageUri!!, user_image)
+                FirestoreClass().glideUserImageLoader(this, userImageUri!!, user_image)
                 FirestoreClass().uploadImage(this, userImageUri, Constants.USERS)
                 SharedPrefsClass().setSharedPreference(
                         this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, userImageUri.toString()

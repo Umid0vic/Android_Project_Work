@@ -91,6 +91,14 @@
     <!--topBar strings-->
     <string name="topbar_title">topbartitle?</string>
     <string name="topbar_description">topbardescription?</string>
+    <string name="content_description">image</string>
+    <string name="no_plants_added">No plant added yet.</string>
+    <string name="remove_dialog_title">Remove</string>
+    <string name="remove_dialog_message">Are you sure you want to remove the item?</string>
+    <string name="remove_dialog_message_plant">Are you sure you want to remove the plant?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="message_you_can_edit_now">You can edit plant details now!</string>
 
 
 </resources>
