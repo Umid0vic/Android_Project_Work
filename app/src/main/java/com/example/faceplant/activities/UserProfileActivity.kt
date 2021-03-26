@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.faceplant.R
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.firestore.FirestoreClass

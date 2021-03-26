@@ -10,7 +10,7 @@ import androidx.core.view.MenuItemCompat.getActionView
 import androidx.core.view.MenuItemCompat.setOnActionExpandListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.faceplant.R
-import com.example.faceplant.activities.MySeedsActivity
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.firestore.FirestoreClass

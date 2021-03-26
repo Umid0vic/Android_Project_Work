@@ -65,7 +65,7 @@
     <string name="message_access_to_storage_denied">Access to storage denied</string>
     <string name="message_image_not_selected">Image selection failed!</string>
     <string name="message_registation_failed">Registration failed!</string>
-    <string name="file_uploaded_successfully">File upploaded successfully!</string>
+    <string name="file_uploaded_successfully">File uploaded successfully!</string>
     <string name="message_image_selection_failed">Image selection failed!</string>
     <string name="my_plants">My plants</string>
     <string name="search">Search</string>
@@ -110,8 +110,16 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="message_you_can_edit_now">You can edit plant details now!</string>
+    <string name="my_seeds">My seeds</string>
+    <string name="no_seeds_added">No seeds added yet.</string>
+    <string name="seeds_item">Seeds item</string>
+    <string name="new_seed">New seed</string>
+    <string name="seed_type">Seed type</string>
+    <string name="more_about_seed">Tell more about seed</string>
+    <string name="message_enter_seed_type">Please enter seed type</string>
     <string name="update_plant">Update plant</string>
     <string name="select_image_dialog_title">Select an image</string>
+    <string name="update_seed">Update seed</string>
 
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.faceplant.firestore
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
@@ -12,11 +13,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.faceplant.R
 import com.example.faceplant.activities.*
+import com.example.faceplant.activities.MySeeds.MySeedsActivity
 import com.example.faceplant.activities.myPlants.AddPlantActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
 import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.models.Plant
 import com.example.faceplant.models.PlantCareModel
+import com.example.faceplant.models.Seed
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -53,7 +56,6 @@ class FirestoreClass : AppCompatActivity()  {
 
     //Function to save plant info in Firestore
     fun registerPlantDetails(context: Context, plantInfo: Plant){
-        //Sets the data with userInfo under the collection named "users". Document id is users id.
         db.collection(Constants.PLANTS)
                 .document()
                 .set(plantInfo, SetOptions.merge())
@@ -68,6 +70,24 @@ class FirestoreClass : AppCompatActivity()  {
                             context.javaClass.simpleName, "Error while uploading the product details.", e
                     )
                 }
+    }
+
+    //Function to save seed info in Firestore
+    fun registerSeedDetails(context: Context, seedInfo: Seed){
+        //Sets the data with seedInfo under the collection named "seeds".
+        db.collection(Constants.SEEDS)
+            .document()
+            .set(seedInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                Toast.makeText(
+                    context, "Details are uploaded successfully", Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnFailureListener { e ->
+                Log.e(
+                    context.javaClass.simpleName, "Error while uploading the product details.", e
+                )
+            }
     }
 
     // function to get plantlist from database
@@ -90,6 +110,47 @@ class FirestoreClass : AppCompatActivity()  {
                         }
                     }
                 }
+    }
+
+    // Function to get plant list from database
+    fun getSeedList(activity: Activity){
+        db.collection(Constants.SEEDS)
+            .whereEqualTo(Constants.USER_ID, getUserId())
+            .get()
+            .addOnSuccessListener {document ->
+                val seedList: ArrayList<Seed> = ArrayList()
+                // Get plant documents from Firebase and add them to plantList
+                for (i in document.documents){
+                    val seed = i.toObject(Seed::class.java)
+                    seed!!.seedId = i.id
+                    seedList.add(seed)
+                }
+                when(activity){
+                    is MySeedsActivity -> {
+                        activity.seedListDownloaded(seedList)
+                    }
+                }
+            }
+    }
+
+    fun getUserInfo(activity: Context): User?{
+        var user = User()
+        val userId = getUserId()
+        if (userId != null){
+            db.collection(Constants.PLANTS)
+                    .document(userId)
+                    .get()
+                    .addOnSuccessListener { document ->
+                    // Converting document snapshot to User data model object
+                    user = document.toObject(User::class.java)!!
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("TAG", "get failed with ", exception)
+                }
+        }else{
+            startActivity(Intent(activity.applicationContext, MainActivity::class.java))
+        }
+        return user
     }
 
     fun getUserInfo(activity: Context): User?{
@@ -198,14 +259,6 @@ class FirestoreClass : AppCompatActivity()  {
     }
 
     fun updatePlantDetails(plantDetails: Plant){
-        db.collection(Constants.USERS).document(plantDetails.plantId)
-            .update(mapOf(
-                Constants.PLANT_IMAGE to plantDetails.plantImage,
-                Constants.PLANT_TYPE to plantDetails.plantType,
-                Constants.PLANT_DATE to plantDetails.dateOfPurchase,
-                Constants.PLANT_HEALTH to plantDetails.plantHealth,
-                Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
-            ))
         db.collection(Constants.PLANTS).document(plantDetails.plantId)
             .update(mapOf(
             //    Constants.PLANT_IMAGE to plantDetails.plantImage,
@@ -213,6 +266,15 @@ class FirestoreClass : AppCompatActivity()  {
                 Constants.PLANT_DATE to plantDetails.dateOfPurchase,
                 Constants.PLANT_HEALTH to plantDetails.plantHealth,
                 Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
+            ))
+    }
+
+    fun updateSeedDetails(seedDetails: Seed){
+        db.collection(Constants.SEEDS).document(seedDetails.seedId)
+            .update(mapOf(
+                Constants.SEED_TYPE to seedDetails.seedsType,
+                Constants.SEED_DATE to seedDetails.dateOfPurchase,
+                Constants.MORE_ABOUT_SEED to seedDetails.moreAboutSeeds
             ))
     }
 
@@ -281,12 +343,10 @@ class FirestoreClass : AppCompatActivity()  {
  */
 
     // Function to remove an item from FireStore
-    fun removeItem(plantId: String){
-        db.collection(Constants.PLANTS).document(plantId)
-            .delete()
-            .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
-            .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
+    fun removeItem(plantId: String, collection: String){
+        db.collection(collection).document(plantId)
+                .delete()
+                .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
+                .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
     }
-
 }
-
