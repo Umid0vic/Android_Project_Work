@@ -94,7 +94,7 @@ class UpdatePlantActivity : AppCompatActivity() {
     private fun validatePlantDetails(): Boolean{
         return when {
 
-            TextUtils.isEmpty(update_plant_plantTypeEditText.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(plantTypeEditText.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
                 ).show()
                 false
@@ -103,9 +103,9 @@ class UpdatePlantActivity : AppCompatActivity() {
               //  if(selectedImageUri.toString() != ""){
               //      plantDetails.plantImage = selectedImageUri.toString() }
                 plantDetails.plantType = plantTypeEditText.text.toString().trim { it <= ' ' }
-                plantDetails.dateOfPurchase = plantTypeEditText.text.toString().trim { it <= ' ' }
-                plantDetails.plantHealth = plantTypeEditText.text.toString().trim { it <= ' ' }
-                plantDetails.moreAboutPlant = plantTypeEditText.text.toString().trim { it <= ' ' }
+                plantDetails.dateOfPurchase = plantDateEditText.text.toString().trim { it <= ' ' }
+                plantDetails.plantHealth = plantHealthEditText.text.toString().trim { it <= ' ' }
+                plantDetails.moreAboutPlant = moreAboutPlantEditText.text.toString().trim { it <= ' ' }
                 true
             }
         }
