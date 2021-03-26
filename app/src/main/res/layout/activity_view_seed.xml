@@ -7,19 +7,18 @@
     android:background="@color/light_green"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".activities.MySeeds.AddSeedActivity">
+    tools:context=".activities.MySeeds.ViewSeedActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_add_seed_activity"
+        android:id="@+id/toolbar_view_seed_activity"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/view_seed_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/toolbar_title_paddingStart"
@@ -39,7 +38,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_add_seed_activity">
+        app:layout_constraintTop_toBottomOf="@id/toolbar_view_seed_activity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -50,6 +49,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/editText_marginTop"
                 android:layout_marginStart="@dimen/editText_margin"
                 android:layout_marginEnd="@dimen/editText_margin"
                 android:padding="@dimen/editText_padding"

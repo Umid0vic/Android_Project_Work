@@ -110,6 +110,7 @@
     <string name="message_enter_seed_type">Please enter seed type</string>
     <string name="update_plant">Update plant</string>
     <string name="select_image_dialog_title">Select an image</string>
+    <string name="update_seed">Update seed</string>
 
 
 </resources>

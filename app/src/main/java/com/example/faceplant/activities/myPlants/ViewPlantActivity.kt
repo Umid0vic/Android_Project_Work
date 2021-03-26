@@ -87,7 +87,7 @@ class ViewPlantActivity : AppCompatActivity() {
         builder.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface, _ ->
 
             // Removes a plant with given plantId
-            FirestoreClass().removeItem(plantId)
+            FirestoreClass().removeItem(plantId, Constants.PLANTS)
             dialogInterface.dismiss()
             finish()
         }

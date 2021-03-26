@@ -2,6 +2,7 @@ package com.example.faceplant.firestore
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
@@ -242,6 +243,15 @@ class FirestoreClass : AppCompatActivity()  {
             ))
     }
 
+    fun updateSeedDetails(seedDetails: Seed){
+        db.collection(Constants.SEEDS).document(seedDetails.seedId)
+            .update(mapOf(
+                Constants.SEED_TYPE to seedDetails.seedsType,
+                Constants.SEED_DATE to seedDetails.dateOfPurchase,
+                Constants.MORE_ABOUT_SEED to seedDetails.moreAboutSeeds
+            ))
+    }
+
     fun updateUserImage(uri: String){
         getUserId()?.let {
             db.collection(Constants.USERS).document(it)
@@ -283,8 +293,8 @@ class FirestoreClass : AppCompatActivity()  {
  */
 
     // Function to remove an item from FireStore
-    fun removeItem(plantId: String){
-        db.collection(Constants.PLANTS).document(plantId)
+    fun removeItem(plantId: String, collection: String){
+        db.collection(collection).document(plantId)
                 .delete()
                 .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
                 .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }

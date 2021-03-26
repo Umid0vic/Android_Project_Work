@@ -4,6 +4,11 @@ object Constants {
 
     const val SEEDS: String = "seeds"
     const val SEED_DETAILS: String = "seedsDetails"
+    const val SEED_TYPE: String = "seedType"
+    const val SEED_DATE: String = "dateOfPurchase"
+    const val MORE_ABOUT_SEED: String = "moreAboutSeed"
+
+
     const val PLANTS: String = "plants"
     const val PLANT_DETAILS: String = "plantDetails"
     const val PLANT_TYPE: String = "plantType"

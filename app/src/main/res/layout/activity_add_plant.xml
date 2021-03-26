@@ -19,7 +19,7 @@
 
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/add_plant_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingStart="@dimen/toolbar_title_paddingStart"

@@ -89,6 +89,12 @@ class MySeedsActivity : AppCompatActivity() {
         getListFromFirestore()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        getListFromFirestore()
+    }
+
     fun getListFromFirestore(){
         FirestoreClass().getSeedList(this)
     }
