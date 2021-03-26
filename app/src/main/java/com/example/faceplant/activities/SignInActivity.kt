@@ -142,11 +142,13 @@ class SignInActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
     //The code is from Firebase guides
     private fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
+
 
     //Check if user has successfully signed in. The code is from Firebase guides
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -167,6 +169,8 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
