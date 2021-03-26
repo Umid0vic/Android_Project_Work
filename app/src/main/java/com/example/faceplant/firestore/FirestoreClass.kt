@@ -9,8 +9,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.faceplant.R
 import com.example.faceplant.activities.*
 import com.example.faceplant.activities.MySeeds.MySeedsActivity
@@ -131,47 +129,6 @@ class FirestoreClass : AppCompatActivity()  {
                     }
                 }
             }
-    }
-
-    fun getUserInfo(activity: Context): User?{
-        var user = User()
-        val userId = getUserId()
-        if (userId != null){
-            db.collection(Constants.PLANTS)
-                    .document(userId)
-                    .get()
-                    .addOnSuccessListener { document ->
-                    // Converting document snapshot to User data model object
-                    user = document.toObject(User::class.java)!!
-                }
-                .addOnFailureListener { exception ->
-                    Log.d("TAG", "get failed with ", exception)
-                }
-        }else{
-            startActivity(Intent(activity.applicationContext, MainActivity::class.java))
-        }
-        return user
-    }
-
-    fun getUserInfo(activity: Context): User?{
-        var user = User()
-        val userId = getUserId()
-        if (userId != null){
-            db.collection(Constants.PLANTS)
-                    .document(userId)
-                    .get()
-                    .addOnSuccessListener { document ->
-                    // Converting document snapshot to User data model object
-                    user = document.toObject(User::class.java)!!
-
-                }
-                .addOnFailureListener { exception ->
-                    Log.d("TAG", "get failed with ", exception)
-                }
-        }else{
-            startActivity(Intent(activity.applicationContext, MainActivity::class.java))
-        }
-        return user
     }
 
     //Function to update user info

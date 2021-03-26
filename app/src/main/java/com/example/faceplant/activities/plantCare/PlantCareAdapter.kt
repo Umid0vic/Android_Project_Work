@@ -13,7 +13,6 @@ import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.PlantCareModel
 import com.example.faceplant.utils.Constants
 import kotlinx.android.synthetic.main.plant_item.view.*
-import kotlinx.android.synthetic.main.plantcare_item.view.*
 
 // the adapter will hold all the data and views
 class PlantCareAdapter(
