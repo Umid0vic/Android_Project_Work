@@ -2,6 +2,7 @@ package com.example.faceplant.utils
 
 object Constants {
 
+
     const val PLANTS: String = "plants"
     const val PLANT_DETAILS: String = "plantDetails"
     const val PLANT_TYPE: String = "plantType"
@@ -29,4 +30,11 @@ object Constants {
     const val REQUEST_CAMERA = 1
     const val SELECT_FILE = 2
     var PROFILE_PIC_COUNT = 1
+    const val PLANT_CARE: String = "PlantCare"
+    const val PLANT_CARE_DETAILS: String = "PlantCareDetails"
+    const val LIGHT_INFO: String = "LightInfo"
+    const val GENERAL_INFO: String = "GeneralInfo"
+    const val WATER_INFO: String = "WaterInfo"
+    const val NUTRITION_INFO: String = "NutritionInfo"
+
 }

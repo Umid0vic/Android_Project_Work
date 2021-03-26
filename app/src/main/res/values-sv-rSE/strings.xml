@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Faceplant</string>
+    <string name="the_ultimate_gardentool">The ultimate gardentool</string>
+    <string name="title_sign_in">Logga in</string>
+    <string name="sign_in">Logga in</string>
+    <string name="sign_out_button">Logga ut</string>
+    <string name="sign_in_later">Logga in senare</string>
+    <string name="first_name">Förnamn</string>
+    <string name="last_name">Efternamn</string>
+    <string name="hint_username">Användarnamn</string>
+    <string name="email">E-post</string>
+    <string name="hint_password">Lösenord</string>
+    <string name="hint_repeat_password">Upprepa lösenord</string>
+    <string name="forgot_password">Glömt lösenordet?</string>
+    <string name="forgot_password_title">Glömt lösenordet</string>
+    <string name="reset_password">Återställ ditt lösenord</string>
+    <string name="submit">Godkänn</string>
+    <string name="enter_email_to_reset_password">Ange din E-post för att erhålla en länk där du kan återställa ditt lösenord</string>
+    <string name="dont_have_account">Inget konto?</string>
+    <string name="sign_up">Registrera</string>
+    <string name="already_have_account">Har du redan ett konto?</string>
+    <string name="continue_with_facebook">Fortsätt med Facebook</string>
+    <string name="continue_with_google">Fortsätt med Google-konto</string>
+    <string name="or">eller</string>
+
+
+    <!--Navigation menu-->
+    <string name="navigation_menu_MyPlants">Mina Växter</string>
+    <string name="navigation_menu_MySeeds">Mina Fröer</string>
+    <string name="navigation_menu_Profile">Profil</string>
+    <string name="navigation_menu_PlantCare">Skötselråd</string>
+
+
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Inställningar</string>
+
+    <string name="menu_home">Hem</string>
+    <string name="menu_gallery">Galleri</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="message_enter_username">Ange Användarnamn</string>
+    <string name="message_enter_email">Ange E-post</string>
+    <string name="message_invalid_email">Ogiltig E-post</string>
+    <string name="message_enter_password">Ange Lösenord</string>
+    <string name="message_confirm_password">Bekräfta lösenord</string>
+    <string name="message_password_mismatched">Lösenorden stämmer ej överens</string>
+    <string name="message_registered_successfully">Du har nu skapat ett konto</string>
+    <string name="email_id">Epost id</string>
+    <string name="user_id">Användare id</string>
+    <string name="message_check_your_email">" En återställnings-länk har skickts till den angiva E-post adressen, Följ instruktionerna för att återställa ditt lösenord "</string>
+
+    <string name="profile">Profil</string>
+    <string name="location">Plats</string>
+    <string name="bio">Om</string>
+    <string name="textView_username">Användarnamn:</string>
+    <string name="textView_email">E-post:</string>
+    <string name="edit_profile">Ändra profil</string>
+    <string name="message_access_to_storage_denied">Åtkomst misslyckades</string>
+    <string name="message_image_not_selected">Bildval genomfördes inte korrekt!</string>
+    <string name="message_registation_failed">Registreringen misslyckades</string>
+    <string name="file_uploaded_successfully">Filen laddades upp korrekt!</string>
+    <string name="message_image_selection_failed">Bildval Misslyckades!</string>
+    <string name="my_plants">Mina Växter</string>
+    <string name="search">Sök</string>
+    <string name="add">Lägg till</string>
+    <string name="plant_type">Sort</string>
+    <string name="date_of_purchase">Inköpsdatum</string>
+    <string name="plant_health">Mående</string>
+    <string name="more_about_plant">Övrig info</string>
+    <string name="save">Spara</string>
+    <string name="new_plant">Ny växt</string>
+    <string name="cancel">Avsluta</string>
+    <string name="my_plant">Min Planta</string>
+    <string name="update">Uppdatera</string>
+    <string name="romove">Ta bort</string>
+    <string name="message_enter_plant_type">Ange plantans sort</string>
+
+
+    <!--PlantCare strings-->
+    <string name="plantcare_title">Skötselråd</string>
+    <string name="plantcare_hint_search">Sök</string>
+    <string name="plantcare_description">
+      Klicka på någon av ikonerna nedan för att läsa mer om växten och hur den skall skötas</string>
+    <string name="plantcare_icontext_light">Ljus</string>
+    <string name="plantcare_icontext_water">Vattning</string>
+    <string name="plantcare_icontext_nutritions">Näring</string>
+    <string name="plantcare_icontext_genreal_info">Allmän information</string>
+    <string name="Plantcare_lightActivity_title">Ljus:</string>
+    <string name="Plantcare_waterActivity_title">Vattning:</string>
+    <string name="Plantcare_nutritionActivity_title">Näring:</string>
+    <string name="Plantcare_GenralinfoActivity_title">Allmän information:</string>
+    <string name="plantcare_item_title">Växttitel</string>
+    <string name="plantcarePofile_title">Titel</string>
+
+    <!--topBar strings-->
+    <string name="topbar_title">topbartitle?</string>
+    <string name="topbar_description">topbardescription?</string>
+    <string name="content_description">image</string>
+    <string name="no_plants_added">Det finns inget här än.</string>
+    <string name="remove_dialog_title">Ta bort</string>
+    <string name="remove_dialog_message">Är du helt säker?</string>
+    <string name="remove_dialog_message_plant">Är du helt säker på att du vill radera växten?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="message_you_can_edit_now">Nu kan du ändra information om din växt</string>
+</resources>

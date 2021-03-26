@@ -8,11 +8,15 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
 import com.example.faceplant.R
 import com.example.faceplant.activities.*
 import com.example.faceplant.activities.myPlants.AddPlantActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
+import com.example.faceplant.activities.plantCare.PlantCareActivity
 import com.example.faceplant.models.Plant
+import com.example.faceplant.models.PlantCareModel
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -66,14 +70,15 @@ class FirestoreClass : AppCompatActivity()  {
                 }
     }
 
-    // Function to get plant list from database
+    // function to get plantlist from database
     fun getPlantList(activity: Activity){
         db.collection(Constants.PLANTS)
                 .whereEqualTo(Constants.USER_ID, getUserId())
                 .get()
                 .addOnSuccessListener {document ->
+                    Log.i("plant list", document.documents.toString())
                     val plantList: ArrayList<Plant> = ArrayList()
-                    // Get plant documents from Firebase and add them to plantList
+                    // Get plants documents from Firebase and add them to plantList
                     for (i in document.documents){
                         val plant = i.toObject(Plant::class.java)
                         plant!!.plantId = i.id
@@ -85,6 +90,27 @@ class FirestoreClass : AppCompatActivity()  {
                         }
                     }
                 }
+    }
+
+    fun getUserInfo(activity: Context): User?{
+        var user = User()
+        val userId = getUserId()
+        if (userId != null){
+            db.collection(Constants.PLANTS)
+                    .document(userId)
+                    .get()
+                    .addOnSuccessListener { document ->
+                    // Converting document snapshot to User data model object
+                    user = document.toObject(User::class.java)!!
+
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("TAG", "get failed with ", exception)
+                }
+        }else{
+            startActivity(Intent(activity.applicationContext, MainActivity::class.java))
+        }
+        return user
     }
 
     //Function to update user info
@@ -126,11 +152,11 @@ class FirestoreClass : AppCompatActivity()  {
     fun glidePlantImageLoader(context: Context, image: Any, imageView: ImageView){
         try{
             Glide
-                    .with(context)
-                    .load(image)
-                    //       .circleCrop()
-                    .placeholder(R.drawable.ic_plant_image)
-                    .into(imageView)
+                .with(context)
+                .load(image)
+                //       .circleCrop()
+                .placeholder(R.drawable.ic_plant_image)
+                .into(imageView)
         }catch (e: IOException){
             e.printStackTrace()
         }
@@ -172,6 +198,14 @@ class FirestoreClass : AppCompatActivity()  {
     }
 
     fun updatePlantDetails(plantDetails: Plant){
+        db.collection(Constants.USERS).document(plantDetails.plantId)
+            .update(mapOf(
+                Constants.PLANT_IMAGE to plantDetails.plantImage,
+                Constants.PLANT_TYPE to plantDetails.plantType,
+                Constants.PLANT_DATE to plantDetails.dateOfPurchase,
+                Constants.PLANT_HEALTH to plantDetails.plantHealth,
+                Constants.MORE_ABOUT_PLANT to plantDetails.moreAboutPlant
+            ))
         db.collection(Constants.PLANTS).document(plantDetails.plantId)
             .update(mapOf(
             //    Constants.PLANT_IMAGE to plantDetails.plantImage,
@@ -182,6 +216,7 @@ class FirestoreClass : AppCompatActivity()  {
             ))
     }
 
+
     fun updateUserImage(uri: String){
         getUserId()?.let {
             db.collection(Constants.USERS).document(it)
@@ -189,6 +224,29 @@ class FirestoreClass : AppCompatActivity()  {
                     Constants.USER_IMAGE to uri
                 ))
         }
+    }
+
+    // function to get plant care documents
+    fun getPlantCareDocuments(activity: Activity){
+
+        db.collection(Constants.PLANT_CARE)
+            .get()
+            .addOnSuccessListener { documents ->
+                val plantCareList: ArrayList<PlantCareModel> = ArrayList()
+                for (i in documents) {
+                    val plantCareItem = i.toObject(PlantCareModel::class.java)
+                    plantCareItem!!.plantCareId = i.id
+                    plantCareList.add(plantCareItem)
+
+                    when(activity){
+                        is PlantCareActivity -> {
+                            activity.getDownloadedPlantCareList(plantCareList)
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+            }
     }
 
     fun updatePlantImage(plantId: String, uri: String){
@@ -225,8 +283,10 @@ class FirestoreClass : AppCompatActivity()  {
     // Function to remove an item from FireStore
     fun removeItem(plantId: String){
         db.collection(Constants.PLANTS).document(plantId)
-                .delete()
-                .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
-                .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
+            .delete()
+            .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
     }
+
 }
+

@@ -1,22 +1,35 @@
 package com.example.faceplant.activities.plantCare
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.SearchView
+import androidx.core.view.MenuItemCompat
+import androidx.core.view.MenuItemCompat.getActionView
+import androidx.core.view.MenuItemCompat.setOnActionExpandListener
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.faceplant.R
 import com.example.faceplant.activities.MySeedsActivity
 import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
+import com.example.faceplant.firestore.FirestoreClass
+import com.example.faceplant.models.PlantCareModel
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_plant_care.*
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class PlantCareActivity : AppCompatActivity() {
 
-    private val db = FirebaseFirestore.getInstance()
+    lateinit var listPlantCare: PlantCareModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_care)
 
@@ -54,12 +67,40 @@ class PlantCareActivity : AppCompatActivity() {
                 }
             }
         }
+
+        //fetch the list from firestore
+        FirestoreClass().getPlantCareDocuments(this)
+
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        FirestoreClass().getPlantCareDocuments(this)
+    }
+
 
     fun userSignInSuccess(user: User){
         val intent = Intent(this, UserProfileActivity::class.java)
         intent.putExtra(Constants.USER_DETAILS, user)
         startActivity(intent)
         finish()
+    }
+
+
+
+    fun getDownloadedPlantCareList(listPlantCare: ArrayList<PlantCareModel>){
+
+        if(listPlantCare.size > 0 ){
+
+            //To prepare the recyclerview with a gridlayoutmanager
+            plantcare_recyclerview.layoutManager = GridLayoutManager(this, 2)
+
+            //creating an instance of Plantcareadapter, assigning it to the recyclerview
+            plantcare_recyclerview.setHasFixedSize(true)
+            val adapterPlantCare = PlantCareAdapter(this, listPlantCare)
+            plantcare_recyclerview.adapter = adapterPlantCare
+        }
+
     }
 }

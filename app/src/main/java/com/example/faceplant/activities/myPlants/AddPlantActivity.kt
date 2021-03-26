@@ -116,6 +116,7 @@ class AddPlantActivity : AppCompatActivity() {
     // Function to validate the plant details.
     private fun validatePlantDetails(): Boolean{
         return when {
+
             selectedImageUri == null -> {
                 Toast.makeText(
                     this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
@@ -129,6 +130,8 @@ class AddPlantActivity : AppCompatActivity() {
                 false
             }
             else -> {
+                Toast.makeText(this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT
+                ).show()
                 true
             }
         }

@@ -9,33 +9,25 @@
     <!--This is the layout for one cell in the gridlayout-->
 
     <ImageView
-        android:id="@+id/MyPlants_userplant_imageview"
+        android:id="@+id/PlantCare_Plantimage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="100dp"
         tools:srcCompat="@drawable/defaultplant" />
 
     <TextView
-        android:id="@+id/MyPlants_userplant_textview"
+        android:id="@+id/Plantcare_Planttitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Plantname "
-        android:textSize="50sp"
-        app:layout_constraintTop_toBottomOf="@id/MyPlants_userplant_imageview"
-        app:layout_constraintStart_toStartOf="@id/MyPlants_userplant_imageview"
-        app:layout_constraintEnd_toEndOf="@id/MyPlants_userplant_imageview"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-
-        />
+        android:textSize="24sp"
+        android:text="@string/plantcare_item_title"
+        app:layout_constraintTop_toBottomOf="@id/PlantCare_Plantimage"
+        app:layout_constraintStart_toStartOf="@id/PlantCare_Plantimage"
+        app:layout_constraintEnd_toEndOf="@id/PlantCare_Plantimage">
+    </TextView>
 
 
 

@@ -19,6 +19,26 @@
         android:theme="@style/Theme.Faceplant">
         <activity android:name=".activities.myPlants.UpdatePlantActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".activities.plantCare.PlantCareProfileActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activities.plantCare.PlantCare_GeneralInfoActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".activities.plantCare.PlantCare_NutritionActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activities.plantCare.PlantCare_WaterActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activities.plantCare.PlantCare_LightActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.myPlants.ViewPlantActivity"
             android:screenOrientation="portrait" />
