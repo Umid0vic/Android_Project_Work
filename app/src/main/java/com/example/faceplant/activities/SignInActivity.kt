@@ -103,24 +103,22 @@ class SignInActivity : AppCompatActivity() {
                         if (task.isSuccessful) {
 
                             val userId = task.result!!.user.uid
-                            if (userId != null) {
-                                db.collection(Constants.USERS).document(userId).get()
-                                    .addOnSuccessListener { document ->
-                                        // Converting document snapshot to User data model object
-                                        val user = document.toObject(User::class.java)!!
-                                        // Storing username, email and user image in SharedPreferences
-                                        SharedPrefsClass().setSharedPreference(
-                                            this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, user.username
-                                        )
-                                        SharedPrefsClass().setSharedPreference(
-                                            this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, user.email
-                                        )
-                                        SharedPrefsClass().setSharedPreference(
-                                            this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, user.image
-                                        )
-                                        Toast.makeText(this,"User Data Stored",Toast.LENGTH_SHORT).show()
-                                    }
-                            }
+                            db.collection(Constants.USERS).document(userId).get()
+                                .addOnSuccessListener { document ->
+                                    // Converting document snapshot to User data model object
+                                    val user = document.toObject(User::class.java)!!
+                                    // Storing username, email and user image in SharedPreferences
+                                    SharedPrefsClass().setSharedPreference(
+                                        this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, user.username
+                                    )
+                                    SharedPrefsClass().setSharedPreference(
+                                        this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, user.email
+                                    )
+                                    SharedPrefsClass().setSharedPreference(
+                                        this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, user.image
+                                    )
+                                    Toast.makeText(this,"User Data Stored",Toast.LENGTH_SHORT).show()
+                                }
                                   startActivity(Intent(this, UserProfileActivity::class.java))
                                   finish()
                         } else {

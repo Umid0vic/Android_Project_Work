@@ -237,7 +237,7 @@ class FirestoreClass : AppCompatActivity()  {
                 val plantCareList: ArrayList<PlantCareModel> = ArrayList()
                 for (i in documents) {
                     val plantCareItem = i.toObject(PlantCareModel::class.java)
-                    plantCareItem!!.plantCareId = i.id
+                    plantCareItem.plantCareId = i.id
                     plantCareList.add(plantCareItem)
 
                     when(activity){
