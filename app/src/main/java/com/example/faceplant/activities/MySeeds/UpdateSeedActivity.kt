@@ -12,6 +12,7 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Seed
 import com.example.faceplant.utils.Constants
+import kotlinx.android.synthetic.main.activity_add_seed.*
 import kotlinx.android.synthetic.main.activity_update_plant.*
 import kotlinx.android.synthetic.main.activity_update_plant.update_plant_plantTypeEditText
 import kotlinx.android.synthetic.main.activity_update_seed.*
@@ -46,8 +47,8 @@ class UpdateSeedActivity : AppCompatActivity() {
             // Validate entered seed details
             if(validateSeedDetails()){
                 FirestoreClass().updateSeedDetails(seedDetails)
+                finish()
             }
-            finish()
         }
     }
 
@@ -57,6 +58,12 @@ class UpdateSeedActivity : AppCompatActivity() {
 
             TextUtils.isEmpty(seedTypeEditText.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(this, R.string.message_enter_seed_type, Toast.LENGTH_SHORT
+                ).show()
+                false
+            }
+            seedTypeEditText.text.toString().trim { it <= ' ' }.length >= 15 -> {
+                Toast.makeText(
+                        this, R.string.message_seed_type_is_long, Toast.LENGTH_SHORT
                 ).show()
                 false
             }

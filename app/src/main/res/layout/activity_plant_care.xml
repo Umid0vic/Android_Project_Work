@@ -9,7 +9,7 @@
 
     <!--Toolbar at the top of the screen-->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/plantcare_toolbar"
+        android:id="@+id/plant_care_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
 
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/plantcare_topbar"
+            android:id="@+id/plant_care_topbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/plantcare_title"
@@ -31,20 +31,13 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--Searchview to search for a specific plant in plantcare-->
-    <SearchView
-        android:id="@+id/plantCare_SearchView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-
-    <!--Recyclerview foir displaying all the plants-->
+    <!--Recyclerview for displaying all the plants-->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/plantcare_recyclerview"
+        android:id="@+id/plant_care_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/plant_care_bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:scrollbars="vertical">
@@ -53,7 +46,7 @@
 
     <!--navigationbar at the bottom of the screen -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/plant_care_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemBackground="@color/green"

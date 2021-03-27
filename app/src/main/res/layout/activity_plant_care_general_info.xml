@@ -8,7 +8,7 @@
     android:background="@color/light_green">
 
     <TextView
-        android:id="@+id/plantcare_lightactivity_title"
+        android:id="@+id/plant_care_general_info_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -16,11 +16,10 @@
         android:textSize="40sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </TextView>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ScrollView
-        android:id="@+id/plantcare_lightactivity_content"
+        android:id="@+id/plant_care_general_info_scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -29,19 +28,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_lightactivity_title"
-        >
+        app:layout_constraintTop_toBottomOf="@id/plant_care_general_info_title">
 
         <TextView
-            android:id="@+id/GeneralInfoActivity_textview"
+            android:id="@+id/plant_care_general_info_textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/plantcare_icontext_genreal_info"
             android:textSize="20dp"/>
 
-
-
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

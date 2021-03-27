@@ -30,7 +30,7 @@ class MySeedsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_seeds)
 
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.my_seeds_bottom_navigation)
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {

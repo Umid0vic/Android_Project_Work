@@ -121,6 +121,8 @@
     <string name="select_image_dialog_title">Select an image</string>
     <string name="update_seed">Update seed</string>
     <string name="message_choose_plant_image">Please choose a plant image!</string>
+    <string name="message_plant_type_is_long">Plant type is too long!</string>
+    <string name="message_seed_type_is_long">Seed type is too long!</string>
 
 
 </resources>

@@ -72,6 +72,7 @@ class ViewPlantActivity : AppCompatActivity() {
                 val intent = Intent(this, UpdatePlantActivity::class.java)
                 intent.putExtra(Constants.PLANT_DETAILS, plantDetails)
                 startActivity(intent)
+                finish()
             }
         }
     }

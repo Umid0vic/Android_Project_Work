@@ -18,6 +18,7 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Plant
 import com.example.faceplant.utils.Constants
+import kotlinx.android.synthetic.main.activity_add_plant.*
 import kotlinx.android.synthetic.main.activity_update_plant.*
 
 import java.io.IOException
@@ -82,11 +83,8 @@ class UpdatePlantActivity : AppCompatActivity() {
             // Validate entered plant details and upload the selected image to Firestore
             if(validatePlantDetails()){
                 FirestoreClass().updatePlantDetails(plantDetails)
-                if(selectedImageUri.toString() != ""){
-                    FirestoreClass().updatePlantImage(plantDetails.plantId, selectedImageUri.toString())
-                }
+                finish()
             }
-            finish()
         }
     }
 
@@ -99,9 +97,15 @@ class UpdatePlantActivity : AppCompatActivity() {
                 ).show()
                 false
             }
+
+            plantTypeEditText.text.toString().trim { it <= ' ' }.length >= 15 -> {
+                Toast.makeText(
+                        this, R.string.message_plant_type_is_long, Toast.LENGTH_SHORT
+                ).show()
+                false
+            }
+
             else -> {
-              //  if(selectedImageUri.toString() != ""){
-              //      plantDetails.plantImage = selectedImageUri.toString() }
                 plantDetails.plantType = plantTypeEditText.text.toString().trim { it <= ' ' }
                 plantDetails.dateOfPurchase = plantDateEditText.text.toString().trim { it <= ' ' }
                 plantDetails.plantHealth = plantHealthEditText.text.toString().trim { it <= ' ' }
@@ -143,6 +147,7 @@ class UpdatePlantActivity : AppCompatActivity() {
             try {
                 // Try to load the selected image
                 FirestoreClass().glidePlantImageLoader(this, selectedImageUri!!, update_plant_plantImage)
+                FirestoreClass().updatePlantImage(plantDetails.plantId, selectedImageUri.toString())
             } catch (e: IOException) {
                 e.printStackTrace()
                 Toast.makeText(this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT

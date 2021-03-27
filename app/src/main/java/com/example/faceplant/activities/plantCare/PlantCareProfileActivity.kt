@@ -18,13 +18,13 @@ class PlantCareProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_care_profile)
 
-        //decaling variables
-        val lightIcon = findViewById<ImageView>(R.id.plantcare_profile_lighticon)
-        val waterIcon = findViewById<ImageView>(R.id.plantcare_profile_watericon)
-        val nutritionIcon = findViewById<ImageView>(R.id.plantcare_profile_nutritionicon)
-        val generalInfoIcon = findViewById<ImageView>(R.id.plantcare_profile_genralinfo)
-        plantImage = findViewById(R.id.plantcare_profile_imageview)
-        val plantTitle = findViewById<TextView>(R.id.plantcare_profile_title_textview)
+        //declaring variables
+        val lightIcon = findViewById<ImageView>(R.id.plant_care_profile_lightIcon)
+        val waterIcon = findViewById<ImageView>(R.id.plant_care_profile_waterIcon)
+        val nutritionIcon = findViewById<ImageView>(R.id.plant_care_profile_nutritionIcon)
+        val generalInfoIcon = findViewById<ImageView>(R.id.plant_care_profile_generalInfo)
+        plantImage = findViewById(R.id.plant_care_profile_imageView)
+        val plantTitle = findViewById<TextView>(R.id.plant_care_profile_title)
 
 
         if (intent.hasExtra(Constants.PLANT_CARE_DETAILS)) {

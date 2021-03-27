@@ -9,7 +9,7 @@
 
     <!--Textview that represents the top title-->
     <TextView
-        android:id="@+id/plantcare_profile_title_textview"
+        android:id="@+id/plant_care_profile_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -17,20 +17,20 @@
         android:layout_marginRight="10dp"
         android:text="@string/plantcarePofile_title"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_imageview"
-        app:layout_constraintStart_toStartOf="@id/plantcare_profile_imageview"
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_imageView"
+        app:layout_constraintStart_toStartOf="@id/plant_care_profile_imageView"
         app:layout_constraintTop_toTopOf="parent"/>
 
 
     <!--Image of the plant,fetched from firestore-->
     <ImageView
-        android:id="@+id/plantcare_profile_imageview"
+        android:id="@+id/plant_care_profile_imageView"
         android:layout_width="201dp"
         android:layout_height="135dp"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_title_textview"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_title"
         tools:srcCompat="@drawable/defaultplant"
         android:scaleType="fitCenter">
     </ImageView>
@@ -39,7 +39,7 @@
 
     <!--textview to display description-->
     <TextView
-        android:id="@+id/plantcare_profile_description"
+        android:id="@+id/plant_care_profile_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/plantcare_description"
@@ -50,19 +50,19 @@
         android:layout_marginRight="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_imageview">
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_imageView">
     </TextView>
 
 
     <!-- clickable icon light -->
     <ImageView
-        android:id="@+id/plantcare_profile_lighticon"
+        android:id="@+id/plant_care_profile_lightIcon"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_description"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_description"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/plantcare_profile_watericon"
-        app:layout_constraintBottom_toTopOf="@id/plantcare_profile_nutritionicon"
+        app:layout_constraintEnd_toStartOf="@id/plant_care_profile_waterIcon"
+        app:layout_constraintBottom_toTopOf="@id/plant_care_profile_nutritionIcon"
         android:src="@drawable/ic_sunlight"
         >
 
@@ -70,7 +70,7 @@
 
     <!--text under clickable icon light-->
     <TextView
-        android:id="@+id/plantcare_profile_icontext_light"
+        android:id="@+id/plant_care_profile_iconText_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
@@ -78,28 +78,28 @@
         android:layout_marginRight="7dp"
         android:text="@string/plantcare_icontext_light"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_lighticon"
-        app:layout_constraintStart_toStartOf="@id/plantcare_profile_lighticon"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_lighticon">
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_lightIcon"
+        app:layout_constraintStart_toStartOf="@id/plant_care_profile_lightIcon"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_lightIcon">
 
     </TextView>
 
     <!--clickable icon water-->
     <ImageView
-        android:id="@+id/plantcare_profile_watericon"
+        android:id="@+id/plant_care_profile_waterIcon"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plantcare_profile_lighticon"
-        app:layout_constraintTop_toTopOf="@+id/plantcare_profile_lighticon"
-        app:layout_constraintBottom_toBottomOf="@id/plantcare_profile_lighticon"
+        app:layout_constraintStart_toEndOf="@+id/plant_care_profile_lightIcon"
+        app:layout_constraintTop_toTopOf="@+id/plant_care_profile_lightIcon"
+        app:layout_constraintBottom_toBottomOf="@id/plant_care_profile_lightIcon"
         android:src="@drawable/ic_waterdrop_white">
 
     </ImageView>
 
     <!--text under clickable icon water-->
     <TextView
-        android:id="@+id/plantcare_profile_icontext_water"
+        android:id="@+id/plant_care_profile_iconText_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
@@ -107,28 +107,28 @@
         android:layout_marginRight="7dp"
         android:textSize="15sp"
         android:text="@string/plantcare_icontext_water"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_watericon"
-        app:layout_constraintStart_toStartOf="@id/plantcare_profile_watericon"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_watericon">
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_waterIcon"
+        app:layout_constraintStart_toStartOf="@id/plant_care_profile_waterIcon"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_waterIcon">
 
     </TextView>
 
     <!--clickable icon nutrition-->
     <ImageView
-        android:id="@+id/plantcare_profile_nutritionicon"
+        android:id="@+id/plant_care_profile_nutritionIcon"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="@id/plantcare_profile_lighticon"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_icontext_light"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_lighticon"
+        app:layout_constraintStart_toStartOf="@id/plant_care_profile_lightIcon"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_iconText_light"
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_lightIcon"
         android:src="@drawable/ic_nutrition_icon">
 
     </ImageView>
 
     <!--text under clickable icon nutrition-->
     <TextView
-        android:id="@+id/plantcare_profile_icontext_nutrition"
+        android:id="@+id/plant_care_profile_iconText_nutrition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
@@ -136,25 +136,25 @@
         android:layout_marginRight="7dp"
         android:textSize="15sp"
         android:text="@string/plantcare_icontext_nutritions"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_nutritionicon"
-        app:layout_constraintStart_toStartOf="@id/plantcare_profile_nutritionicon"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_nutritionicon"></TextView>
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_nutritionIcon"
+        app:layout_constraintStart_toStartOf="@id/plant_care_profile_nutritionIcon"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_nutritionIcon"/>
 
     <!--clickable icon general info-->
     <ImageView
-        android:id="@+id/plantcare_profile_genralinfo"
+        android:id="@+id/plant_care_profile_generalInfo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:layout_constraintTop_toTopOf="@id/plantcare_profile_nutritionicon"
-        app:layout_constraintBottom_toBottomOf="@id/plantcare_profile_nutritionicon"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_icontext_water"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_watericon"
+        app:layout_constraintTop_toTopOf="@id/plant_care_profile_nutritionIcon"
+        app:layout_constraintBottom_toBottomOf="@id/plant_care_profile_nutritionIcon"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_iconText_water"
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_waterIcon"
         android:src="@drawable/ic_infosymbol">
     </ImageView>
 
     <!--text under clickable icon general info-->
     <TextView
-        android:id="@+id/plantcare_profile_icontext_generalinfo"
+        android:id="@+id/plant_care_profile_iconText_generalInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
@@ -162,9 +162,9 @@
         android:layout_marginRight="7dp"
         android:textSize="15sp"
         android:text="@string/plantcare_icontext_genreal_info"
-        app:layout_constraintEnd_toEndOf="@id/plantcare_profile_genralinfo"
-        app:layout_constraintStart_toStartOf="@id/plantcare_profile_genralinfo"
-        app:layout_constraintTop_toBottomOf="@id/plantcare_profile_genralinfo">
+        app:layout_constraintEnd_toEndOf="@id/plant_care_profile_generalInfo"
+        app:layout_constraintStart_toStartOf="@id/plant_care_profile_generalInfo"
+        app:layout_constraintTop_toBottomOf="@id/plant_care_profile_generalInfo">
 
     </TextView>
 

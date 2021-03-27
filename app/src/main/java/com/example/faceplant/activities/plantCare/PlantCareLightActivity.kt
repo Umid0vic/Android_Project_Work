@@ -11,7 +11,7 @@ class PlantCareLightActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_care_light)
-        val plantLightTxt = findViewById<TextView>(R.id.lightActivity_textview)
+        val plantLightTxt = findViewById<TextView>(R.id.plant_care_light_textView)
 
         if (intent.hasExtra(Constants.LIGHT_INFO)) {
             plantLightTxt.text = intent.getStringExtra(Constants.LIGHT_INFO)

@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Seed
+import kotlinx.android.synthetic.main.activity_add_plant.*
 import kotlinx.android.synthetic.main.activity_add_seed.*
 
 class AddSeedActivity : AppCompatActivity() {
@@ -29,7 +30,8 @@ class AddSeedActivity : AppCompatActivity() {
         saveButton.setOnClickListener{
             // Validate entered plant details and upload the selected image to Firestore
             if(validateSeedDetails()){
-               uploadSeedDetails()
+                uploadSeedDetails()
+                finish()
             }
         }
     }
@@ -37,8 +39,14 @@ class AddSeedActivity : AppCompatActivity() {
     // Function to validate the seed details.
     private fun validateSeedDetails(): Boolean{
         return when {
-            TextUtils.isEmpty(add_seed_seedTypeEditText.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(seedTypeEditText.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(this, R.string.message_enter_seed_type, Toast.LENGTH_SHORT
+                ).show()
+                false
+            }
+            seedTypeEditText.text.toString().trim { it <= ' ' }.length >= 15 -> {
+                Toast.makeText(
+                        this, R.string.message_seed_type_is_long, Toast.LENGTH_SHORT
                 ).show()
                 false
             }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.faceplant.R
 import com.example.faceplant.activities.plantCare.PlantCareActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         signInLaterButton.setOnClickListener{
+
             startActivity(
                 Intent(this, PlantCareActivity::class.java)
             )

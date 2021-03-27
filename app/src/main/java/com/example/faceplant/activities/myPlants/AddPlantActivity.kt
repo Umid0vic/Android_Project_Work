@@ -64,6 +64,7 @@ class AddPlantActivity : AppCompatActivity() {
             // Validate entered plant details and upload the selected image to Firestore
             if(validatePlantDetails()){
                 FirestoreClass().uploadImage(this, selectedImageUri, Constants.PLANTS)
+                finish()
             }
         }
     }
@@ -78,9 +79,15 @@ class AddPlantActivity : AppCompatActivity() {
                 ).show()
                 false
             }
-            TextUtils.isEmpty(add_plant_plantTypeEditText.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(plantTypeEditText.text.toString().trim { it <= ' ' }) -> {
                 Toast.makeText(
                     this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
+                ).show()
+                false
+            }
+            plantTypeEditText.text.toString().trim { it <= ' ' }.length >= 15 -> {
+                Toast.makeText(
+                        this, R.string.message_plant_type_is_long, Toast.LENGTH_SHORT
                 ).show()
                 false
             }

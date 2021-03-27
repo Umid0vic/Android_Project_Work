@@ -52,6 +52,7 @@ class ViewSeedActivity : AppCompatActivity() {
                 val intent = Intent(this, UpdateSeedActivity::class.java)
                 intent.putExtra(Constants.SEED_DETAILS, seedDetails)
                 startActivity(intent)
+                finish()
             }
         }
     }

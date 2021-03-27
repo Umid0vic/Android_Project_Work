@@ -10,7 +10,7 @@ class PlantCareWateringActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_care_watering)
-        val plantWaterTxt = findViewById<TextView>(R.id.WaterActivity_textview)
+        val plantWaterTxt = findViewById<TextView>(R.id.plant_care_watering_textView)
 
         if (intent.hasExtra(Constants.WATER_INFO)) {
             plantWaterTxt.text = intent.getStringExtra(Constants.WATER_INFO)

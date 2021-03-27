@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.faceplant.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 class ResetPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +14,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_reset_password)
 
         val submitBtn = findViewById<Button>(R.id.submit_button)
-        val emailEditText = findViewById<EditText>(R.id.forgot_password_emailEditText)
+        val emailEditText = findViewById<EditText>(R.id.reset_password_emailEditText)
 
         submitBtn.setOnClickListener(){
             val email: String = emailEditText.text.toString().trim{ it <= ' '}

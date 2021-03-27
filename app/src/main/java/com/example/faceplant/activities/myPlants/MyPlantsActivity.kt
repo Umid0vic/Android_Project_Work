@@ -38,7 +38,7 @@ class MyPlantsActivity : AppCompatActivity() {
             }
         }
 
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.my_plants_bottom_navigation)
 
         bottomNavigationView.selectedItemId = R.id.navigation_my_plants
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
