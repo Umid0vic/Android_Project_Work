@@ -15,31 +15,31 @@
     </style>
 
     <style name="Theme.Faceplant.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+        <!--  <item name="windowActionBar">false</item> -->
+          <item name="windowNoTitle">true</item>
+      </style>
 
-    <style name="FaceplantButton">
-        <item name="android:textSize">@dimen/btn_text_size</item>
-        <item name="android:layout_width">@dimen/btn_width</item>
-        <item name="android:layout_height">@dimen/btn_height</item>
-        <item name="android:textColor">@color/btn_text</item>
-        <item name="textAllCaps">false</item>
-    </style>
+      <style name="FaceplantButton">
+          <item name="android:textSize">@dimen/btn_text_size</item>
+          <item name="android:layout_width">@dimen/btn_width</item>
+          <item name="android:layout_height">@dimen/btn_height</item>
+          <item name="android:textColor">@color/btn_text</item>
+          <item name="textAllCaps">false</item>
+      </style>
 
-    <style name="FaceplantSmallButton">
-        <item name="android:textSize">@dimen/btn_text_size</item>
-        <item name="android:layout_width">130dp</item>
-        <item name="android:layout_height">@dimen/btn_height</item>
-        <item name="android:textColor">@color/btn_text</item>
-        <item name="textAllCaps">false</item>
-    </style>
+      <style name="FaceplantSmallButton">
+          <item name="android:textSize">@dimen/btn_text_size</item>
+          <item name="android:layout_width">130dp</item>
+          <item name="android:layout_height">@dimen/btn_height</item>
+          <item name="android:textColor">@color/btn_text</item>
+          <item name="textAllCaps">false</item>
+      </style>
 
-    <style name="FaceplantEditText">
-        <item name="android:textColor">@color/et_text_color</item>
-        <item name="android:layout_width">@dimen/btn_width</item>
-        <item name="android:layout_height">@dimen/btn_height</item>
-    </style>
-    <style name="Theme.Faceplant.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.Faceplant.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-</resources>
+      <style name="FaceplantEditText">
+          <item name="android:textColor">@color/et_text_color</item>
+          <item name="android:layout_width">@dimen/btn_width</item>
+          <item name="android:layout_height">@dimen/btn_height</item>
+      </style>
+      <style name="Theme.Faceplant.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+      <style name="Theme.Faceplant.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+  </resources>

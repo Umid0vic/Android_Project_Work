@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.plantCare.PlantCare_WaterActivity"
+    tools:context=".activities.plantCare.PlantCareWateringActivity"
     android:background="@color/light_green">
 
     <TextView

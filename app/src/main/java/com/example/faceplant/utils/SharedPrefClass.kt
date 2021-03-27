@@ -1,9 +1,8 @@
 package com.example.faceplant.utils
 import android.app.Activity
 
-
 class SharedPrefsClass {
-    // Function to save data
+    // Function to store user data
     fun setSharedPreference(activity: Activity, prefName: String?, key: String?, value: String?) {
         val sharedPrefs = activity.getSharedPreferences(prefName, 0)
         val editor = sharedPrefs.edit()
@@ -12,12 +11,14 @@ class SharedPrefsClass {
         editor.apply()
     }
 
+    // Function to get store user data
     fun getSharedPreference(activity: Activity, prefName: String?, key: String?, defaultValue: String?
     ): String? {
         val sharedPrefs = activity.getSharedPreferences(prefName, 0)
         return sharedPrefs.getString(key, defaultValue)
     }
 
+    // Function to clear stored user data after sign out
     fun clearSharedPreference(activity: Activity, prefName: String?, key: String?) {
         val sharedPrefs = activity.getSharedPreferences(prefName, 0)
         val editor = sharedPrefs.edit()
@@ -26,28 +27,3 @@ class SharedPrefsClass {
         editor.apply()
     }
 }
-
-/*
-               val sharedPreferences = activity.getSharedPreferences(
-                   Constants.FACEPLANT_PREFERENCES,
-                   Context.MODE_PRIVATE
-               )
-
-               val editor: SharedPreferences.Editor = sharedPreferences.edit()
-               // Saving username inside the sharedPreferences key: UsernamePrefKey
-               editor.putString(Constants.USERNAME_PREF_KEY, user?.username)
-               editor.apply()
-
-               when(activity){
-                   is SignInActivity -> {
-                       if (user != null) {
-                           activity.userSignInSuccess(user)
-                       }
-                   }
-                   is SplashActivity -> {
-                       if (user != null) {
-                           activity.userAlreadySignedIn(user)
-                       }
-                   }
-               }
-               */

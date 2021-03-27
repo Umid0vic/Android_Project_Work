@@ -8,7 +8,7 @@
     tools:context=".activities.UserProfileActivity">
 
             <TextView
-                android:id="@+id/profile_title"
+                android:id="@+id/user_profile_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -21,7 +21,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <FrameLayout
-                android:id="@+id/image_frame_layout"
+                android:id="@+id/user_profile_imageFrameLayout"
                 android:layout_width="@dimen/user_image_size"
                 android:layout_height="@dimen/user_image_size"
                 android:layout_marginTop="100dp"
@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/user_image"
+                    android:id="@+id/user_profile_imageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/green"
@@ -53,13 +53,13 @@
                 android:text="@string/textView_username"
                 android:textColor="@color/black"
                 android:textSize="@dimen/et_text_size"
-                app:layout_constraintEnd_toStartOf="@id/profile_usernameTextView"
+                app:layout_constraintEnd_toStartOf="@id/user_profile_usernameTextView"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_frame_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/user_profile_imageFrameLayout" />
 
             <TextView
-                android:id="@+id/profile_usernameTextView"
+                android:id="@+id/user_profile_usernameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -84,14 +84,14 @@
                 android:text="@string/textView_email"
                 android:textColor="@color/black"
                 android:textSize="@dimen/et_text_size"
-                app:layout_constraintBottom_toBottomOf="@+id/profile_emailTextView"
-                app:layout_constraintEnd_toStartOf="@id/profile_emailTextView"
+                app:layout_constraintBottom_toBottomOf="@+id/user_profile_emailTextView"
+                app:layout_constraintEnd_toStartOf="@id/user_profile_emailTextView"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_username" />
 
             <TextView
-                android:id="@+id/profile_emailTextView"
+                android:id="@+id/user_profile_emailTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -108,7 +108,7 @@
 
 
     <com.example.faceplant.utils.FaceplantButton
-        android:id="@+id/profile_sign_out_button"
+        android:id="@+id/user_profile_signOutButton"
         style="@style/FaceplantButton"
         android:background="@drawable/faceplant_red_button"
         android:layout_marginBottom="100dp"
@@ -119,7 +119,7 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/user_profile_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemBackground="@color/green"

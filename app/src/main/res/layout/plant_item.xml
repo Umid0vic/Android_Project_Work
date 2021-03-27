@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/plant_item_text_color"
         android:textSize="@dimen/rv_plant_name_textSize"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/linear_layout_item_image"
         app:layout_constraintEnd_toEndOf="@id/linear_layout_item_image"
         app:layout_constraintTop_toBottomOf="@id/linear_layout_item_image"

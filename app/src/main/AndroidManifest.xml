@@ -17,29 +17,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Faceplant">
-        <activity android:name=".activities.MySeeds.UpdateSeedActivity"></activity>
+        <activity android:name=".activities.MySeeds.UpdateSeedActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.myPlants.UpdatePlantActivity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".activities.plantCare.PlantCareProfileActivity"
             android:screenOrientation="portrait"/>
-
         <activity
-            android:name=".activities.plantCare.PlantCare_GeneralInfoActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".activities.plantCare.PlantCare_NutritionActivity"
+            android:name=".activities.plantCare.PlantCareGeneralInfoActivity"
             android:screenOrientation="portrait"/>
-
         <activity
-            android:name=".activities.plantCare.PlantCare_WaterActivity"
+            android:name=".activities.plantCare.PlantCareNutritionActivity"
             android:screenOrientation="portrait"/>
-
         <activity
-            android:name=".activities.plantCare.PlantCare_LightActivity"
+            android:name=".activities.plantCare.PlantCareWateringActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.plantCare.PlantCareLightActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.myPlants.ViewPlantActivity"
@@ -66,7 +61,7 @@
             android:name=".activities.UserProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name=".activities.ResetPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SignUpActivity"

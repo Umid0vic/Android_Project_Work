@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
-import com.example.faceplant.models.Plant
 import com.example.faceplant.models.PlantCareModel
 import com.example.faceplant.utils.Constants
 
@@ -35,12 +34,9 @@ class PlantCareProfileActivity : AppCompatActivity() {
             plantTitle.setText(plantDetails.plantCareTitle)
         }
 
-
-
-
         //handle user click on light icon
         lightIcon.setOnClickListener {
-            val intent = Intent(this, PlantCare_LightActivity::class.java)
+            val intent = Intent(this, PlantCareLightActivity::class.java)
             intent.putExtra(Constants.LIGHT_INFO, plantDetails.plantCareLight)
 
             startActivity(intent)
@@ -49,7 +45,7 @@ class PlantCareProfileActivity : AppCompatActivity() {
 
         //handle user click on water icon
         waterIcon.setOnClickListener {
-            val intent = Intent(this, PlantCare_WaterActivity::class.java)
+            val intent = Intent(this, PlantCareWateringActivity::class.java)
             intent.putExtra(Constants.WATER_INFO,plantDetails.plantCareWater)
 
             startActivity(intent)
@@ -57,7 +53,7 @@ class PlantCareProfileActivity : AppCompatActivity() {
 
         //handle user click on nutrition icon
         nutritionIcon.setOnClickListener {
-            val intent = Intent(this, PlantCare_NutritionActivity::class.java)
+            val intent = Intent(this, PlantCareNutritionActivity::class.java)
             intent.putExtra(Constants.NUTRITION_INFO,plantDetails.plantCareNutrition)
 
             startActivity(intent)
@@ -66,7 +62,7 @@ class PlantCareProfileActivity : AppCompatActivity() {
 
         //handle user click on generalinfo icon
         generalInfoIcon.setOnClickListener {
-            val intent = Intent(this, PlantCare_GeneralInfoActivity::class.java)
+            val intent = Intent(this, PlantCareGeneralInfoActivity::class.java)
             intent.putExtra(Constants.GENERAL_INFO,plantDetails.plantCareGeneralInfo)
 
             startActivity(intent)

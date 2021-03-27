@@ -7,15 +7,14 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.utils.Constants
 
-class PlantCare_LightActivity : AppCompatActivity() {
+class PlantCareLightActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_plant_care__light)
+        setContentView(R.layout.activity_plant_care_light)
         val plantLightTxt = findViewById<TextView>(R.id.lightActivity_textview)
 
         if (intent.hasExtra(Constants.LIGHT_INFO)) {
-           plantLightTxt.setText(intent.getStringExtra(Constants.LIGHT_INFO))
-
+            plantLightTxt.text = intent.getStringExtra(Constants.LIGHT_INFO)
         }
 
     }

@@ -9,10 +9,10 @@ import com.example.faceplant.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
-class ForgotPasswordActivity : AppCompatActivity() {
+class ResetPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_forgot_password)
+        setContentView(R.layout.activity_reset_password)
 
         val submitBtn = findViewById<Button>(R.id.submit_button)
         val emailEditText = findViewById<EditText>(R.id.forgot_password_emailEditText)

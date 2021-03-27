@@ -26,24 +26,14 @@ import kotlinx.android.synthetic.main.activity_my_seeds.*
 
 class MySeedsActivity : AppCompatActivity() {
 
-    private val db = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_seeds)
 
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
 
-        topAppBar.setNavigationOnClickListener {
-            // Handle navigation icon press
-        }
-
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.search -> {
-                    // Handle search icon press
-                    true
-                }
                 R.id.add -> {
                     // Handle add icon press
                     startActivity(Intent(this, AddSeedActivity::class.java))
@@ -114,11 +104,5 @@ class MySeedsActivity : AppCompatActivity() {
             mySeeds_recyclerView.visibility = View.GONE
             findViewById<TextView>(R.id.no_seeds_added_textView).visibility = View.VISIBLE
         }
-    }
-    fun userSignInSuccess(user: User){
-        val intent = Intent(this, UserProfileActivity::class.java)
-        intent.putExtra(Constants.USER_DETAILS, user)
-        startActivity(intent)
-        finish()
     }
 }

@@ -23,28 +23,12 @@ import kotlinx.android.synthetic.main.activity_my_plants.*
 
 class MyPlantsActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-
-    private val db = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_plants)
-        //Init Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-
-
-        topAppBar.setNavigationOnClickListener {
-            // Handle navigation icon press
-        }
 
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.search -> {
-                    // Handle search icon press
-                    true
-                }
                 R.id.add -> {
                     // Handle add icon press
                     startActivity(Intent(this, AddPlantActivity::class.java))
@@ -119,19 +103,4 @@ class MyPlantsActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.no_plants_added_textView).visibility = View.VISIBLE
         }
     }
-
-    fun userSignInSuccess(user: User){
-        val intent = Intent(this, UserProfileActivity::class.java)
-        intent.putExtra(Constants.USER_DETAILS, user)
-        startActivity(intent)
-        finish()
-    }
-
-    fun redirectUserToSignIn(){
-        startActivity(Intent(this, SignInActivity::class.java))
-        finish()
-    }
-
-
-
 }

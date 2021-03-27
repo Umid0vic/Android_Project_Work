@@ -42,12 +42,10 @@ class PlantCareAdapter(
 
         //handle user click on one item in the recyclerview
         holder.itemView.setOnClickListener {
-            Log.i("PlantcareActivity","PlantImageClicked")
             val intent = Intent(context, PlantCareProfileActivity::class.java)
             intent.putExtra(Constants.PLANT_CARE_DETAILS, model)
             context.startActivity(intent)
         }
-
     }
 
     //function that returns the number of items in the list

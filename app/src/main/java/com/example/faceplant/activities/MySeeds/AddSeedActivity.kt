@@ -9,9 +9,6 @@ import android.widget.Toast
 import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Seed
-import com.example.faceplant.utils.Constants
-import kotlinx.android.synthetic.main.activity_add_plant.*
-import kotlinx.android.synthetic.main.activity_add_plant.toolbar_add_plant_activity
 import kotlinx.android.synthetic.main.activity_add_seed.*
 
 class AddSeedActivity : AppCompatActivity() {
@@ -22,8 +19,6 @@ class AddSeedActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_seed)
-
-        setupActionBar()
 
 
         seedTypeEditText = findViewById(R.id.add_seed_seedTypeEditText)
@@ -37,19 +32,6 @@ class AddSeedActivity : AppCompatActivity() {
                uploadSeedDetails()
             }
         }
-    }
-
-    // Function to setup actionbar
-    private fun setupActionBar(){
-        setSupportActionBar(toolbar_add_seed_activity)
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_cancel)
-        }
-
-        toolbar_add_seed_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
     // Function to validate the seed details.

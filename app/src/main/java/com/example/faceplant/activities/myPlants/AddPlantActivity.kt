@@ -1,8 +1,6 @@
 package com.example.faceplant.activities.myPlants
 
 import android.app.Activity
-import android.app.AlertDialog
-import android.content.DialogInterface.*
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -46,9 +44,6 @@ class AddPlantActivity : AppCompatActivity() {
         moreAboutPlantEditText = findViewById(R.id.add_plant_moreAboutPlantEditText)
         val saveButton = findViewById<Button>(R.id.add_plant_saveButton)
 
-        setupActionBar()
-
-
         addImageIcon.setOnClickListener{
             // Check if permission for storage is granted
             if (ContextCompat.checkSelfPermission(
@@ -73,53 +68,13 @@ class AddPlantActivity : AppCompatActivity() {
         }
     }
 
-    /*
-    private fun showAlertDialogToChooseImage(){
-        val items = arrayOf<CharSequence>("Take Photo", "Choose from Library", "Cancel")
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Add Photo")
-        builder.setItems(items) { dialog, item ->
-            if (items[item] == "Take Photo") {
-                Constants.PROFILE_PIC_COUNT = 1
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(intent, Constants.REQUEST_CAMERA)
-            } else if (items[item] == "Choose from Library") {
-                Constants.PROFILE_PIC_COUNT = 2
-                val intent = Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                )
-                startActivityForResult(intent, Constants.SELECT_FILE)
-            } else if (items[item] == "Cancel") {
-                Constants.PROFILE_PIC_COUNT = 0
-                dialog.dismiss()
-            }
-        }
-        builder.show()
-    }
-
-     */
-
-    // Function to setup actionbar
-    private fun setupActionBar(){
-        setSupportActionBar(toolbar_add_plant_activity)
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_cancel)
-        }
-
-        toolbar_add_plant_activity.setNavigationOnClickListener { onBackPressed() }
-    }
-
     // Function to validate the plant details.
     private fun validatePlantDetails(): Boolean{
         return when {
 
             selectedImageUri == null -> {
                 Toast.makeText(
-                    this, R.string.message_enter_plant_type, Toast.LENGTH_SHORT
+                    this, R.string.message_choose_plant_image, Toast.LENGTH_SHORT
                 ).show()
                 false
             }
@@ -130,8 +85,6 @@ class AddPlantActivity : AppCompatActivity() {
                 false
             }
             else -> {
-                Toast.makeText(this, R.string.message_image_selection_failed, Toast.LENGTH_SHORT
-                ).show()
                 true
             }
         }

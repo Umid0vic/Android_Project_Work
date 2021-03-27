@@ -144,14 +144,3 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 }
-
-
-/*
-    fun userSignUpSuccess(user: User){
-        val intent = Intent(this, UserProfileActivity::class.java)
-        intent.putExtra(Constants.USER_DETAILS, user)
-        startActivity(intent)
-        finish()
-    }
-
- */

@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_user_profile.*
 
 class SignInActivity : AppCompatActivity() {
 
@@ -32,7 +31,6 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var forgotPasswordTextView: TextView
     private val db = FirebaseFirestore.getInstance()
-    private var userImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +66,7 @@ class SignInActivity : AppCompatActivity() {
         forgotPasswordTextView.setOnClickListener(){
             //Launch the ForgotPasswordActivity when forgotpassword? clicked
             startActivity(
-                Intent(this, ForgotPasswordActivity::class.java)
+                Intent(this, ResetPasswordActivity::class.java)
             )
         }
 
@@ -136,19 +134,11 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    fun userSignInSuccess(user: User){
-        val intent = Intent(this, UserProfileActivity::class.java)
-        intent.putExtra(Constants.USER_DETAILS, user)
-        startActivity(intent)
-        finish()
-    }
-
     //The code is from Firebase guides
     private fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
-
 
     //Check if user has successfully signed in. The code is from Firebase guides
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -169,8 +159,6 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
@@ -204,7 +192,7 @@ class SignInActivity : AppCompatActivity() {
                     val intent = Intent(this, UserProfileActivity::class.java)
                     intent.putExtra(Constants.USER_DETAILS, user)
                     startActivity(intent)
-                    finish()
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(SIGN_IN_ACTIVITY, "signInWithCredential:failure", task.exception)

@@ -6,7 +6,7 @@
 
     <stroke
         android:width="@dimen/image_stroke_border_size"
-        android:color="@color/green" />
+        android:color="@color/color_image_border"/>
 
-    <corners android:radius="@dimen/image_border_radius" />
+    <corners android:radius="2dp"/>
 </shape>

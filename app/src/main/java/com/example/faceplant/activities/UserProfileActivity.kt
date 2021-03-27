@@ -30,10 +30,8 @@ import java.io.IOException
 
 
 class UserProfileActivity : AppCompatActivity() {
-    private lateinit var userDetails: User
     private var userImageUri: Uri? = null
     private var userImageURL: String = ""
-    private val storage = Firebase.storage
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
 
@@ -44,17 +42,18 @@ class UserProfileActivity : AppCompatActivity() {
         //Init Firebase Auth
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
-        val usernameTextView = findViewById<TextView>(R.id.profile_usernameTextView)
-        val emailTextView = findViewById<TextView>(R.id.profile_emailTextView)
-        val signOutButton = findViewById<Button>(R.id.profile_sign_out_button)
-        val userImage = findViewById<ImageView>(R.id.user_image)
+        val usernameTextView = findViewById<TextView>(R.id.user_profile_usernameTextView)
+        val emailTextView = findViewById<TextView>(R.id.user_profile_emailTextView)
+        val signOutButton = findViewById<Button>(R.id.user_profile_signOutButton)
+        val userImage = findViewById<ImageView>(R.id.user_profile_imageView)
 
         // Check if user is signed in
         if(currentUser != null) {
             // Check if user details are stored in SharedPref
             if(SharedPrefsClass().getSharedPreference(
-                    this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, null) != null){
-                Log.i("SignInActivity", "getting userdetails from sharedPrefs")
+                    this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, null) != null &&
+                SharedPrefsClass().getSharedPreference(
+                                    this, Constants.USER_PREFS, Constants.USER_EMAIL, null) != null){
 
                 usernameTextView.text = SharedPrefsClass().getSharedPreference(
                     this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, "")
@@ -117,7 +116,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         }
 
-        val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_navigation)
+        val bottomNavigationView : BottomNavigationView = findViewById(R.id.user_profile_bottom_navigation)
 
         bottomNavigationView.selectedItemId = R.id.navigation_user_proflie
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -170,9 +169,6 @@ class UserProfileActivity : AppCompatActivity() {
                 }
                 return
             }
-
-            // Add other 'when' lines to check for other
-            // permissions this app might request.
             else -> {
                 // Ignore all other requests.
             }
@@ -186,7 +182,7 @@ class UserProfileActivity : AppCompatActivity() {
         if(resultCode == Activity.RESULT_OK){
             userImageUri = data!!.data
             try {
-                FirestoreClass().glideUserImageLoader(this, userImageUri!!, user_image)
+                FirestoreClass().glideUserImageLoader(this, userImageUri!!, user_profile_imageView)
                 FirestoreClass().uploadImage(this, userImageUri, Constants.USERS)
                 SharedPrefsClass().setSharedPreference(
                         this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, userImageUri.toString()
@@ -205,9 +201,5 @@ class UserProfileActivity : AppCompatActivity() {
             Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         )
         startActivityForResult(intent, Constants.PICK_IMAGE_REQUEST_CODE)
-    }
-
-    fun updateUserImage(imageURL: String){
-        userImageURL = imageURL
     }
 }

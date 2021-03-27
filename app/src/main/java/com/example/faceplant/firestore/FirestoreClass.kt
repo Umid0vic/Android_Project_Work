@@ -88,13 +88,12 @@ class FirestoreClass : AppCompatActivity()  {
             }
     }
 
-    // function to get plantlist from database
+    // Function to get plantlist from database
     fun getPlantList(activity: Activity){
         db.collection(Constants.PLANTS)
                 .whereEqualTo(Constants.USER_ID, getUserId())
                 .get()
                 .addOnSuccessListener {document ->
-                    Log.i("plant list", document.documents.toString())
                     val plantList: ArrayList<Plant> = ArrayList()
                     // Get plants documents from Firebase and add them to plantList
                     for (i in document.documents){
@@ -131,19 +130,6 @@ class FirestoreClass : AppCompatActivity()  {
             }
     }
 
-    //Function to update user info
-    fun updateUserInfo(userHashmap: HashMap<String, Any>){
-        getUserId()?.let {
-            db.collection(Constants.USERS)
-                .document(it)
-                .update(userHashmap)
-                .addOnSuccessListener {
-                }
-                .addOnFailureListener{
-                }
-        }
-    }
-
     fun getUserId(): String? {
         val currentUser = FirebaseAuth.getInstance().currentUser
         var currentUserId = ""
@@ -159,7 +145,6 @@ class FirestoreClass : AppCompatActivity()  {
             Glide
                 .with(context)
                 .load(image)
-         //       .circleCrop()
                 .placeholder(R.drawable.user_default_image)
                 .into(imageView)
         }catch (e: IOException){
@@ -172,14 +157,12 @@ class FirestoreClass : AppCompatActivity()  {
             Glide
                 .with(context)
                 .load(image)
-                //       .circleCrop()
                 .placeholder(R.drawable.ic_plant_image)
                 .into(imageView)
         }catch (e: IOException){
             e.printStackTrace()
         }
     }
-
 
     // Function to upload image to Firestore
     fun uploadImage(activity: Activity, uri: Uri?, imageType: String) {
@@ -274,36 +257,12 @@ class FirestoreClass : AppCompatActivity()  {
                         Constants.PLANT_IMAGE to uri
                 ))
     }
-/*
-    // function to get plant care documents
-    fun getPlantCareDocuments(activity: Activity){
-
-        db.collection(Constants.PLANT_CARE)
-                .get()
-                .addOnSuccessListener { documents ->
-                    val plantCareList: ArrayList<PlantCareModel> = ArrayList()
-                    for (i in documents) {
-                        val plantCareItem = i.toObject(PlantCareModel::class.java)
-                        plantCareItem!!.plantCareId = i.id
-                        plantCareList.add(plantCareItem)
-
-                        when(activity){
-                            is PlantCareActivity -> {
-                                activity.getDownloadedPlantCareList(plantCareList)
-                            }
-                        }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                }
-    }
- */
 
     // Function to remove an item from FireStore
     fun removeItem(plantId: String, collection: String){
         db.collection(collection).document(plantId)
                 .delete()
-                .addOnSuccessListener { Log.d("remove plant succes", "DocumentSnapshot successfully deleted!") }
+                .addOnSuccessListener {  }
                 .addOnFailureListener { e -> Log.w("remove plant fail", "Error deleting document", e) }
     }
 }

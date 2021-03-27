@@ -25,9 +25,6 @@ import kotlin.collections.ArrayList
 
 class PlantCareActivity : AppCompatActivity() {
 
-    lateinit var listPlantCare: PlantCareModel
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -78,16 +75,6 @@ class PlantCareActivity : AppCompatActivity() {
 
         FirestoreClass().getPlantCareDocuments(this)
     }
-
-
-    fun userSignInSuccess(user: User){
-        val intent = Intent(this, UserProfileActivity::class.java)
-        intent.putExtra(Constants.USER_DETAILS, user)
-        startActivity(intent)
-        finish()
-    }
-
-
 
     fun getDownloadedPlantCareList(listPlantCare: ArrayList<PlantCareModel>){
 

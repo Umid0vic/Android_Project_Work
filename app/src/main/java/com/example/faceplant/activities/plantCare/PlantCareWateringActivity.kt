@@ -6,14 +6,14 @@ import android.widget.TextView
 import com.example.faceplant.R
 import com.example.faceplant.utils.Constants
 
-class PlantCare_WaterActivity : AppCompatActivity() {
+class PlantCareWateringActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_plant_care__water)
+        setContentView(R.layout.activity_plant_care_watering)
         val plantWaterTxt = findViewById<TextView>(R.id.WaterActivity_textview)
 
         if (intent.hasExtra(Constants.WATER_INFO)) {
-            plantWaterTxt.setText(intent.getStringExtra(Constants.WATER_INFO))
+            plantWaterTxt.text = intent.getStringExtra(Constants.WATER_INFO)
 
         }
     }
