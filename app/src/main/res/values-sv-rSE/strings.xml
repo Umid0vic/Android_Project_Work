@@ -81,7 +81,6 @@
     <string name="romove">Ta bort</string>
     <string name="message_enter_plant_type">Ange plantans sort</string>
 
-
     <!--PlantCare strings-->
     <string name="plantcare_title">Skötselråd</string>
     <string name="plantcare_hint_search">Sök</string>
@@ -106,7 +105,23 @@
     <string name="remove_dialog_title">Ta bort</string>
     <string name="remove_dialog_message">Är du helt säker?</string>
     <string name="remove_dialog_message_plant">Är du helt säker på att du vill radera växten?</string>
+    <string name="remove_dialog_message_seed">Är du helt säker på att du vill radera fröet?</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="message_you_can_edit_now">Nu kan du ändra information om din växt</string>
+
+    <string name="my_seeds">Mina fröer</string>
+    <string name="no_seeds_added">Inget frö har lagts till än.</string>
+    <string name="seeds_item">Seeds item</string>
+    <string name="new_seed">Nytt frö</string>
+    <string name="seed_type">Frösort</string>
+    <string name="more_about_seed">Information om ditt frö</string>
+    <string name="message_enter_seed_type">Var god ange frösort</string>
+    <string name="update_plant">Uppdatera växt</string>
+    <string name="select_image_dialog_title">välj en bild</string>
+    <string name="update_seed">Uppdatera frö</string>
+    <string name="message_choose_plant_image">Var god välj en växt bild!</string>
+    <string name="message_plant_type_is_long">Växtsort är för lång!</string>
+    <string name="message_seed_type_is_long">Frösort är för lång!</string>
+
 </resources>

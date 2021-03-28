@@ -62,7 +62,7 @@ class ViewSeedActivity : AppCompatActivity() {
         //set title for alert dialog
         builder.setTitle(resources.getString(R.string.remove_dialog_title))
         //set message for alert dialog
-        builder.setMessage(resources.getString(R.string.remove_dialog_message_plant))
+        builder.setMessage(resources.getString(R.string.remove_dialog_message_seed))
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
         builder.setPositiveButton(resources.getString(R.string.yes)) { dialogInterface, _ ->

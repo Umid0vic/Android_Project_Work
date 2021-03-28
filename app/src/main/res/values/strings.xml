@@ -107,9 +107,11 @@
     <string name="remove_dialog_title">Remove</string>
     <string name="remove_dialog_message">Are you sure you want to remove the item?</string>
     <string name="remove_dialog_message_plant">Are you sure you want to remove the plant?</string>
+    <string name="remove_dialog_message_seed">Are you sure you want to remove the seed?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="message_you_can_edit_now">You can edit plant details now!</string>
+
     <string name="my_seeds">My seeds</string>
     <string name="no_seeds_added">No seeds added yet.</string>
     <string name="seeds_item">Seeds item</string>
