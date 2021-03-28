@@ -117,7 +117,6 @@ class SignInActivity : AppCompatActivity() {
                                     SharedPrefsClass().setSharedPreference(
                                         this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, user.image
                                     )
-                                    Toast.makeText(this,"User Data Stored",Toast.LENGTH_SHORT).show()
                                 }
                                   startActivity(Intent(this, UserProfileActivity::class.java))
                                   finish()
@@ -148,12 +147,10 @@ class SignInActivity : AppCompatActivity() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
-                Log.d(SIGN_IN_ACTIVITY, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(SIGN_IN_ACTIVITY, "Google sign in failed", e)
-                // ...
             }
         }
     }
@@ -164,7 +161,6 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, go to HomeActivity
-                    Log.d(SIGN_IN_ACTIVITY, "signInWithCredential:success")
                     val firebaseUser: FirebaseUser = task.result!!.user!!
                     //create User object
                     val username = firebaseUser.displayName
@@ -184,8 +180,6 @@ class SignInActivity : AppCompatActivity() {
                     SharedPrefsClass().setSharedPreference(
                         this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, email
                     )
-
-                    Toast.makeText(this,"Data Stored",Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this, UserProfileActivity::class.java)
                     intent.putExtra(Constants.USER_DETAILS, user)

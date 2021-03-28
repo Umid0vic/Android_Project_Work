@@ -46,6 +46,8 @@ class UserProfileActivity : AppCompatActivity() {
         val emailTextView = findViewById<TextView>(R.id.user_profile_emailTextView)
         val signOutButton = findViewById<Button>(R.id.user_profile_signOutButton)
         val userImage = findViewById<ImageView>(R.id.user_profile_imageView)
+        val addImageIcon = findViewById<ImageView>(R.id.user_profile_add_image_icon)
+
 
         // Check if user details are stored in SharedPref
         if(SharedPrefsClass().getSharedPreference(
@@ -81,7 +83,7 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
 
-        userImage.setOnClickListener{
+        addImageIcon.setOnClickListener{
             // Check if permission for storage is granted
             if (ContextCompat.checkSelfPermission(
                     this, android.Manifest.permission.READ_EXTERNAL_STORAGE

@@ -46,7 +46,6 @@ class SplashActivity : AppCompatActivity() {
                 if (currentUser != null) {
                     startActivity(Intent(this, MyPlantsActivity::class.java))
                     finish()
-                    Log.i("SplashActivity", "Starting userProfileActivity")
                 } else {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
