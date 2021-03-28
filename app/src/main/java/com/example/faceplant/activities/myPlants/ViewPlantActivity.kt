@@ -1,28 +1,16 @@
 package com.example.faceplant.activities.myPlants
 
-import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Plant
 import com.example.faceplant.utils.Constants
-import kotlinx.android.synthetic.main.activity_add_plant.*
-import kotlinx.android.synthetic.main.activity_view_plant.*
-import java.io.IOException
 
 class ViewPlantActivity : AppCompatActivity() {
     private lateinit var updatePlantButton: Button

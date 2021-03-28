@@ -121,10 +121,12 @@
     <string name="message_enter_seed_type">Please enter seed type</string>
     <string name="update_plant">Update plant</string>
     <string name="select_image_dialog_title">Select an image</string>
-    <string name="update_seed">Update seed</string>
+    <string name="update_seed">Update seeds</string>
     <string name="message_choose_plant_image">Please choose a plant image!</string>
     <string name="message_plant_type_is_long">Plant type is too long!</string>
     <string name="message_seed_type_is_long">Seed type is too long!</string>
+    <string name="sign_in_to_continue_title">Locked feature!</string>
+    <string name="message_sign_in_to_continue">Please sign in to continue using other features.</string>
 
 
 </resources>

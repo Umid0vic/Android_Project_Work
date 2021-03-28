@@ -18,6 +18,7 @@ import com.example.faceplant.R
 import com.example.faceplant.firestore.FirestoreClass
 import com.example.faceplant.models.Plant
 import com.example.faceplant.utils.Constants
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_add_plant.*
 import java.io.IOException
 

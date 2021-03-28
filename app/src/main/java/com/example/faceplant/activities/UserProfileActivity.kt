@@ -47,44 +47,37 @@ class UserProfileActivity : AppCompatActivity() {
         val signOutButton = findViewById<Button>(R.id.user_profile_signOutButton)
         val userImage = findViewById<ImageView>(R.id.user_profile_imageView)
 
-        // Check if user is signed in
-        if(currentUser != null) {
-            // Check if user details are stored in SharedPref
-            if(SharedPrefsClass().getSharedPreference(
-                    this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, null) != null &&
-                SharedPrefsClass().getSharedPreference(
-                                    this, Constants.USER_PREFS, Constants.USER_EMAIL, null) != null){
+        // Check if user details are stored in SharedPref
+        if(SharedPrefsClass().getSharedPreference(
+                this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, null) != null &&
+            SharedPrefsClass().getSharedPreference(
+                this, Constants.USER_PREFS, Constants.USER_EMAIL, null) != null){
 
-                usernameTextView.text = SharedPrefsClass().getSharedPreference(
-                    this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, "")
+            usernameTextView.text = SharedPrefsClass().getSharedPreference(
+                this, Constants.USER_PREFS, Constants.USERNAME_PREF_KEY, "")
 
-                emailTextView.text = SharedPrefsClass().getSharedPreference(
-                    this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, "")
+            emailTextView.text = SharedPrefsClass().getSharedPreference(
+                this, Constants.USER_PREFS, Constants.EMAIL_PREF_KEY, "")
 
-                userImageURL = SharedPrefsClass().getSharedPreference(
-                    this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, "").toString()
+            userImageURL = SharedPrefsClass().getSharedPreference(
+                this, Constants.USER_PREFS, Constants.PROFILE_IMAGE_PREF_KEY, "").toString()
 
-                FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
-
-            }else{
-
-                val userId = FirestoreClass().getUserId()
-                if (userId != null) {
-                    db.collection(Constants.USERS).document(userId).get()
-                        .addOnSuccessListener { document ->
-                            // Converting document snapshot to User data model object
-                            val user = document.toObject(User::class.java)!!
-                            usernameTextView.text = user.username
-                            emailTextView.text = user.email
-                            userImageURL = user.image
-                            FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
-                        }
-                }
-            }
+            FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
 
         }else{
-            startActivity(Intent(this, SignInActivity::class.java))
-            finish()
+
+            val userId = FirestoreClass().getUserId()
+            if (userId != null) {
+                db.collection(Constants.USERS).document(userId).get()
+                    .addOnSuccessListener { document ->
+                        // Converting document snapshot to User data model object
+                        val user = document.toObject(User::class.java)!!
+                        usernameTextView.text = user.username
+                        emailTextView.text = user.email
+                        userImageURL = user.image
+                        FirestoreClass().glideUserImageLoader(this, userImageURL, userImage)
+                    }
+            }
         }
 
 

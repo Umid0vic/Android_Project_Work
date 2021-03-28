@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.faceplant.R
+import com.example.faceplant.activities.SignInActivity
 import com.example.faceplant.activities.UserProfileActivity
 import com.example.faceplant.activities.myPlants.AddPlantActivity
 import com.example.faceplant.activities.myPlants.MyPlantsActivity
@@ -19,6 +20,7 @@ import com.example.faceplant.models.Seed
 import com.example.faceplant.models.User
 import com.example.faceplant.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_my_plants.*
 import kotlinx.android.synthetic.main.activity_my_plants.topAppBar
